@@ -30,7 +30,7 @@ int main()
         compute_future_state(&ego_vehicle, &vehicles, 0.100F);
         longitudinal_control(&vehicles.vehicles_center_lane[0], &ego_vehicle);
 
-        sleep_console();
+        sleep_console(100);
     }
 
     return 0;

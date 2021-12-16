@@ -26,53 +26,27 @@ int main()
     scanf("%u", &lane);
 
     printf("\n\n    \t  L   C   R  \n");
-    const int32_t offset_m = 20;
-
-    for (int32_t i = 100; i >= -100; i -= offset_m)
+    switch (lane)
     {
-        switch (lane)
-        {
-        case LANE_ASSOCIATION_TYPE_RIGHT:
-        {
-            if ((distance_m <= i) && (distance_m > (i - offset_m)))
-            {
-                printf("%d\t| V |   |   |\n", i);
-            }
-            else
-            {
-                printf("%d\t|   |   |   |\n", i);
-            }
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_CENTER:
-        {
-            if ((distance_m <= i) && (distance_m > (i - offset_m)))
-            {
-                printf("%d\t|   | V |   |\n", i);
-            }
-            else
-            {
-                printf("%d\t|   |   |   |\n", i);
-            }
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_LEFT:
-        {
-            if ((distance_m <= i) && (distance_m > (i - offset_m)))
-            {
-                printf("%d\t|   |   | V |\n", i);
-            }
-            else
-            {
-                printf("%d\t|   |   |   |\n", i);
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
-        }
+    case LANE_ASSOCIATION_TYPE_RIGHT:
+    {
+        printf("\t| V |   |   |\n");
+        break;
+    }
+    case LANE_ASSOCIATION_TYPE_CENTER:
+    {
+        printf("\t|   | V |   |\n");
+        break;
+    }
+    case LANE_ASSOCIATION_TYPE_LEFT:
+    {
+        printf("\t|   |   | V |\n");
+        break;
+    }
+    default:
+    {
+        break;
+    }
     }
 
     printf("\n");

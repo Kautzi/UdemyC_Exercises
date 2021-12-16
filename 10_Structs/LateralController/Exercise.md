@@ -79,7 +79,7 @@ int main()
             printf("Lane change successull" << endl;
         }
 
-        sleep_console();
+        sleep_console(100);
     }
 
     return 0;

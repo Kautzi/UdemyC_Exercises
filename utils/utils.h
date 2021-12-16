@@ -89,14 +89,12 @@ void clear_console()
 }
 
 
-void sleep_console()
+void sleep_console(int ms)
 {
-    int pollingDelay = 100;
-
 #ifdef _WIN32
-    Sleep(pollingDelay);
+    Sleep(ms);
 #else
-    usleep(pollingDelay * 1000);
+    usleep(ms * 1000);
 #endif
 }
 
