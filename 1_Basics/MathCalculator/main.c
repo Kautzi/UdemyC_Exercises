@@ -1,5 +1,5 @@
-#include <iomanip>
 #include <math.h>
+#include <stdint.h>
 #include <stdio.h>
 
 double calculate_pi(uint32_t num_iterations);
@@ -8,7 +8,7 @@ void print_dec_to_bin(uint8_t value);
 
 int main()
 {
-    uint32_t num_iterations = 1'000'000;
+    uint32_t num_iterations = 1000000;
     double pi = 3.14159265358979323846;
     double pi_calculated = calculate_pi(num_iterations);
 

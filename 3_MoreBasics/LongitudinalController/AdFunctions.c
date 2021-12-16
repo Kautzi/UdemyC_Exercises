@@ -85,9 +85,9 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
         const VehicleType &center_vehicle = vehicles.vehicles_center_lane[center_idx];
         const VehicleType &right_vehicle = vehicles.vehicles_right_lane[right_idx];
 
-        char left_string[]{"   "};
-        char center_string[]{"   "};
-        char right_string[]{"   "};
+        char left_string[] = {"   "};
+        char center_string[] = {"   "};
+        char right_string[] = {"   "};
 
         const float range_m = static_cast<float>(i);
 

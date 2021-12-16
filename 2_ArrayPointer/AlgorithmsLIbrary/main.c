@@ -1,5 +1,7 @@
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "utils.h"
 
@@ -15,18 +17,17 @@ int32_t *inclusive_scan(int32_t *array, size_t length);
 
 int main()
 {
-    int32_t array[]{3, 1, 4, 1, 5, 9, 2, 6};
+    int32_t array[] = {3, 1, 4, 1, 5, 9, 2, 6};
     size_t length = 8;
-
 
     printf("all_of: %d", all_of(array, length, 5));
     printf("any_of: %d", any_of(array, length, 5));
     printf("none_of: %d", none_of(array, length, 5));
-    auto scan_values = inclusive_scan(array, length);
+    int32_t *scan_values = inclusive_scan(array, length);
     printf("inclusive_scan: ");
     print_int32_array(scan_values, length);
 
-    delete[] scan_values;
+    free(scan_values);
     scan_values = NULL;
 
     return 0;
@@ -114,7 +115,7 @@ int32_t *inclusive_scan(int32_t *array, size_t length)
         return NULL;
     }
 
-    int32_t *result = new int32_t[length]{};
+    int32_t *result = (int32_t *)malloc(sizeof(int32_t) * length);
 
     result[0] = array[0];
 

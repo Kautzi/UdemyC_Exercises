@@ -37,7 +37,7 @@ bool lateral_control(const NeighborVehiclesType &vehicles,
 
 ```cpp
 #include <chrono>
-#include <cstring>
+#include <string.h>
 #include <stdio.h>
 #include <numeric>
 #include <thread>

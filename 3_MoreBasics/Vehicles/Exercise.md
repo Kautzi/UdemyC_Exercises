@@ -64,7 +64,7 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
 ## Main Function
 
 ```cpp
-#include <cstring>
+#include <string.h>
 #include <stdio.h>
 #include <numeric>
 

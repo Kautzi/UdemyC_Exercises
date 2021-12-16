@@ -28,7 +28,7 @@ Hint: The future distance of a vehicle is dependent on the ego vehicle, since th
 ## Main Function
 
 ```cpp
-#include <cstring>
+#include <string.h>
 #include <stdio.h>
 #include <numeric>
 

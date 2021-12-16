@@ -1,11 +1,12 @@
-#include <cstring>
+#include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "utils.h"
 
 void unique_elements(int32_t *array, size_t length);
 
-void remove_duplicates(int32_t *array, size_t &length);
+void remove_duplicates(int32_t *array, size_t *const length);
 
 void rotate_left(int32_t *array, size_t length);
 
@@ -13,13 +14,13 @@ void rotate_right(int32_t *array, size_t length);
 
 int main()
 {
-    int32_t array[]{1, 1, 2, 3, 3, 4};
+    int32_t array[] = {1, 1, 2, 3, 3, 4};
     size_t length = 6;
 
     printf("unique_elements: ");
     unique_elements(array, length);
 
-    remove_duplicates(array, length);
+    remove_duplicates(array, &length);
     print_int32_array(array, length);
 
     rotate_left(array, length);
@@ -63,24 +64,24 @@ void unique_elements(int32_t *array, size_t length)
     }
 }
 
-void remove_duplicates(int32_t *array, size_t &length)
+void remove_duplicates(int32_t *array, size_t *const length)
 {
     if (array == NULL)
     {
         return;
     }
 
-    for (size_t i = 0; i < length; i++)
+    for (size_t i = 0; i < *length; i++)
     {
         size_t duplicate_index = -1;
         int32_t current_value = array[i];
 
-        for (size_t j = i + 1; j < length; j++)
+        for (size_t j = i + 1; j < *length; j++)
         {
             if (current_value == array[j])
             {
                 duplicate_index = j;
-                length--;
+                (*length)--;
                 break;
             }
         }
@@ -90,12 +91,12 @@ void remove_duplicates(int32_t *array, size_t &length)
             continue;
         }
 
-        for (size_t j = duplicate_index; j < length; j++)
+        for (size_t j = duplicate_index; j < *length; j++)
         {
             array[j] = array[j + 1];
         }
 
-        array[length] = 0;
+        array[*length] = 0;
     }
 }
 

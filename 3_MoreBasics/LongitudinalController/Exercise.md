@@ -25,7 +25,7 @@ You can choose a value of the deceleration (braking).
 
 ```cpp
 #include <chrono>
-#include <cstring>
+#include <string.h>
 #include <stdio.h>
 #include <numeric>
 #include <thread>

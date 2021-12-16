@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 
 /* CHARS */
@@ -18,9 +19,9 @@ char to_lower_case(char character);
 
 /* CHAR ARRAYS */
 
-char *to_upper_case(char *text);
+char *to_upper_case_str(char *text);
 
-char *to_lower_case(char *text);
+char *to_lower_case_str(char *text);
 
 size_t string_length(char *text);
 
@@ -30,20 +31,20 @@ bool string_equal(char *string1, char *string2);
 
 int main()
 {
-    char input_text[50]{};
-    char compare_text1[50]{"jan"};
-    char compare_text2[50]{"ja"};
+    char input_text[50] = {};
+    char compare_text1[50] = {"jan"};
+    char compare_text2[50] = {"ja"};
 
     printf("Please enter any text: ");
     scanf("%s", &input_text);
 
-    printf("to_upper_case: %d", to_upper_case(input_text)));
-    printf("to_lower_case: %d", to_lower_case(input_text)));
-    printf("string_length: %d", string_length(input_text)));
-    printf("char_search: %d", char_search(input_text, 'a')));
+    printf("to_upper_case: %s", to_upper_case_str(input_text));
+    printf("to_lower_case: %s", to_lower_case_str(input_text));
+    printf("string_length: %lu", string_length(input_text));
+    printf("char_search: %s", char_search(input_text, 'a'));
 
-    printf("equal(jan, jan): %d", string_equal(input_text, compare_text1)));
-    printf("equal(jan, ja): %d", string_equal(input_text, compare_text2)));
+    printf("equal(jan, jan): %u", string_equal(input_text, compare_text1));
+    printf("equal(jan, ja): %u", string_equal(input_text, compare_text2));
 
     return 0;
 }
@@ -117,7 +118,7 @@ char to_lower_case(char character)
 
 /* CHAR ARRAYS */
 
-char *to_upper_case(char *text)
+char *to_upper_case_str(char *text)
 {
     if (text == NULL)
     {
@@ -136,7 +137,7 @@ char *to_upper_case(char *text)
     return text;
 }
 
-char *to_lower_case(char *text)
+char *to_lower_case_str(char *text)
 {
     if (text == NULL)
     {

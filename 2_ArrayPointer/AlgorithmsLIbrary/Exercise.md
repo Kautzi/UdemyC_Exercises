@@ -44,7 +44,7 @@ Note: Make sure that the input pointers are valid.
 ```cpp
 int main()
 {
-    int32_t array[]{3, 1, 4, 1, 5, 9, 2, 6};
+    int32_t array[] = {3, 1, 4, 1, 5, 9, 2, 6};
     size_t length = 8;
 
     printf(boolalpha;

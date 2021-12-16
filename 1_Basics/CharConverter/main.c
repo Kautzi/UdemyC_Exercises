@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 
 bool is_numeric(char character);
@@ -19,7 +20,7 @@ int main()
     char input_character;
 
     printf("Please enter any ASCII character: ");
-    scanf("%d", &input_character);
+    scanf("%c", &input_character);
 
     printf("is_numeric: %d", is_numeric(input_character));
     printf("is_alpha: %d", is_alpha(input_character));

@@ -3,9 +3,9 @@
 Implement the following functions:
 
 ```cpp
-char *to_upper_case(char *text);
+char *to_upper_case_str(char *text);
 
-char *to_lower_case(char *text);
+char *to_lower_case_str(char *text);
 
 size_t string_length(char *text);
 
@@ -35,9 +35,9 @@ Note: Make sure that the input pointer is valid.
 ```cpp
 int main()
 {
-    char input_text[50]{};
-    char compare_text1[50]{"jan"};
-    char compare_text2[50]{"ja"};
+    char input_text[50] = {};
+    char compare_text1[50] = {"jan"};
+    char compare_text2[50] = {"ja"};
 
     printf("Please enter any text: ";
     scanf("%d", &input_text;

@@ -1,6 +1,6 @@
-#include <cstring>
 #include <numeric>
 #include <stdio.h>
+#include <string.h>
 
 #include "AdFunctions.hpp"
 #include "AdTypes.hpp"

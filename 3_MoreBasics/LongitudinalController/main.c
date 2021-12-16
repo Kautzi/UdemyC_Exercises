@@ -1,7 +1,7 @@
 #include <chrono>
-#include <cstring>
 #include <numeric>
 #include <stdio.h>
+#include <string.h>
 #include <thread>
 
 #include "AdFunctions.hpp"

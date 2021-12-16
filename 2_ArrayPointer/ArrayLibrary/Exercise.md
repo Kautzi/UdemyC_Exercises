@@ -5,7 +5,7 @@ Implement the following functions:
 ```cpp
 void unique_elements(int32_t *array, size_t length);
 
-void remove_duplicates(int32_t *array, size_t &length);
+void remove_duplicates(int32_t *array, size_t *const length);
 
 void rotate_left(int32_t *array, size_t length);
 
@@ -32,7 +32,7 @@ Note: Make sure that the input pointers are valid.
 ```cpp
 int main()
 {
-    int32_t array[]{1, 1, 2, 3, 3, 4};
+    int32_t array[] = {1, 1, 2, 3, 3, 4};
     size_t length = 6;
 
     printf("unique_elements: " << endl;
