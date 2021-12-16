@@ -88,9 +88,9 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
         const VehicleType *const center_vehicle = &vehicles->vehicles_center_lane[center_idx];
         const VehicleType *const right_vehicle = &vehicles->vehicles_right_lane[right_idx];
 
-        char left_string[] = {"   "};
-        char center_string[] = {"   "};
-        char right_string[] = {"   "};
+        char left_string[] = "   ";
+        char center_string[] = "   ";
+        char right_string[] = "   ";
         char *ego_string = NULL;
 
         const float range_m = (float)(i);

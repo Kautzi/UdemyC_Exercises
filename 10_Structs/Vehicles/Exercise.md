@@ -1,71 +1,35 @@
 # Exercise
 
-In this exercise, we start with a project that will be extended throughout the course.
-
-The use case is a "self-driving car" on a highway with three lanes (Left, Center, and Right lane).  
-The radars and cameras of your car detect other vehicles that are nearby your, so-called ego-, vehicle->
-
-Example image other vehicles (V) ego vehicle (E):
-
-![vehicle](../../media/vehicle->png)
-
-Note: this plot will be implemented in the next exercise, here it is just for illustration.
-
-Implement the following types:
-
-```cpp
-typedef enum
-{
-    // Unknown Lane
-    // Left Lane
-    // Center Lane
-    // Right Lane
-} LaneAssociationType;
-
-typedef struct
-{
-    // Id
-    // Lane
-    // speed (meter/s)
-    // Distance (meter)
-} VehicleType;
-
-typedef struct
-{
-    // array for vehicles on left lane (2 vehicles)
-    // array for vehicles on center lane (2 vehicles)
-    // array for vehicles on right lane (2 vehicles)
-} NeighborVehiclesType;
-```
-
 Implement the following functions:
 
 ```cpp
-void init_ego_vehicle(VehicleType *const ego_vehicle);
+void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
 
-void init_vehicles(NeighborVehiclesType *const vehicles);
+void compute_future_distance(VehicleType *const vehicle,
+                             const float ego_driven_distance,
+                             const float seconds);
 
-void print_vehicle(const VehicleType *const vehicle);
-
-void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles);
+void compute_future_state(const VehicleType *const ego_vehicle,
+                          NeighborVehiclesType vehicles,
+                          const float seconds);
 ```
 
-- init_ego_vehicle
-  - Init ego vehicle with ID=-1, Speed=135kmh, Lane=Center
-- init_vehicles
-  - Init vehicles with IDs starting at 0, you can choose the speed of the vehicles and the distance to the ego vehicle
-    - There will be 2 Vehicles on the Left lane, 2 on the Right lane, and 2 on the Center lane
-- print_vehicle
-  - If the vehicle is an ego vehicle, just print the speed
-  - otherwise, print ID, Speed, and Distance
-- print_neighbor_vehicles
-  - iterate over all vehicles and print out their data
+- print_scene: Implement a function that output the following concerning the ego and all other vehicles
+
+![vehicle](../../media/vehicle->png)
+
+- compute_future_state
+  - Compute the position of all vehicles in **n** seconds
+- compute_future_distance
+  - Helper function for **compute_future_state**
+
+Hint: The future distance of a vehicle is dependent on the ego vehicle, since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle is the origin of the coordinate system.
 
 ## Main Function
 
 ```cpp
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -80,6 +44,21 @@ int main()
 
     print_vehicle(&ego_vehicle);
     print_neighbor_vehicles(&vehicles);
+
+    print_scene(&ego_vehicle, &vehicles);
+
+    printf("Compute forward (1sec)?: ";
+    char Input;
+    scanf("%c", &Input);
+
+    while (Input == 'y')
+    {
+        compute_future_state(&ego_vehicle, &vehicles, 1);
+        print_scene(&ego_vehicle, &vehicles);
+
+        printf("Compute forward (1sec)?: ";
+        scanf("%c", &Input);
+    }
 
     return 0;
 }

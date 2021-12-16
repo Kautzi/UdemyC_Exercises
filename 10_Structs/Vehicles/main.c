@@ -15,5 +15,20 @@ int main()
     print_vehicle(&ego_vehicle);
     print_neighbor_vehicles(&vehicles);
 
+    print_scene(&ego_vehicle, &vehicles);
+
+    printf("Compute forward (1sec)?: ");
+    char Input;
+    scanf("%c", &Input);
+
+    while (Input == 'y')
+    {
+        compute_future_state(&ego_vehicle, &vehicles, 1);
+        print_scene(&ego_vehicle, &vehicles);
+
+        printf("Compute forward (1sec)?: ");
+        scanf("%c", &Input);
+    }
+
     return 0;
 }
