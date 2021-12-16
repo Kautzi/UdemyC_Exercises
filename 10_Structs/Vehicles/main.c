@@ -7,8 +7,8 @@
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);

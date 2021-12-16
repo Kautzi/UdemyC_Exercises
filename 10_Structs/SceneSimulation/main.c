@@ -7,8 +7,8 @@
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);
@@ -18,17 +18,17 @@ int main()
 
     print_scene(ego_vehicle, vehicles);
 
-    printf("Compute forward (1sec)?: ";
+    printf("Compute forward (1sec)?: ");
     char Input;
-    scanf("%d", &Input;
+    scanf("%d",Input;
 
     while (Input == 'y')
     {
         compute_future_state(ego_vehicle, vehicles, 1);
         print_scene(ego_vehicle, vehicles);
 
-        printf("Compute forward (1sec)?: ";
-        scanf("%d", &Input;
+        printf("Compute forward (1sec)?: ");
+        scanf("%d",Input;
     }
 
     return 0;

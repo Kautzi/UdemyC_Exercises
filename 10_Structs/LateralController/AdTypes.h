@@ -1,28 +1,27 @@
-#pragma once
 
 #include <stdint.h>
 
 #include "AdConstants.h"
 
-enum class LaneAssociationType
+typedef enum
 {
-    UNKNOWN,
-    RIGHT,
-    CENTER,
-    LEFT,
-};
+    LANE_ASSOCIATION_TYPE_UNKNOWN,
+    LANE_ASSOCIATION_TYPE_RIGHT,
+    LANE_ASSOCIATION_TYPE_CENTER,
+    LANE_ASSOCIATION_TYPE_LEFT,
+} LaneAssociationType;
 
-struct VehicleType
+typedef struct
 {
     int32_t id;
     LaneAssociationType lane;
     float speed_mps;
     float distance_m;
-};
+} VehicleType;
 
-struct NeighborVehiclesType
+typedef struct
 {
     VehicleType vehicles_left_lane[NUM_VEHICLES_ON_LANE];
     VehicleType vehicles_center_lane[NUM_VEHICLES_ON_LANE];
     VehicleType vehicles_right_lane[NUM_VEHICLES_ON_LANE];
-};
+} NeighborVehiclesType;

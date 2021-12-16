@@ -1,8 +1,8 @@
-#include <chrono>
-#include <numeric>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <thread>
+#include <threads.h>
+#include <time.h>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -11,8 +11,8 @@
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);
@@ -20,9 +20,9 @@ int main()
     print_vehicle(ego_vehicle);
     print_neighbor_vehicles(vehicles);
 
-    printf("Start simulation?: ";
+    printf("Start simulation?: ");
     char Input;
-    scanf("%d", &Input;
+    scanf("%c", Input);
 
     while (true)
     {
@@ -32,7 +32,7 @@ int main()
         compute_future_state(ego_vehicle, vehicles, 0.100F);
         longitudinal_control(vehicles.vehicles_center_lane[0], ego_vehicle);
 
-        this_thread::sleep_for(chrono::milliseconds(100));
+        thrd_sleep(&(struct timespec){.tv_nsec = 100000}, NULL);
     }
 
     return 0;

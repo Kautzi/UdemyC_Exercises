@@ -3,7 +3,7 @@
 Update the following functions
 
 ```cpp
-void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &vehicles);
+void print_scene(const VehicleType ego_vehicle, const NeighborVehiclesTypevehicles);
 ```
 
 - print_scene:
@@ -15,7 +15,7 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
 Implement the following functions:
 
 ```cpp
-void longitudinal_control(const VehicleType &front_vehicle, VehicleType &ego_vehicle);
+void longitudinal_control(const VehicleType front_vehicle, VehicleType ego_vehicle);
 ```
 
 If there is a vehicle in front of the ego vehicle and the distance is below half speed (kph, "halbe tacho"), the vehicle needs to slow down (brake pedal).  
@@ -37,8 +37,8 @@ You can choose a value of the deceleration (braking).
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);
@@ -48,7 +48,7 @@ int main()
 
     printf("Start simulation?: ";
     char Input;
-    scanf("%d", &Input;
+    scanf("%d",Input;
 
     while (true)
     {
@@ -58,7 +58,7 @@ int main()
         compute_future_state(ego_vehicle, vehicles, 0.100F);
         longitudinal_control(vehicles.vehicles_center_lane[0], ego_vehicle);
 
-        this_thread::sleep_for(chrono::milliseconds(100));
+        THIS_THREAD_sleep_for(CHRONO_milliseconds(100));
     }
 
     return 0;

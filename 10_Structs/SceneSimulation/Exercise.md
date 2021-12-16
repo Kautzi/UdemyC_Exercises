@@ -3,14 +3,14 @@
 Implement the following functions:
 
 ```cpp
-void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &vehicles);
+void print_scene(const VehicleType ego_vehicle, const NeighborVehiclesTypevehicles);
 
-void compute_future_distance(VehicleType &vehicle,
+void compute_future_distance(VehicleType vehicle,
                              const float ego_driven_distance,
                              const float seconds);
 
-void compute_future_state(const VehicleType &ego_vehicle,
-                          NeighborVehiclesType &vehicles,
+void compute_future_state(const VehicleType ego_vehicle,
+                          NeighborVehiclesTypevehicles,
                           const float seconds);
 ```
 
@@ -37,8 +37,8 @@ Hint: The future distance of a vehicle is dependent on the ego vehicle, since th
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);
@@ -50,7 +50,7 @@ int main()
 
     printf("Compute forward (1sec)?: ";
     char Input;
-    scanf("%d", &Input;
+    scanf("%d",Input;
 
     while (Input == 'y')
     {
@@ -58,7 +58,7 @@ int main()
         print_scene(ego_vehicle, vehicles);
 
         printf("Compute forward (1sec)?: ";
-        scanf("%d", &Input;
+        scanf("%d",Input;
     }
 
     return 0;

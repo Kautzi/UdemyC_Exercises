@@ -41,13 +41,13 @@ struct NeighborVehiclesType
 Implement the following functions:
 
 ```cpp
-void init_ego_vehicle(VehicleType &ego_vehicle);
+void init_ego_vehicle(VehicleType ego_vehicle);
 
-void init_vehicles(NeighborVehiclesType &vehicles);
+void init_vehicles(NeighborVehiclesTypevehicles);
 
-void print_vehicle(const VehicleType &vehicle);
+void print_vehicle(const VehicleType vehicle);
 
-void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
+void print_neighbor_vehicles(const NeighborVehiclesTypevehicles);
 ```
 
 - init_ego_vehicle
@@ -73,8 +73,8 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
 
 int main()
 {
-    VehicleType ego_vehicle{};
-    NeighborVehiclesType vehicles{};
+    VehicleType ego_vehicle;
+    NeighborVehiclesType vehicles;
 
     init_ego_vehicle(ego_vehicle);
     init_vehicles(vehicles);
