@@ -68,8 +68,8 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
 #include <stdio.h>
 #include <numeric>
 
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 int main()
 {

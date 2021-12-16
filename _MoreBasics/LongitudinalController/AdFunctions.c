@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include "AdConstants.hpp"
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdConstants.h"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 float kph_to_mps(const float kph)
 {

@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "AdTypes.hpp"
+#include "AdTypes.h"
 
 void init_ego_vehicle(VehicleType &ego_vehicle);
 

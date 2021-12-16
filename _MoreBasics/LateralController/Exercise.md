@@ -42,8 +42,8 @@ bool lateral_control(const NeighborVehiclesType &vehicles,
 #include <numeric>
 #include <thread>
 
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 #include "utils.h"
 

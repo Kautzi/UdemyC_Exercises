@@ -32,8 +32,8 @@ Hint: The future distance of a vehicle is dependent on the ego vehicle, since th
 #include <stdio.h>
 #include <numeric>
 
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 int main()
 {

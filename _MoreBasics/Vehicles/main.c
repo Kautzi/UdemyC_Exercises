@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 int main()
 {

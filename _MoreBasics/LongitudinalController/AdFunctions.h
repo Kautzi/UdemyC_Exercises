@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "AdTypes.hpp"
+#include "AdTypes.h"
 
 float kph_to_mps(const float kph);
 

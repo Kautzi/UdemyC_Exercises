@@ -4,8 +4,8 @@
 #include <string.h>
 #include <thread>
 
-#include "AdFunctions.hpp"
-#include "AdTypes.hpp"
+#include "AdFunctions.h"
+#include "AdTypes.h"
 
 #include "utils.h"
 
