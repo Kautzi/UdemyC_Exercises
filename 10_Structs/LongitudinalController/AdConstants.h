@@ -1,3 +1,6 @@
+#ifndef AD_CONSTANTS_H
+#define AD_CONSTANTS_H
+
 #include <stdint.h>
 #include <string.h>
 
@@ -7,3 +10,5 @@
 #define NUM_VEHICLES_ON_LANE 2
 
 #define SPEED_ADAPTAION_FACTOR 0.05F
+
+#endif

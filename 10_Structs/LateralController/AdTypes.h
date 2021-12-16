@@ -1,3 +1,5 @@
+#ifndef AD_TYPES_H
+#define AD_TYPES_H
 
 #include <stdint.h>
 
@@ -25,3 +27,5 @@ typedef struct
     VehicleType vehicles_center_lane[NUM_VEHICLES_ON_LANE];
     VehicleType vehicles_right_lane[NUM_VEHICLES_ON_LANE];
 } NeighborVehiclesType;
+
+#endif

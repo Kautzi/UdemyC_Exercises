@@ -1,3 +1,6 @@
+#ifndef AD_CONSTANTS_H
+#define AD_CONSTANTS_H
+
 #include <stdint.h>
 #include <string.h>
 
@@ -5,3 +8,5 @@
 #define EGO_VEHICLE_ID -2
 
 #define NUM_VEHICLES_ON_LANE 2
+
+#endif

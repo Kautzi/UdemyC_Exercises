@@ -1,13 +1,19 @@
 #ifndef UTILS_H
-#define
+#define UTILS_H
+
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define 3.14159265358979311600
-#define 3.14159265358979311600F
+#define PI_F32 3.14159265358979311600
+#define PI_F64 3.14159265358979311600F
 
 void print_int8_array(const int8_t *const array, const size_t length)
 {
@@ -79,6 +85,18 @@ void clear_console()
     system("clear");
 #else
     system("clear");
+#endif
+}
+
+
+void sleep_console()
+{
+    int pollingDelay = 100;
+
+#ifdef _WIN32
+    Sleep(pollingDelay);
+#else
+    usleep(pollingDelay * 1000);
 #endif
 }
 

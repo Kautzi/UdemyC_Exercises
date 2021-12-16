@@ -3,11 +3,11 @@
 In this exercise, we start with a project that will be extended throughout the course.
 
 The use case is a "self-driving car" on a highway with three lanes (Left, Center, and Right lane).  
-The radars and cameras of your car detect other vehicles that are nearby your, so-called ego-, vehicle.
+The radars and cameras of your car detect other vehicles that are nearby your, so-called ego-, vehicle->
 
 Example image other vehicles (V) ego vehicle (E):
 
-![vehicle](../../media/vehicle.png)
+![vehicle](../../media/vehicle->png)
 
 Note: this plot will be implemented in the next exercise, here it is just for illustration.
 
@@ -41,13 +41,13 @@ struct NeighborVehiclesType
 Implement the following functions:
 
 ```cpp
-void init_ego_vehicle(VehicleType ego_vehicle);
+void init_ego_vehicle(VehicleType *const ego_vehicle);
 
-void init_vehicles(NeighborVehiclesTypevehicles);
+void init_vehicles(NeighborVehiclesType *const vehicles);
 
-void print_vehicle(const VehicleType vehicle);
+void print_vehicle(const VehicleType *const vehicle);
 
-void print_neighbor_vehicles(const NeighborVehiclesTypevehicles);
+void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles);
 ```
 
 - init_ego_vehicle
@@ -66,7 +66,6 @@ void print_neighbor_vehicles(const NeighborVehiclesTypevehicles);
 ```cpp
 #include <string.h>
 #include <stdio.h>
-#include <numeric>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -76,11 +75,11 @@ int main()
     VehicleType ego_vehicle;
     NeighborVehiclesType vehicles;
 
-    init_ego_vehicle(ego_vehicle);
-    init_vehicles(vehicles);
+    init_ego_vehicle(&ego_vehicle);
+    init_vehicles(&vehicles);
 
-    print_vehicle(ego_vehicle);
-    print_neighbor_vehicles(vehicles);
+    print_vehicle(&ego_vehicle);
+    print_neighbor_vehicles(&vehicles);
 
     return 0;
 }

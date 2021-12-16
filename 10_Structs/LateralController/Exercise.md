@@ -3,9 +3,9 @@
 Update the following functions:
 
 ```cpp
-void print_scene(const VehicleType ego_vehicle, const NeighborVehiclesTypevehicles);
+void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
 
-LaneAssociationType longitudinal_control(const NeighborVehiclesTypevehicles,VehicleType ego_vehicle);
+LaneAssociationType longitudinal_control(const NeighborVehiclesType vehicles,VehicleType ego_vehicle);
 ```
 
 - print_scene: Such that the ego vehicle can be displayed on every lane not only the center lane.
@@ -17,13 +17,13 @@ LaneAssociationType longitudinal_control(const NeighborVehiclesTypevehicles,Vehi
 Implement the following functions:
 
 ```cpp
-LaneAssociationType get_lane_change_request(const VehicleType ego_vehicle,
+LaneAssociationType get_lane_change_request(const VehicleType *const ego_vehicle,
                                             const float front_distance,
                                             const float rear_distance);
 
-bool lateral_control(const NeighborVehiclesTypevehicles,
+bool lateral_control(const NeighborVehiclesType *const vehicles,
                      const LaneAssociationType lane_change_request,
-                     VehicleType ego_vehicle);
+                     VehicleType *const ego_vehicle);
 ```
 
 - get_lane_change_request:
@@ -39,7 +39,6 @@ bool lateral_control(const NeighborVehiclesTypevehicles,
 #include <chrono>
 #include <string.h>
 #include <stdio.h>
-#include <numeric>
 #include <thread>
 
 #include "AdFunctions.h"
@@ -52,26 +51,26 @@ int main()
     VehicleType ego_vehicle;
     NeighborVehiclesType vehicles;
 
-    init_ego_vehicle(ego_vehicle);
-    init_vehicles(vehicles);
+    init_ego_vehicle(&ego_vehicle);
+    init_vehicles(&vehicles);
 
-    print_vehicle(ego_vehicle);
-    print_neighbor_vehicles(vehicles);
+    print_vehicle(&ego_vehicle);
+    print_neighbor_vehicles(&vehicles);
 
     printf("Start simulation?: ";
     char Input;
-    scanf("%d",Input;
+    scanf("%c", &Input);
 
     while (true)
     {
         clear_console();
 
-        print_scene(ego_vehicle, vehicles);
+        print_scene(&ego_vehicle, &vehicles);
         compute_future_state(ego_vehicle, vehicles, 0.050F);
         const LaneAssociationType lane_change_request = longitudinal_control(vehicles, ego_vehicle);
         const bool lane_change_successful = lateral_control(vehicles, lane_change_request, ego_vehicle);
 
-        if (lane_change_request != ego_vehicle.lane)
+        if (lane_change_request != ego_vehicle->lane)
         {
             printf("Lane change request: " << (int)(lane_change_request) << endl;
         }
@@ -80,7 +79,7 @@ int main()
             printf("Lane change successull" << endl;
         }
 
-        thrd_sleep(&(struct timespec){.tv_nsec = 100000}, NULL);
+        sleep_console();
     }
 
     return 0;

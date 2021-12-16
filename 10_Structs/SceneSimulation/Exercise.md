@@ -3,20 +3,20 @@
 Implement the following functions:
 
 ```cpp
-void print_scene(const VehicleType ego_vehicle, const NeighborVehiclesTypevehicles);
+void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
 
-void compute_future_distance(VehicleType vehicle,
+void compute_future_distance(VehicleType *const vehicle,
                              const float ego_driven_distance,
                              const float seconds);
 
-void compute_future_state(const VehicleType ego_vehicle,
-                          NeighborVehiclesTypevehicles,
+void compute_future_state(const VehicleType *const ego_vehicle,
+                          NeighborVehiclesType vehicles,
                           const float seconds);
 ```
 
 - print_scene: Implement a function that output the following concerning the ego and all other vehicles
 
-![vehicle](../../media/vehicle.png)
+![vehicle](../../media/vehicle->png)
 
 - compute_future_state
   - Compute the position of all vehicles in **n** seconds
@@ -30,7 +30,6 @@ Hint: The future distance of a vehicle is dependent on the ego vehicle, since th
 ```cpp
 #include <string.h>
 #include <stdio.h>
-#include <numeric>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -40,25 +39,25 @@ int main()
     VehicleType ego_vehicle;
     NeighborVehiclesType vehicles;
 
-    init_ego_vehicle(ego_vehicle);
-    init_vehicles(vehicles);
+    init_ego_vehicle(&ego_vehicle);
+    init_vehicles(&vehicles);
 
-    print_vehicle(ego_vehicle);
-    print_neighbor_vehicles(vehicles);
+    print_vehicle(&ego_vehicle);
+    print_neighbor_vehicles(&vehicles);
 
-    print_scene(ego_vehicle, vehicles);
+    print_scene(&ego_vehicle, &vehicles);
 
     printf("Compute forward (1sec)?: ";
     char Input;
-    scanf("%d",Input;
+    scanf("%c", &Input);
 
     while (Input == 'y')
     {
-        compute_future_state(ego_vehicle, vehicles, 1);
-        print_scene(ego_vehicle, vehicles);
+        compute_future_state(&ego_vehicle, &vehicles, 1);
+        print_scene(&ego_vehicle, &vehicles);
 
         printf("Compute forward (1sec)?: ";
-        scanf("%d",Input;
+        scanf("%c", &Input);
     }
 
     return 0;
