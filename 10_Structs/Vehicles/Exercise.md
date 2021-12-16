@@ -14,28 +14,28 @@ Note: this plot will be implemented in the next exercise, here it is just for il
 Implement the following types:
 
 ```cpp
-enum ... LaneAssociationType
+typedef enum
 {
     // Unknown Lane
     // Left Lane
     // Center Lane
     // Right Lane
-};
+} LaneAssociationType;
 
-struct VehicleType
+typedef struct
 {
     // Id
     // Lane
     // speed (meter/s)
     // Distance (meter)
-};
+} VehicleType;
 
-struct NeighborVehiclesType
+typedef struct
 {
     // array for vehicles on left lane (2 vehicles)
     // array for vehicles on center lane (2 vehicles)
     // array for vehicles on right lane (2 vehicles)
-};
+} NeighborVehiclesType;
 ```
 
 Implement the following functions:
@@ -64,8 +64,8 @@ void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles);
 ## Main Function
 
 ```cpp
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
