@@ -1,100 +1,68 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool is_numeric(char character);
-
-bool is_alpha(char character);
-
-bool is_alpha_numeric(char character);
-
-bool is_upper_case(char character);
-
-bool is_lower_case(char character);
-
-char to_upper_case(char character);
-
-char to_lower_case(char character);
-
 int main()
 {
-    char input_character;
+    char character;
 
     printf("Please enter any ASCII character: ");
-    scanf("%c", &input_character);
+    scanf("%c", &character);
 
-    printf("is_numeric: %d\n", is_numeric(input_character));
-    printf("is_alpha: %d\n", is_alpha(input_character));
-    printf("is_alpha_numeric: %d\n", is_alpha_numeric(input_character));
-    printf("is_upper_case: %d\n", is_upper_case(input_character));
-    printf("is_lower_case: %d\n", is_lower_case(input_character));
+    // is_numeric
+    bool is_numeric = false;
 
-    printf("to_upper_case: %c\n", to_upper_case(input_character));
-    printf("to_lower_case: %c\n", to_lower_case(input_character));
-
-    return 0;
-}
-
-bool is_numeric(char character)
-{
     if ((character >= '0') && (character <= '9'))
     {
-        return true;
+        is_numeric = true;
     }
 
-    return false;
-}
+    printf("is_numeric: %d\n", is_numeric);
 
-bool is_alpha(char character)
-{
-    if (is_upper_case(character) || is_lower_case(character))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_alpha_numeric(char character)
-{
-    return (is_numeric(character) || is_alpha(character));
-}
-
-bool is_upper_case(char character)
-{
+    // is_upper_case
+    bool is_upper_case = false;
     if ((character >= 'A') && (character <= 'Z'))
     {
-        return true;
+        is_upper_case = true;
     }
+    printf("is_upper_case: %d\n", is_upper_case);
 
-    return false;
-}
-
-bool is_lower_case(char character)
-{
+    // is_lower_case
+    bool is_lower_case = false;
     if ((character >= 'a') && (character <= 'z'))
     {
-        return true;
+        is_lower_case = true;
     }
+    printf("is_lower_case: %d\n", is_lower_case);
 
-    return false;
-}
+    // is_alpha
+    bool is_alpha = false;
 
-char to_upper_case(char character)
-{
-    if (is_lower_case(character))
+    if (is_upper_case || is_lower_case)
     {
-        return character - 32;
+        is_alpha = true;
     }
 
-    return character;
-}
+    printf("is_alpha: %d\n", is_alpha);
 
-char to_lower_case(char character)
-{
-    if (is_upper_case(character))
+    // is_alpha_numeric
+    bool is_alpha_numeric = (is_numeric || is_alpha);
+    printf("is_alpha_numeric: %d\n", is_alpha_numeric);
+
+    // to_upper_case
+    char result1 = character;
+    if (is_lower_case)
     {
-        return character + 32;
+        result1 = character - 32;
     }
+    printf("to_upper_case: %c\n", result1);
 
-    return character;
+    // to_lower_case
+    char result2 = character;
+    if (is_upper_case)
+    {
+        result2 = character + 32;
+    }
+    printf("to_lower_case: %c\n", result2);
+
+    return 0;
 }

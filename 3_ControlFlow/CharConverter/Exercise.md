@@ -4,19 +4,11 @@ In this exercise, you have to use the datatype **char** to convert/check certain
 
 Implement the following checks:
 
-```cpp
-bool is_numeric(char character);
-
-bool is_alpha(char character);
-
-bool is_alpha_numeric(char character);
-
-bool is_upper_case(char character);
-
-bool is_lower_case(char character);
-```
-
-These functions should return **true** or **false**.
+- is numeric character
+- is alpha character
+- is alpha_numeric character
+- is upper case character
+- is lower case character
 
 Meaning of the function names:
 
@@ -34,34 +26,34 @@ E.g. 'a' -> 'A' by adding 32
 
 You do not have to look up the ASCII table for this exercise, but you can do so.
 
-Afterward, implement the following conversion functions:
+Afterward, implement the following conversion:
 
-```cpp
-char to_upper_case(char character);
-
-char to_lower_case(char character);
-```
-
-These should return the **converted** character.
+- to upper case character
+- to lower case character
 
 ## Main Function
 
 ```cpp
 int main()
 {
-    char input_character;
+    char character;
 
     printf("Please enter any ASCII character: ");
-    scanf("%c", &input_character);
+    scanf("%c", &character);
 
-    printf("is_numeric: %d\n", is_numeric(input_character));
-    printf("is_alpha: %d\n", is_alpha(input_character));
-    printf("is_alpha_numeric: %d\n", is_alpha_numeric(input_character));
-    printf("is_upper_case: %d\n", is_upper_case(input_character));
-    printf("is_lower_case: %d\n", is_lower_case(input_character));
+    // is_numeric
 
-    printf("to_upper_case: %c\n", to_upper_case(input_character));
-    printf("to_lower_case: %c\n", to_lower_case(input_character));
+    // is_upper_case
+
+    // is_lower_case
+
+    // is_alpha
+
+    // is_alpha_numeric
+
+    // to_upper_case
+
+    // to_lower_case
 
     return 0;
 }
