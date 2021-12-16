@@ -89,7 +89,7 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
         char center_string[] = {"   "};
         char right_string[] = {"   "};
 
-        const float range_m = static_cast<float>(i);
+        const float range_m = (float)(i);
 
         if ((range_m >= left_vehicle.distance_m) && (left_vehicle.distance_m > (range_m - offset_m)))
         {

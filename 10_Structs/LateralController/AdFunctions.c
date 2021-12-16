@@ -1,3 +1,5 @@
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 
 #include "AdConstants.h"
@@ -90,7 +92,7 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
         char right_string[] = {"   "};
         char *ego_string = NULL;
 
-        const float range_m = static_cast<float>(i);
+        const float range_m = (float)(i);
 
         switch (ego_vehicle.lane)
         {

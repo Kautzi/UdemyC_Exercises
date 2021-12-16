@@ -1,8 +1,6 @@
-#include <chrono>
-#include <numeric>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <thread>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -35,7 +33,7 @@ int main()
 
         if (lane_change_request != ego_vehicle.lane)
         {
-            printf("Lane change request: %d", static_cast<int>(lane_change_request));
+            printf("Lane change request: %d", (int)(lane_change_request));
         }
         if (lane_change_successful)
         {

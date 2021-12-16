@@ -73,7 +73,7 @@ int main()
 
         if (lane_change_request != ego_vehicle.lane)
         {
-            printf("Lane change request: " << static_cast<int>(lane_change_request) << endl;
+            printf("Lane change request: " << (int)(lane_change_request) << endl;
         }
         if (lane_change_successful)
         {
