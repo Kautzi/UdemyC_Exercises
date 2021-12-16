@@ -27,8 +27,6 @@ size_t string_length(char *text);
 
 char *char_search(char *text, char character);
 
-bool string_equal(char *string1, char *string2);
-
 int main()
 {
     char input_text[50] = {'\0'};
@@ -42,9 +40,6 @@ int main()
     printf("to_lower_case: %s\n", to_lower_case_str(input_text));
     printf("string_length: %lu\n", string_length(input_text));
     printf("char_search: %s\n", char_search(input_text, 'a'));
-
-    printf("equal(jan, jan): %u\n", string_equal(input_text, compare_text1));
-    printf("equal(jan, ja): %u\n", string_equal(input_text, compare_text2));
 
     return 0;
 }
@@ -187,33 +182,4 @@ char *char_search(char *text, char character)
     }
 
     return text;
-}
-
-bool string_equal(char *string1, char *string2)
-{
-    if (string1 == NULL || string2 == NULL)
-    {
-        return false;
-    }
-
-    size_t length1 = string_length(string1);
-    size_t length2 = string_length(string2);
-
-    if (length1 != length2)
-    {
-        return false;
-    }
-
-    while (*string1 != '\0')
-    {
-        if (*string1 != *string2)
-        {
-            return false;
-        }
-
-        string1++;
-        string2++;
-    }
-
-    return true;
 }
