@@ -22,14 +22,14 @@ int main()
     printf("Please enter any ASCII character: ");
     scanf("%c", &input_character);
 
-    printf("is_numeric: %d", is_numeric(input_character));
-    printf("is_alpha: %d", is_alpha(input_character));
-    printf("is_alpha_numeric: %d", is_alpha_numeric(input_character));
-    printf("is_upper_case: %d", is_upper_case(input_character));
-    printf("is_lower_case: %d", is_lower_case(input_character));
+    printf("is_numeric: %d\n", is_numeric(input_character));
+    printf("is_alpha: %d\n", is_alpha(input_character));
+    printf("is_alpha_numeric: %d\n", is_alpha_numeric(input_character));
+    printf("is_upper_case: %d\n", is_upper_case(input_character));
+    printf("is_lower_case: %d\n", is_lower_case(input_character));
 
-    printf("to_upper_case: %d", to_upper_case(input_character));
-    printf("to_lower_case: %d", to_lower_case(input_character));
+    printf("to_upper_case: %c\n", to_upper_case(input_character));
+    printf("to_lower_case: %c\n", to_lower_case(input_character));
 
     return 0;
 }

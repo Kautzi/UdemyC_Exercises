@@ -17,7 +17,7 @@ int main()
     int32_t array[] = {1, 1, 2, 3, 3, 4};
     size_t length = 6;
 
-    printf("unique_elements: ");
+    printf("unique_elements: \n");
     unique_elements(array, length);
 
     remove_duplicates(array, &length);
@@ -59,7 +59,7 @@ void unique_elements(int32_t *array, size_t length)
 
         if (unique == true)
         {
-            printf("unique: %d", current_value);
+            printf("unique: %d\n", current_value);
         }
     }
 }

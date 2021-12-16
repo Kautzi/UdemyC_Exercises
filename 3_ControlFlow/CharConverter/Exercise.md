@@ -51,18 +51,17 @@ int main()
 {
     char input_character;
 
-    printf("Please enter any ASCII character: ";
-    scanf("%d", &input_character;
+    printf("Please enter any ASCII character: ");
+    scanf("%c", &input_character);
 
-    printf(boolalpha;
-    printf("is_numeric: " << is_numeric(input_character) << endl;
-    printf("is_alpha: " << is_alpha(input_character) << endl;
-    printf("is_alpha_numeric: " << is_alpha_numeric(input_character) << endl;
-    printf("is_upper_case: " << is_upper_case(input_character) << endl;
-    printf("is_lower_case: " << is_lower_case(input_character) << endl;
-    printf(dec;
-    printf("to_upper_case: " << to_upper_case(input_character) << endl;
-    printf("to_lower_case: " << to_lower_case(input_character) << endl;
+    printf("is_numeric: %d\n", is_numeric(input_character));
+    printf("is_alpha: %d\n", is_alpha(input_character));
+    printf("is_alpha_numeric: %d\n", is_alpha_numeric(input_character));
+    printf("is_upper_case: %d\n", is_upper_case(input_character));
+    printf("is_lower_case: %d\n", is_lower_case(input_character));
+
+    printf("to_upper_case: %c\n", to_upper_case(input_character));
+    printf("to_lower_case: %c\n", to_lower_case(input_character));
 
     return 0;
 }

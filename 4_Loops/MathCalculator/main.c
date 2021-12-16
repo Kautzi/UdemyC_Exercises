@@ -12,10 +12,10 @@ int main()
     double pi = 3.14159265358979323846;
     double pi_calculated = calculate_pi(num_iterations);
 
-    printf("pi (calculated): %d", pi_calculated);
-    printf("pi (correct): %d", pi);
+    printf("pi (calculated): %lf\n", pi_calculated);
+    printf("pi (correct): %lf\n", pi);
 
-    uint8_t dec = 0b10001110;
+    uint8_t dec = 142;
     print_dec_to_bin(dec);
 }
 

@@ -20,11 +20,11 @@ int main()
     int32_t array[] = {3, 1, 4, 1, 5, 9, 2, 6};
     size_t length = 8;
 
-    printf("all_of: %d", all_of(array, length, 5));
-    printf("any_of: %d", any_of(array, length, 5));
-    printf("none_of: %d", none_of(array, length, 5));
+    printf("all_of: %d\n", all_of(array, length, 5));
+    printf("any_of: %d\n", any_of(array, length, 5));
+    printf("none_of: %d\n", none_of(array, length, 5));
     int32_t *scan_values = inclusive_scan(array, length);
-    printf("inclusive_scan: ");
+    printf("inclusive_scan: \n");
     print_int32_array(scan_values, length);
 
     free(scan_values);

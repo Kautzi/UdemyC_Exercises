@@ -27,13 +27,13 @@ int main()
     float hours2 = convert_milliseconds_to_hours(input_milliseconds);
     float hours3 = convert_seconds_to_hours(seconds);
 
-    printf("seconds: %f", seconds);
-    printf("minutes: %f", minutes);
-    printf("Hours: %f", Hours);
+    printf("seconds: %f\n", seconds);
+    printf("minutes: %f\n", minutes);
+    printf("Hours: %f\n", Hours);
 
-    printf("minutes2: %f", minutes2);
-    printf("hours2: %f", hours2);
-    printf("hours3: %f", hours3);
+    printf("minutes2: %f\n", minutes2);
+    printf("hours2: %f\n", hours2);
+    printf("hours3: %f\n", hours3);
 
     return 0;
 }

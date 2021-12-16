@@ -44,12 +44,12 @@ pow(2, i)
 ```cpp
 int main()
 {
-    uint32_t num_iterations = 1'000'000;
+    uint32_t num_iterations = 1000000;
     double pi = 3.14159265358979323846;
     double pi_calculated = calculate_pi(num_iterations);
 
-    printf("pi (calculated): " << pi_calculated << endl;
-    printf("pi (correct): " << pi << endl;
+    printf("pi (calculated): %lf\n", pi_calculated);
+    printf("pi (correct): %lf\n", pi);
 
     uint8_t dec = 142;
     print_dec_to_bin(dec);
