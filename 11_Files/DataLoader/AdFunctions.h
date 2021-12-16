@@ -10,10 +10,6 @@ float kph_to_mps(const float kph);
 
 float mps_to_kmh(const float mps);
 
-void init_ego_vehicle(VehicleType *const ego_vehicle);
-
-void init_vehicles(NeighborVehiclesType *const vehicles);
-
 void print_vehicle(const VehicleType *const vehicle);
 
 void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles);
