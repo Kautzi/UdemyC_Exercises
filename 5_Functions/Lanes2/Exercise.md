@@ -1,22 +1,22 @@
 # Exercise
 
-In this exercise, we will start with a project that will be extended over the whole course.  
-The scenario will be an autonomous driving car on a highway with three lanes.  
-For this exercise, we will read-in the following information from the console:
+For this exercise, you have to create the following files:
 
-- The current speed (in meter per second *m/s*) of our vehicle
-- The current lane (There are three lanes in total)
+- AdFunctions.h
+- AdFunctions.c
+- AdTypes.h
 
-The lane will be represented by an enum **LaneAssociationType** with the following properties:
+Content of AdFunctions.c/h:
 
-- Left Lane
-- Center Lane
-- Right Lane
-- Unknown Lane (Error case)
+- The **print_scene** function that prints out the console output from exercise **Lanes1**
 
-After reading in the information produce the following console output:
+Content of AdTypes.h:
 
-![alt](../../media/3_Lanes.png)
+- The Lane Enum
+
+Note:
+
+Dont forget to use include guards!
 
 ## Main Function
 
@@ -24,15 +24,22 @@ After reading in the information produce the following console output:
 #include <stdint.h>
 #include <stdio.h>
 
-... LaneAssociationType
-...
+#include "AdFunctions.h"
 
 int main()
 {
     printf("Create the properties of a vehicle.\n");
 
+    float speed_mps;
+    printf("Speed in m/s: ");
+    scanf("%f", &speed_mps);
+
+    uint32_t lane_idx;
+    printf("Lane (1=Right, 2=Center, 3=Left): ");
+    scanf("%u", &lane_idx);
+
+    print_scene(speed_mps, lane_idx);
 
     return 0;
 }
-
 ```
