@@ -6,7 +6,7 @@ Implement the following checks:
 
 - is numeric character
 - is alpha character
-- is alpha_numeric character
+- is alpha numeric character
 - is upper case character
 - is lower case character
 
@@ -41,19 +41,19 @@ int main()
     printf("Please enter any ASCII character: ");
     scanf("%c", &character);
 
-    // is_numeric
+    // is numeric
 
-    // is_upper_case
+    // is upper case
 
-    // is_lower_case
+    // is lower case
 
-    // is_alpha
+    // is alpha
 
-    // is_alpha_numeric
+    // is alpha numeric
 
-    // to_upper_case
+    // to upper case
 
-    // to_lower_case
+    // to lower case
 
     return 0;
 }
