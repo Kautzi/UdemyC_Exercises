@@ -9,7 +9,7 @@ float kph_to_mps(const float kph)
     return kph / 3.6F;
 }
 
-void init_ego_vehicle(VehicleType *const ego_vehicle)
+void init_ego_vehicle(VehicleType *ego_vehicle)
 {
     ego_vehicle->id = EGO_VEHICLE_ID;
     ego_vehicle->speed_mps = kph_to_mps(135.0F);
@@ -17,7 +17,7 @@ void init_ego_vehicle(VehicleType *const ego_vehicle)
     ego_vehicle->lane = LANE_ASSOCIATION_TYPE_CENTER;
 }
 
-void init_vehicle(VehicleType *const vehicle,
+void init_vehicle(VehicleType *vehicle,
                   const int32_t id,
                   const float speed_mps,
                   const float distance_m,
@@ -29,7 +29,7 @@ void init_vehicle(VehicleType *const vehicle,
     vehicle->lane = lane;
 }
 
-void init_vehicles(NeighborVehiclesType *const vehicles)
+void init_vehicles(NeighborVehiclesType *vehicles)
 {
     init_vehicle(&vehicles->vehicles_left_lane[0], 0, 130.0F, 80.0F, LANE_ASSOCIATION_TYPE_LEFT);
     init_vehicle(&vehicles->vehicles_left_lane[1], 1, 80.0F, -20.0F, LANE_ASSOCIATION_TYPE_LEFT);
@@ -39,7 +39,7 @@ void init_vehicles(NeighborVehiclesType *const vehicles)
     init_vehicle(&vehicles->vehicles_right_lane[1], 5, 90.0F, -30.0F, LANE_ASSOCIATION_TYPE_RIGHT);
 }
 
-void print_vehicle(const VehicleType *const vehicle)
+void print_vehicle(const VehicleType *vehicle)
 {
     if (EGO_VEHICLE_ID == vehicle->id)
     {
@@ -54,7 +54,7 @@ void print_vehicle(const VehicleType *const vehicle)
     }
 }
 
-void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles)
+void print_neighbor_vehicles(const NeighborVehiclesType *vehicles)
 {
     print_vehicle(&vehicles->vehicles_left_lane[0]);
     print_vehicle(&vehicles->vehicles_left_lane[1]);
@@ -64,7 +64,7 @@ void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles)
     print_vehicle(&vehicles->vehicles_right_lane[1]);
 }
 
-void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles)
+void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles)
 {
     printf("\n\n    \t  L    C    R  \n");
 
@@ -76,9 +76,9 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
 
     for (int32_t i = 100; i >= -100; i -= offset_m)
     {
-        const VehicleType *const left_vehicle = &vehicles->vehicles_left_lane[left_idx];
-        const VehicleType *const center_vehicle = &vehicles->vehicles_center_lane[center_idx];
-        const VehicleType *const right_vehicle = &vehicles->vehicles_right_lane[right_idx];
+        const VehicleType *left_vehicle = &vehicles->vehicles_left_lane[left_idx];
+        const VehicleType *center_vehicle = &vehicles->vehicles_center_lane[center_idx];
+        const VehicleType *right_vehicle = &vehicles->vehicles_right_lane[right_idx];
 
         char left_string[] = "   ";
         char center_string[] = "   ";
@@ -114,15 +114,13 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
     printf("\n");
 }
 
-void compute_future_distance(VehicleType *const vehicle, const float ego_driven_distance, const float seconds)
+void compute_future_distance(VehicleType *vehicle, const float ego_driven_distance, const float seconds)
 {
     const float driven_distance = vehicle->speed_mps * seconds;
     vehicle->distance_m += driven_distance - ego_driven_distance;
 }
 
-void compute_future_state(const VehicleType *const ego_vehicle,
-                          NeighborVehiclesType *const vehicles,
-                          const float seconds)
+void compute_future_state(const VehicleType *ego_vehicle, NeighborVehiclesType *vehicles, const float seconds)
 {
     const float ego_driven_distance = ego_vehicle->speed_mps * seconds;
 

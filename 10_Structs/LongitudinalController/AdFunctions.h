@@ -9,24 +9,22 @@ float kph_to_mps(const float kph);
 
 float mps_to_kmh(const float mps);
 
-void init_ego_vehicle(VehicleType *const ego_vehicle);
+void init_ego_vehicle(VehicleType *ehicle);
 
-void init_vehicles(NeighborVehiclesType *const vehicles);
+void init_vehicles(NeighborVehiclesType *les);
 
-void print_vehicle(const VehicleType *const vehicle);
+void print_vehicle(const VehicleType *le);
 
-void print_neighbor_vehicles(const NeighborVehiclesType *const vehicles);
+void print_neighbor_vehicles(const NeighborVehiclesType *les);
 
-void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
+void print_scene(const VehicleType *ehicle, const NeighborVehiclesType *vehic*
 
-void print_vehicle_speed(const VehicleType *const vehicle, const char *name);
+void print_vehicle_speed(const VehicleType *le, const char *name);
 
-void compute_future_distance(VehicleType *const vehicle, const float ego_driven_distance, const float seconds);
+void compute_future_distance(VehicleType *le, const float ego_driven_distance, const float seconds);
 
-void compute_future_state(const VehicleType *const ego_vehicle,
-                          NeighborVehiclesType *const vehicles,
-                          const float seconds);
+void compute_future_state(const VehicleType *ehicle, NeighborVehiclesType *vehicles, const float seconds);
+*
+void longitudinal_control(const VehicleType *front_vehicle, VehicleType *ego_vehicle);
 
-void longitudinal_control(const VehicleType *const front_vehicle, VehicleType *const ego_vehicle);
-
-#endif
+#endif **

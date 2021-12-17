@@ -14,7 +14,7 @@
 
 #include "utils.h"
 
-void print_int8_array(const int8_t *const array, const size_t length)
+void print_int8_array(const int8_t *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -24,7 +24,7 @@ void print_int8_array(const int8_t *const array, const size_t length)
     printf("%d\n", array[length - 1]);
 }
 
-void print_int32_array(const int32_t *const array, const size_t length)
+void print_int32_array(const int32_t *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -34,7 +34,7 @@ void print_int32_array(const int32_t *const array, const size_t length)
     printf("%d\n", array[length - 1]);
 }
 
-void print_uint8_array(const uint8_t *const array, const size_t length)
+void print_uint8_array(const uint8_t *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -44,7 +44,7 @@ void print_uint8_array(const uint8_t *const array, const size_t length)
     printf("%u\n", array[length - 1]);
 }
 
-void print_uint32_array(const uint32_t *const array, const size_t length)
+void print_uint32_array(const uint32_t *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -54,7 +54,7 @@ void print_uint32_array(const uint32_t *const array, const size_t length)
     printf("%u\n", array[length - 1]);
 }
 
-void print_float_array(const float *const array, const size_t length)
+void print_float_array(const float *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -64,7 +64,7 @@ void print_float_array(const float *const array, const size_t length)
     printf("%f\n", array[length - 1]);
 }
 
-void print_double_array(const double *const array, const size_t length)
+void print_double_array(const double *, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)
     {

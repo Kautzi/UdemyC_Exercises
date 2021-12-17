@@ -93,7 +93,7 @@ void preload_vehicle_data(const char datapath[128])
     }
 }
 
-void init_ego_vehicle(VehicleType *const ego_vehicle)
+void init_ego_vehicle(VehicleType *ego_vehicle)
 {
     ego_vehicle->id = EGO_VEHICLE_DATA.id;
     ego_vehicle->speed_mps = EGO_VEHICLE_DATA.speed_mps;
@@ -101,7 +101,7 @@ void init_ego_vehicle(VehicleType *const ego_vehicle)
     ego_vehicle->lane = EGO_VEHICLE_DATA.lane;
 }
 
-void init_vehicle(VehicleType *const vehicle, const int32_t id, const uint32_t cycle)
+void init_vehicle(VehicleType *vehicle, const int32_t id, const uint32_t cycle)
 {
     vehicle->id = VEHICLE_DATA[id][cycle].id;
     vehicle->speed_mps = VEHICLE_DATA[id][cycle].speed_mps;
@@ -109,7 +109,7 @@ void init_vehicle(VehicleType *const vehicle, const int32_t id, const uint32_t c
     vehicle->lane = VEHICLE_DATA[id][cycle].lane;
 }
 
-void init_vehicles(NeighborVehiclesType *const vehicles)
+void init_vehicles(NeighborVehiclesType *vehicles)
 {
     init_vehicle(&vehicles->vehicles_left_lane[0], 0, 0);
     init_vehicle(&vehicles->vehicles_left_lane[1], 1, 0);
@@ -119,7 +119,7 @@ void init_vehicles(NeighborVehiclesType *const vehicles)
     init_vehicle(&vehicles->vehicles_right_lane[1], 5, 0);
 }
 
-void load_cycle(NeighborVehiclesType *const vehicles, const uint32_t cycle)
+void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle)
 {
     vehicles->vehicles_left_lane[0].speed_mps = VEHICLE_DATA[0][cycle].speed_mps;
     vehicles->vehicles_left_lane[1].speed_mps = VEHICLE_DATA[1][cycle].speed_mps;
