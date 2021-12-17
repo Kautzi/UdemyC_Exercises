@@ -145,12 +145,14 @@ void printVector(const Vector *vector)
         return;
     }
 
-    for (unsigned int i = 0; i < vector->length; i++)
+    printf("[");
+
+    for (unsigned int i = 0; i < vector->length - 1; i++)
     {
-        printf("%f\n", vector->data[i]);
+        printf("%f, ", vector->data[i]);
     }
 
-    printf("\n");
+    printf("%f]\n\n", vector->data[vector->length - 1]);
 }
 
 /**********************/

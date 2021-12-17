@@ -88,8 +88,19 @@ bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const mat
 
 void printMatrix(const Matrix *matrix)
 {
+    printf("[");
+
     for (size_t i = 0; i < matrix->num_rows; i++)
     {
+        if (i == 0)
+        {
+            printf("[");
+        }
+        else
+        {
+            printf(" [");
+        }
+
         for (size_t j = 0; j < matrix->num_cols - 1; j++)
         {
             const size_t idx = matrixIndex(matrix->num_cols, i, j);
@@ -98,12 +109,18 @@ void printMatrix(const Matrix *matrix)
         }
 
         const size_t idx = matrixIndex(matrix->num_cols, i, matrix->num_cols - 1);
-        printf("%f", matrix->data[idx]);
 
-        printf("\n");
+        if (i < (matrix->num_rows - 1))
+        {
+            printf("%f]\n", matrix->data[idx]);
+        }
+        else
+        {
+            printf("%f", matrix->data[idx]);
+        }
     }
 
-    printf("\n");
+    printf("]]\n\n");
 }
 
 /**********************/
@@ -287,6 +304,26 @@ Vector *minMatrix(const Matrix *matrix, const Axis axis)
     }
     case AXIS_1:
     {
+        Vector *result = createVector(matrix->num_rows, 0.0f);
+
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            float current_min = FLT_MAX;
+
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                const size_t idx = matrixIndex(matrix->num_cols, i, j);
+
+                if (matrix->data[idx] < current_min)
+                {
+                    current_min = matrix->data[idx];
+                }
+            }
+
+            result->data[i] = current_min;
+        }
+
+        return result;
         break;
     }
     default:
@@ -333,6 +370,26 @@ Vector *maxMatrix(const Matrix *matrix, const Axis axis)
     }
     case AXIS_1:
     {
+        Vector *result = createVector(matrix->num_rows, 0.0f);
+
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            float current_max = FLT_MIN;
+
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                const size_t idx = matrixIndex(matrix->num_cols, i, j);
+
+                if (matrix->data[idx] > current_max)
+                {
+                    current_max = matrix->data[idx];
+                }
+            }
+
+            result->data[i] = current_max;
+        }
+
+        return result;
         break;
     }
     default:
@@ -349,6 +406,56 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
     if (matrix == NULL)
     {
         return NULL;
+    }
+
+    switch (axis)
+    {
+    case AXIS_0:
+    {
+        Vector *result = createVector(matrix->num_cols, 0.0f);
+
+        for (size_t j = 0; j < matrix->num_cols; j++)
+        {
+            float mean = 0.0f;
+
+            for (size_t i = 0; i < matrix->num_rows; i++)
+            {
+                const size_t idx = matrixIndex(matrix->num_cols, i, j);
+
+                mean += matrix->data[idx];
+            }
+
+            result->data[j] = mean / (float)(matrix->num_rows);
+        }
+
+        return result;
+        break;
+    }
+    case AXIS_1:
+    {
+        Vector *result = createVector(matrix->num_rows, 0.0f);
+
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            float mean = 0.0f;
+
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                const size_t idx = matrixIndex(matrix->num_cols, i, j);
+
+                mean += matrix->data[idx];
+            }
+
+            result->data[i] = mean / (float)(matrix->num_cols);
+        }
+
+        return result;
+        break;
+    }
+    default:
+    {
+        break;
+    }
     }
 
     return NULL;
