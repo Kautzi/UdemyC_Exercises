@@ -12,9 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PI_F32 3.14159265358979311600
-#define PI_F64 3.14159265358979311600F
-
 void print_int8_array(const int8_t *const array, const size_t length)
 {
     for (size_t i = 0; i < length - 1; i++)

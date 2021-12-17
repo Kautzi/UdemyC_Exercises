@@ -1,7 +1,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 
+#include "AdConstants.h"
 #include "AdFunctions.h"
 
 #include "utils.h"

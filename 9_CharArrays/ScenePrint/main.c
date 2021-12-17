@@ -5,6 +5,8 @@
 
 #include "utils.h"
 
+#include "AdFunctions.h"
+
 int main()
 {
     printf("Create the properties of a vehicle.\n");
