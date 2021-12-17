@@ -36,10 +36,9 @@ bool lateral_control(const NeighborVehiclesType *const vehicles,
 ## Main Function
 
 ```cpp
-#include <chrono>
-#include <string.h>
+#include <stdbool.h>
 #include <stdio.h>
-#include <thread>
+#include <string.h>
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -57,7 +56,7 @@ int main()
     print_vehicle(&ego_vehicle);
     print_neighbor_vehicles(&vehicles);
 
-    printf("Start simulation?: ";
+    printf("Start simulation?: ");
     char Input;
     scanf("%c", &Input);
 
@@ -66,17 +65,17 @@ int main()
         clear_console();
 
         print_scene(&ego_vehicle, &vehicles);
-        compute_future_state(ego_vehicle, vehicles, 0.050F);
-        const LaneAssociationType lane_change_request = longitudinal_control(vehicles, ego_vehicle);
-        const bool lane_change_successful = lateral_control(vehicles, lane_change_request, ego_vehicle);
+        compute_future_state(&ego_vehicle, &vehicles, 0.050F);
+        const LaneAssociationType lane_change_request = longitudinal_control(&vehicles, &ego_vehicle);
+        const bool lane_change_successful = lateral_control(&vehicles, lane_change_request, &ego_vehicle);
 
-        if (lane_change_request != ego_vehicle->lane)
+        if (lane_change_request != ego_vehicle.lane)
         {
-            printf("Lane change request: " << (int)(lane_change_request) << endl;
+            printf("Lane change request: %d", (int)(lane_change_request));
         }
         if (lane_change_successful)
         {
-            printf("Lane change successull" << endl;
+            printf("Lane change successull");
         }
 
         sleep_console(100);
@@ -84,5 +83,4 @@ int main()
 
     return 0;
 }
-
 ```
