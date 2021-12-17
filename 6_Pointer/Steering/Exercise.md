@@ -1,28 +1,37 @@
 # Exercise
 
-For this exercise, you have to create the following files:
+For this exercise, we will extend our **Lanes2** code.  
+We will add the option that the user can decide whether to change the lane and to accelerate or decelerate the car.  
 
-- AdFunctions.h
-- AdFunctions.c
-- AdTypes.h
+For this implement the following function:
 
-Content of AdFunctions.c/h:
+- get_user_input
 
-- The **print_scene** function that prints out the console output from exercise **Lanes1**
+Inside of this function you have to read whether the user wants to perform any actions.  
+Create two enums **LongitudinalAction** and **LateralAction** in the AdTypes.h file.  
+The longitudinal enum is for acceleration or deceleration action.  
+The lateral enum is for lane change action.  
 
-Content of AdTypes.h:
+After processing the user input, do a lane change and adapt the vehicle speed regarding the input.
 
-- The Lane Enum
+- handle_lateral_user_inpur(lane_idx, lateral_action);
+- handle_longitudinal_user_inpur(speed_mps, longitudinal_action);
 
-Note:
+The acc/deceleration is applied by increasing/reducing the current speed (m/s) by 5%.  
+For this create a define **LONGITUDINAL_DIFFERENCE_PERCENTAGE** in a new file called **AdConstants.h**
 
-Dont forget to use include guards!
+## Example Console Output
+
+![alt](../../media/6_Steering.png)
 
 ## Main Function
 
 ```cpp
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+
+#include "utils.h"
 
 #include "AdFunctions.h"
 
@@ -38,7 +47,13 @@ int main()
     printf("Lane (1=Right, 2=Center, 3=Left): ");
     scanf("%u", &lane_idx);
 
-    print_scene(speed_mps, lane_idx);
+    while (true)
+    {
+        clear_console();
+
+        print_scene(speed_mps, lane_idx);
+        get_user_input(&speed_mps, &lane_idx);
+    }
 
     return 0;
 }

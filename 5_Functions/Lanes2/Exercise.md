@@ -16,7 +16,7 @@ Content of AdTypes.h:
 
 Note:
 
-Dont forget to use include guards!
+Don't forget to use include guards!
 
 ## Main Function
 

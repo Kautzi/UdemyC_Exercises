@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utils.h"
-
 bool all_of(int32_t *array, size_t length, int32_t value);
 
 bool any_of(int32_t *array, size_t length, int32_t value);
@@ -25,7 +23,6 @@ int main()
 
     return 0;
 }
-
 
 bool all_of(int32_t *array, size_t length, int32_t value)
 {
