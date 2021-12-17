@@ -22,7 +22,7 @@ void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
 
         switch (lane_idx)
         {
-        case LANE_ASSOCIATION_TYPE_RIGHT:
+        case LANE_ASSOCIATION_TYPE_LEFT:
         {
             if ((pos_m <= i) && (pos_m > (i - offset_m)))
             {
@@ -38,7 +38,7 @@ void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
             }
             break;
         }
-        case LANE_ASSOCIATION_TYPE_LEFT:
+        case LANE_ASSOCIATION_TYPE_RIGHT:
         {
             if ((pos_m <= i) && (pos_m > (i - offset_m)))
             {
@@ -55,6 +55,8 @@ void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
         printf("%d\t|%s|%s|%s|\n", i, left_string, center_string, right_string);
     }
 
+    printf("\n");
+    printf("Speed: %f\n", speed_mps);
     printf("\n");
 }
 

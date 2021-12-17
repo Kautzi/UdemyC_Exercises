@@ -29,7 +29,7 @@ int main()
 
         print_scene(speed_mps, pos_m, lane_idx);
 
-        sleep_console(100);
+        get_user_input(&speed_mps, &lane_idx);
     }
 
     return 0;

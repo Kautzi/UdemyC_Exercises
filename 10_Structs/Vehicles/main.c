@@ -1,5 +1,8 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+
+#include "utils.h"
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
@@ -17,17 +20,18 @@ int main()
 
     print_scene(&ego_vehicle, &vehicles);
 
-    printf("Compute forward (1sec)?: ");
+    printf("Start simulation?: ");
     char Input;
     scanf("%c", &Input);
 
-    while (Input == 'y')
+    while (true)
     {
+        clear_console();
+
         compute_future_state(&ego_vehicle, &vehicles, 1);
         print_scene(&ego_vehicle, &vehicles);
 
-        printf("Compute forward (1sec)?: ");
-        scanf("%c", &Input);
+        sleep_console(500);
     }
 
     return 0;

@@ -44,13 +44,13 @@ void print_vehicle(const VehicleType *const vehicle)
     if (EGO_VEHICLE_ID == vehicle->id)
     {
         printf("Ego Vehicle: \n");
-        printf("Speed (m/s): %f", vehicle->speed_mps);
+        printf("Speed (m/s): %f\n", vehicle->speed_mps);
     }
     else
     {
-        printf("ID: %d", vehicle->id);
-        printf("Speed (m/s): %f", vehicle->speed_mps);
-        printf("Distance (m): %f", vehicle->distance_m);
+        printf("ID: %d\n", vehicle->id);
+        printf("Speed (m/s): %f\n", vehicle->speed_mps);
+        printf("Distance (m): %f\n", vehicle->distance_m);
     }
 }
 
