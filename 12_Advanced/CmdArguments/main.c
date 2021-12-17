@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "AdFunctions.h"
@@ -8,15 +9,27 @@
 
 #include "utils.h"
 
-const char datapath[128] = "C:/Users/Jan/Dropbox/_Coding/UdemyCExt/11_Files/DataLoader/data/";
+char datapath[128] = "C:/Users/Jan/Dropbox/_Coding/UdemyCExt/12_Advanced/CmdArguments/data/";
 
-int main()
+int main(int argc, char const **argv)
 {
+    int use_case_idx = 0;
+
+    if (argc >= 2)
+    {
+        strncpy(datapath, argv[1], 128);
+    }
+
+    if (argc == 3)
+    {
+        use_case_idx = atoi(argv[2]);
+    }
+
     VehicleType ego_vehicle;
     NeighborVehiclesType vehicles;
 
-    preload_ego_vehicle_data(datapath);
-    preload_vehicle_data(datapath);
+    preload_ego_vehicle_data(datapath, use_case_idx);
+    preload_vehicle_data(datapath, use_case_idx);
 
     init_ego_vehicle(&ego_vehicle);
     init_vehicles(&vehicles);

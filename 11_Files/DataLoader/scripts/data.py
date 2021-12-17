@@ -16,7 +16,7 @@ class LaneAssociation(enum.Enum):
 
 
 NUM_VEHICLES = 6
-NUM_ITERATIONS = 1_000
+NUM_CYCLES = 1_000
 FPS = 25
 
 
@@ -58,8 +58,8 @@ def generate_vehicle_data(id_: int) -> dict:
         distance = np.random.uniform(-80, -20)
 
     start_speed = kph_to_mps(start_speed)
-    speed_data = [start_speed for _ in range(NUM_ITERATIONS)]
-    for it in range(1, NUM_ITERATIONS):
+    speed_data = [start_speed for _ in range(NUM_CYCLES)]
+    for it in range(1, NUM_CYCLES):
         speed_data[it] = speed_data[it - 1] + np.random.normal(loc=0.0, scale=0.5)
 
     data_dict = {

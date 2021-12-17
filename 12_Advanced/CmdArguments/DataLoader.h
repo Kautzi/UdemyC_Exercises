@@ -6,9 +6,9 @@
 #include "AdConstants.h"
 #include "AdTypes.h"
 
-void preload_ego_vehicle_data(const char datapath[128]);
+void preload_ego_vehicle_data(const char datapath[128], int use_case_idx);
 
-void preload_vehicle_data(const char datapath[128]);
+void preload_vehicle_data(const char datapath[128], int use_case_idx);
 
 void init_ego_vehicle(VehicleType *const ego_vehicle);
 
