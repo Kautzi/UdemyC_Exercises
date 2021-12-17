@@ -3,10 +3,10 @@
 
 enum LaneAssociationType
 {
-    LANE_ASSOCIATION_TYPE_UNKNOWN,
-    LANE_ASSOCIATION_TYPE_RIGHT,
-    LANE_ASSOCIATION_TYPE_CENTER,
+    LANE_ASSOCIATION_TYPE_NONE,
     LANE_ASSOCIATION_TYPE_LEFT,
+    LANE_ASSOCIATION_TYPE_CENTER,
+    LANE_ASSOCIATION_TYPE_RIGHT,
 };
 
 int main()
@@ -17,18 +17,14 @@ int main()
     printf("Speed in m/s: ");
     scanf("%f", &speed_mps);
 
-    float distance_m;
-    printf("Distabce in m: ");
-    scanf("%f", &distance_m);
-
-    uint32_t lane;
+    uint32_t lane_idx;
     printf("Lane (1=Right, 2=Center, 3=Left): ");
-    scanf("%u", &lane);
+    scanf("%u", &lane_idx);
 
     printf("\n\n    \t  L   C   R  \n");
-    switch (lane)
+    switch (lane_idx)
     {
-    case LANE_ASSOCIATION_TYPE_RIGHT:
+    case LANE_ASSOCIATION_TYPE_LEFT:
     {
         printf("\t| V |   |   |\n");
         break;
@@ -38,7 +34,7 @@ int main()
         printf("\t|   | V |   |\n");
         break;
     }
-    case LANE_ASSOCIATION_TYPE_LEFT:
+    case LANE_ASSOCIATION_TYPE_RIGHT:
     {
         printf("\t|   |   | V |\n");
         break;
@@ -49,6 +45,8 @@ int main()
     }
     }
 
+    printf("\n");
+    printf("Speed: %f\n", speed_mps);
     printf("\n");
 
     return 0;
