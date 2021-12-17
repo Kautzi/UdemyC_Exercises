@@ -9,6 +9,7 @@ int32_t *inclusive_scan(int32_t *array, size_t length);
 
 int32_t *exclusive_scan(int32_t *array, size_t length);
 ```
+
 - iota
   - Set the elements of an array with incrementing numbers, starting at **start_value**
   - E.g. **length** = 4, **start_value** = 1 => [1, 2, 3, 4]
