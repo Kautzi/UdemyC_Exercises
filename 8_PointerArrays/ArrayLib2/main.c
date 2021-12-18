@@ -30,6 +30,9 @@ int main()
     array_reverse(array1, length);
     print_int32_array(array1, length);
 
+    array_reverse(array1, length);
+    print_int32_array(array1, length);
+
     return 0;
 }
 
@@ -76,6 +79,25 @@ void array_clamp(int32_t *array, size_t length, int32_t min_value, int32_t max_v
     }
 }
 
+void array_reverse(int32_t *array, size_t length)
+{
+    if (array == NULL)
+    {
+        return;
+    }
+
+    size_t half = length / 2;
+
+    for (size_t i = 0; i < half; i++)
+    {
+        size_t offset_idx = length - i - 1;
+        int32_t temp = array[i];
+
+        array[i] = array[offset_idx];
+        array[offset_idx] = temp;
+    }
+}
+
 void array_fill_n(int32_t *array, size_t length, size_t n, int32_t value)
 {
     if (array == NULL)
@@ -91,24 +113,5 @@ void array_fill_n(int32_t *array, size_t length, size_t n, int32_t value)
     for (size_t i = 0; i < n; i++)
     {
         array[i] = value;
-    }
-}
-
-void array_reverse(int32_t *array, size_t length)
-{
-    if (array == NULL || length == 0)
-    {
-        return;
-    }
-
-    size_t half = length / 2;
-
-    for (size_t i = 0; i < half; i++)
-    {
-        size_t offset_idx = length - i - 1;
-        int32_t temp = array[i];
-
-        array[i] = array[offset_idx];
-        array[offset_idx] = temp;
     }
 }

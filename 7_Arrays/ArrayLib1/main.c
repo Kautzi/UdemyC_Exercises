@@ -59,7 +59,7 @@ void unique_elements(int32_t *array, size_t length)
 
         if (unique == true)
         {
-            printf("unique: %d\n", current_value);
+            printf("Unique element: %d\n", current_value);
         }
     }
 }
@@ -95,8 +95,6 @@ void remove_duplicates(int32_t *array, size_t *length)
         {
             array[j] = array[j + 1];
         }
-
-        array[*length] = 0;
     }
 }
 

@@ -97,22 +97,3 @@ size_t count(int32_t *array, size_t length, int32_t value)
 
     return counter;
 }
-
-int32_t *inclusive_scan(int32_t *array, size_t length)
-{
-    if (array == NULL)
-    {
-        return NULL;
-    }
-
-    int32_t *result = (int32_t *)malloc(sizeof(int32_t) * length);
-
-    result[0] = array[0];
-
-    for (size_t i = 1; i < length; i++)
-    {
-        result[i] = result[i - 1] + array[i];
-    }
-
-    return result;
-}

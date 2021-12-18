@@ -15,14 +15,15 @@ int32_t *exclusive_scan(int32_t *array, size_t length);
   - E.g. **length** = 4, **start_value** = 1 => [1, 2, 3, 4]
   - E.g. **length** = 6, **start_value** = -2 => [-2, -1, 0, 1, 2, 3]
 - Inclusive Scan
-  - Sum up all elements in the array for index $n$ from 0 to $n-1$
-  - The result is stored and returned in a new array
+  - Sum up all elements in the **array** for index $n$ from index 0 to $n$
+  - Store the result in a result array at index $n$
   - Example:  
     [1, 2, 3] => [1, 3, 6]  
     [3, 4, 5] => [2, 7, 12]
 - Exclusive Scan
-  - Sum up all elements in the array for index $n$ from 0 to $n-2$
-  - The result is stored and returned in a new array
+  - Sum up all elements in the **array** for index $n$ from index 0 to $n - 1$
+  - Store the result in a result array at index $n$
+  - Note: The value at index 0 of the result array is always 0
   - Example:  
     [1, 2, 3] => [0, 1, 3]  
     [3, 4, 5] => [0, 3, 7]

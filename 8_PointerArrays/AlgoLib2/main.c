@@ -38,9 +38,11 @@ int main()
 
 void iota(int32_t *array, size_t length, int32_t start_value)
 {
-    for (size_t i = 0; i < length; ++i)
+    for (size_t i = 0; i < length; i++)
     {
-        array[i] = (start_value + (int32_t)(i));
+        array[i] = start_value;
+
+        start_value++;
     }
 }
 
@@ -51,7 +53,7 @@ int32_t *inclusive_scan(int32_t *array, size_t length)
         return NULL;
     }
 
-    int32_t *result = (int32_t *)malloc(sizeof(int32_t) * length);
+    int32_t *result = (int32_t *)malloc(length * sizeof(int32_t));
 
     result[0] = array[0];
 
@@ -70,7 +72,7 @@ int32_t *exclusive_scan(int32_t *array, size_t length)
         return NULL;
     }
 
-    int32_t *result = (int32_t *)malloc(sizeof(int32_t) * length);
+    int32_t *result = (int32_t *)malloc(length * sizeof(int32_t));
 
     result[0] = 0;
 
