@@ -1,13 +1,15 @@
-#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 
 #include "AdConstants.h"
 #include "AdFunctions.h"
+#include "AdTypes.h"
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
-    printf("\n\n    \t  L   C   R  \n");
+    printf("\n\n");
+    printf("\t  L   C   R\n");
+
     switch (lane_idx)
     {
     case LANE_ASSOCIATION_TYPE_LEFT:
@@ -25,8 +27,10 @@ void print_scene(float speed_mps, uint32_t lane_idx)
         printf("\t|   |   | V |\n");
         break;
     }
+    case LANE_ASSOCIATION_TYPE_NONE:
     default:
     {
+        printf("\t|   |   |   |\n");
         break;
     }
     }
@@ -39,19 +43,19 @@ void print_scene(float speed_mps, uint32_t lane_idx)
 void get_user_input(float *speed_mps, uint32_t *lane_idx)
 {
     printf("\n");
-    char longitudinal_action;
-    printf("LongitudinalAction (w=Increase, s=Decrease): ");
-    scanf(" %c", &longitudinal_action);
-    printf("\n");
-    char lateral_action;
-    printf("LateralAction (a=Left, d=Right): ");
-    scanf(" %c", &lateral_action);
 
-    handle_lateral_user_inpur(lane_idx, lateral_action);
-    handle_longitudinal_user_inpur(speed_mps, longitudinal_action);
+    char long_action;
+    printf("LongAction (w=Increase, s=Decrease): ");
+    scanf(" %c", &long_action);
+    handle_longitudinal_user_input(speed_mps, long_action);
+
+    char lat_action;
+    printf("LateralAction (a=Left, d=Right): ");
+    scanf(" %c", &lat_action);
+    handle_lateral_user_input(lane_idx, lat_action);
 }
 
-void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
+void handle_lateral_user_input(uint32_t *lane_idx, char lateral_action)
 {
     switch (lateral_action)
     {
@@ -75,6 +79,7 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
             break;
         }
         case LANE_ASSOCIATION_TYPE_NONE:
+        default:
         {
             return;
             break;
@@ -94,7 +99,6 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
         case LANE_ASSOCIATION_TYPE_CENTER:
         {
             *lane_idx = LANE_ASSOCIATION_TYPE_RIGHT;
-
             break;
         }
         case LANE_ASSOCIATION_TYPE_RIGHT:
@@ -103,6 +107,7 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
             break;
         }
         case LANE_ASSOCIATION_TYPE_NONE:
+        default:
         {
             return;
             break;
@@ -111,16 +116,16 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
         break;
     }
     case LATERAL_ACTION_NONE:
+    default:
     {
-        return;
         break;
     }
     }
 }
 
-void handle_longitudinal_user_inpur(float *speed_mps, char longitudinal_action)
+void handle_longitudinal_user_input(float *speed_mps, char lateral_action)
 {
-    switch (longitudinal_action)
+    switch (lateral_action)
     {
     case LONGITUDINAL_ACTION_ACCELERATE:
     {
@@ -128,15 +133,15 @@ void handle_longitudinal_user_inpur(float *speed_mps, char longitudinal_action)
         *speed_mps = new_speed;
         break;
     }
-    case LONGITUDINAL_ACTION_DECELERATE:
+    case LONGITUDINAL_ACTION_DECELRATE:
     {
         float new_speed = (*speed_mps) - ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
         *speed_mps = new_speed;
         break;
     }
     case LONGITUDINAL_ACTION_NONE:
+    default:
     {
-        return;
         break;
     }
     }

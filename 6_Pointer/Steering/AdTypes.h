@@ -13,7 +13,7 @@ enum LongitudinalAction
 {
     LONGITUDINAL_ACTION_NONE,
     LONGITUDINAL_ACTION_ACCELERATE = 'w',
-    LONGITUDINAL_ACTION_DECELERATE = 's',
+    LONGITUDINAL_ACTION_DECELRATE = 's',
 };
 
 enum LateralAction

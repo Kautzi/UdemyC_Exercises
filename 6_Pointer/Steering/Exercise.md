@@ -14,8 +14,8 @@ The lateral enum is for lane change action.
 
 After processing the user input, do a lane change and adapt the vehicle speed regarding the input.
 
-- handle_lateral_user_inpur(lane_idx, lateral_action);
-- handle_longitudinal_user_inpur(speed_mps, longitudinal_action);
+- handle_lateral_user_input(lane_idx, lateral_action);
+- handle_longitudinal_user_input(speed_mps, longitudinal_action);
 
 The acc/deceleration is applied by increasing/reducing the current speed (m/s) by 5%.  
 For this create a define **LONGITUDINAL_DIFFERENCE_PERCENTAGE** in a new file called **AdConstants.h**
