@@ -4,7 +4,7 @@ import numpy as np
 
 
 def main() -> int:
-    a = np.array([[1, 2, 3], [4, 5, 6]], dtype=np.float32)
+    a = np.array([[1, 2, ], [3, 4, ]], dtype=np.float32)
     print(a)
 
     print("np.min(a, axis=0): ", np.min(a, axis=0))

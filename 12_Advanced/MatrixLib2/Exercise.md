@@ -3,11 +3,56 @@
 Implement the following functions for a **matrix** library:
 
 ```cpp
-...
+typedef enum
+{
+    AXIS_0,
+    AXIS_1,
+} Axis;
+
+bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const matrix2);
+
+Matrix *addMatrix(const Matrix *matrix1, const Matrix *matrix2);
+
+Matrix *subMatrix(const Matrix *matrix1, const Matrix *matrix2);
+
+Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2);
+
+Matrix *multiplyMatrixByScalar(const Matrix *matrix, const float scalar);
+
+Matrix *divideMatrixByScalar(const Matrix *matrix, const float scalar);
+
+Vector *minMatrix(const Matrix *matrix, const Axis axis);
+
+Vector *maxMatrix(const Matrix *matrix, const Axis axis);
+
+Vector *meanMatrix(const Matrix *matrix, const Axis axis);
 ```
 
-- ...
-  - ...
+- addMatrix
+  - Add two matrices, check if the dimensions match with **matrixSameSize**
+- subMatrix
+  - Subtract two matrices, check if the dimensions match with **matrixSameSize**
+- multiplyMatrix
+  - Multiply two matrices, check if the dimensions match with **matrixMultiplyPossible**
+- multiplyMatrixByScalar
+  - Multiply matrix element-wise with a scalar value
+- divideMatrixByScalar
+  - Divide matrix element-wise with a scalar value, check for division-by-zero
+- minMatrix
+  - Get the minimum of either the rows or columns
+  - The axis parameter indicates if you have to compute it for the rows or columns
+  - E.g. M = min([[1, 2], [3, 4]]), axis = 0 => [1, 2]
+  - E.g. M = min([[1, 2], [3, 4]]), axis = 1 => [1, 3]
+- maxMatrix
+  - Get the maximum of either the rows or columns
+  - The axis parameter indicates if you have to compute it for the rows or columns
+  - E.g. M = max([[1, 2], [3, 4]]), axis = 0 => [3, 4]
+  - E.g. M = max([[1, 2], [3, 4]]), axis = 1 => [2, 4]
+- meanMatrix
+  - Get the mean of either the rows or columns
+  - The axis parameter indicates if you have to compute it for the rows or columns
+  - E.g. M = max([[1, 2], [3, 4]]), axis = 0 => [2, 3]
+  - E.g. M = max([[1, 2], [3, 4]]), axis = 1 => [1.5, 3.5]
 
 Hint:
 You can use the **vector** library as a starting point!
@@ -74,3 +119,7 @@ int main()
     return 0;
 }
 ```
+
+## Expected Console Output
+
+![alt](../../media/12_Matrix2.png)
