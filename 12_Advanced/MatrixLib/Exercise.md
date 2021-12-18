@@ -1,6 +1,6 @@
 # Exercise
 
-Implement the following functions:
+Implement the following functions for a **matrix** library:
 
 ```cpp
 ...
@@ -8,6 +8,9 @@ Implement the following functions:
 
 - ...
   - ...
+
+Hint:
+You can use the **vector** library as a starting point!
 
 ## Main Function
 
