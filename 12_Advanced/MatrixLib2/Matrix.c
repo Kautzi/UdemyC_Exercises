@@ -29,7 +29,7 @@ Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float v
         return NULL;
     }
 
-    for (unsigned int i = 0; i < num_rows * num_cols; i++)
+    for (size_t i = 0; i < num_rows * num_cols; i++)
     {
         data[i] = value;
     }
