@@ -56,7 +56,12 @@ bool is_alpha(char character)
 
 bool is_alpha_numeric(char character)
 {
-    return (is_numeric(character) || is_alpha(character));
+    if (is_alpha(character) || is_numeric(character))
+    {
+        return true;
+    }
+
+    return false;
 }
 
 bool is_upper_case(char character)
@@ -69,6 +74,7 @@ bool is_upper_case(char character)
     return false;
 }
 
+
 bool is_lower_case(char character)
 {
     if ((character >= 'a') && (character <= 'z'))
@@ -78,7 +84,6 @@ bool is_lower_case(char character)
 
     return false;
 }
-
 
 char to_upper_case(char character)
 {
