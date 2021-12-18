@@ -14,6 +14,7 @@ Note:
 - 1.000 Milliseconds = 1 Second
 - 60 Seconds = 1 Minute
 - 60 Minutes = 1 Hour
+- 24 Hours = 1 Day
 
 ## Main Function
 
