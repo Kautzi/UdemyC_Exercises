@@ -30,8 +30,6 @@ char *char_search(char *text, char character);
 int main()
 {
     char input_text[50] = {'\0'};
-    char compare_text1[50] = {"jan"};
-    char compare_text2[50] = {"ja"};
 
     printf("Please enter any text: ");
     scanf("%s", input_text);

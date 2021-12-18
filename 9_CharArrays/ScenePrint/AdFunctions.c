@@ -12,9 +12,9 @@ void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
 {
     printf("\n\n    \t  L    C    R  \n");
 
-    const int32_t offset_m = 20;
+    const float offset_m = 20;
 
-    for (int32_t i = 100; i >= -100; i -= offset_m)
+    for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
         char left_string[] = "   ";
         char center_string[] = "   ";

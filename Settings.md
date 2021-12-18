@@ -36,23 +36,19 @@ Clang-tidy: Checks for issues in the code (similar to the compiler warnings), wi
     "-Wsign-conversion",
     "-Wstrict-overflow=1",
     "-Wnull-dereference",
-    "-Wdouble-promotion"
   ],
-  "C_Cpp_Runner.compilerArgs": [
-    "-pthread",
-    "-fopenmp"
-  ],
-  "C_Cpp_Runner.includePaths": [
-    "${workspaceFolder}/utils"
-  ],
+  "C_Cpp_Runner.compilerArgs": [],
+  "C_Cpp_Runner.includePaths": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.cStandard": "c99",
   "C_Cpp_Runner.cppStandard": "c++17",
   "C_Cpp_Runner.excludeSearch": [],
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
-  "clang-tidy.compilerArgsBefore": [
-    "-Iutils",
-    "-D_CRT_SECURE_NO_WARNINGS"
+  "Workspace_Formatter.includePattern": [
+    "*.h",
+    "*.c",
+    "**/*.h",
+    "**/*.c"
   ],
 ```

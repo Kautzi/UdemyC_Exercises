@@ -8,7 +8,7 @@
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-float *createArray(const unsigned int length, const float value)
+float *createArray(const size_t length, const float value)
 {
     float *data = (float *)malloc(length * sizeof(float));
 
@@ -17,7 +17,7 @@ float *createArray(const unsigned int length, const float value)
         return NULL;
     }
 
-    for (unsigned int i = 0; i < length; i++)
+    for (size_t i = 0; i < length; i++)
     {
         data[i] = value;
     }
@@ -37,7 +37,7 @@ float *freeArray(float *array)
     return NULL;
 }
 
-Vector *createVector(const unsigned int length, const float value)
+Vector *createVector(const size_t length, const float value)
 {
     Vector *result = (Vector *)malloc(sizeof(Vector));
 
@@ -95,7 +95,7 @@ int readInVectorData(Vector *vec, const char *filepath)
         return 1;
     }
 
-    for (unsigned int i = 0; i < vec->length; i++)
+    for (size_t i = 0; i < vec->length; i++)
     {
         fscanf(fp, "%f", &vec->data[i]);
     }
@@ -120,7 +120,7 @@ int writeOutVectorData(Vector *vec, const char *filepath)
         return 1;
     }
 
-    for (unsigned int i = 0; i < vec->length; i++)
+    for (size_t i = 0; i < vec->length; i++)
     {
         if (i < vec->length - 1)
         {
@@ -147,7 +147,7 @@ void printVector(const Vector *vector)
 
     printf("[");
 
-    for (unsigned int i = 0; i < vector->length - 1; i++)
+    for (size_t i = 0; i < vector->length - 1; i++)
     {
         printf("%f, ", vector->data[i]);
     }
@@ -168,7 +168,7 @@ Vector *addVectors(const Vector *vec1, const Vector *vec2)
 
     Vector *result = createVector(vec1->length, 0.0);
 
-    for (unsigned int i = 0; i < vec1->length; i++)
+    for (size_t i = 0; i < vec1->length; i++)
     {
         result->data[i] = vec1->data[i] + vec2->data[i];
     }
@@ -185,7 +185,7 @@ Vector *subVectors(const Vector *vec1, const Vector *vec2)
 
     Vector *result = createVector(vec1->length, 0.0);
 
-    for (unsigned int i = 0; i < vec1->length; i++)
+    for (size_t i = 0; i < vec1->length; i++)
     {
         result->data[i] = vec1->data[i] - vec2->data[i];
     }
@@ -202,7 +202,7 @@ float multiplyVectors(const Vector *vec1, const Vector *vec2)
 
     float result = 0.0f;
 
-    for (unsigned int i = 0; i < vec1->length; i++)
+    for (size_t i = 0; i < vec1->length; i++)
     {
         result += vec1->data[i] * vec2->data[i];
     }
@@ -219,7 +219,7 @@ Vector *multiplyScalar(const Vector *vec, const float scalar)
 
     Vector *result = createVector(vec->length, 0.0);
 
-    for (unsigned int i = 0; i < vec->length; i++)
+    for (size_t i = 0; i < vec->length; i++)
     {
         result->data[i] = vec->data[i] * scalar;
     }
@@ -236,7 +236,7 @@ Vector *divideScalar(const Vector *vec, const float scalar)
 
     Vector *result = createVector(vec->length, 0.0);
 
-    for (unsigned int i = 0; i < vec->length; i++)
+    for (size_t i = 0; i < vec->length; i++)
     {
         result->data[i] = vec->data[i] / scalar;
     }
@@ -248,7 +248,7 @@ float meanVector(const Vector *vector)
 {
     float sum = 0.0f;
 
-    for (unsigned int i = 0; i < vector->length; i++)
+    for (size_t i = 0; i < vector->length; i++)
     {
         sum += vector->data[i];
     }
@@ -265,7 +265,7 @@ float minVector(const Vector *vector)
 
     float current_min = vector->data[0];
 
-    for (unsigned int i = 1; i < vector->length; i++)
+    for (size_t i = 1; i < vector->length; i++)
     {
         if (vector->data[i] < current_min)
         {
@@ -285,7 +285,7 @@ float maxVector(const Vector *vector)
 
     float current_max = vector->data[0];
 
-    for (unsigned int i = 1; i < vector->length; i++)
+    for (size_t i = 1; i < vector->length; i++)
     {
         if (vector->data[i] > current_max)
         {

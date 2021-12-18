@@ -40,7 +40,7 @@ void iota(int32_t *array, size_t length, int32_t start_value)
 {
     for (size_t i = 0; i < length; ++i)
     {
-        array[i] = (start_value + i);
+        array[i] = (start_value + (int32_t)(i));
     }
 }
 

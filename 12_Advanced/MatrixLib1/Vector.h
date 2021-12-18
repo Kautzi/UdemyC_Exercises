@@ -7,18 +7,18 @@
 typedef struct Vector
 {
     float *data;
-    unsigned int length;
+    size_t length;
 } Vector;
 
 /**********************/
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-float *createArray(const unsigned int length, const float value);
+float *createArray(const size_t length, const float value);
 
 float *freeArray(float *array);
 
-Vector *createVector(const unsigned int length, const float value);
+Vector *createVector(const size_t length, const float value);
 
 Vector *freeVector(Vector *vector);
 

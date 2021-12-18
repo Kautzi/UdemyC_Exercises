@@ -72,9 +72,9 @@ void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *veh
     size_t center_idx = 0;
     size_t right_idx = 0;
 
-    const int32_t offset_m = 20;
+    const float offset_m = 20;
 
-    for (int32_t i = 100; i >= -100; i -= offset_m)
+    for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
         const VehicleType *left_vehicle = &vehicles->vehicles_left_lane[left_idx];
         const VehicleType *center_vehicle = &vehicles->vehicles_center_lane[center_idx];

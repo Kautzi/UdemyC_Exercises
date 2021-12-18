@@ -51,9 +51,9 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
     size_t center_idx = 0;
     size_t right_idx = 0;
 
-    const int32_t offset_m = 10;
+    const float offset_m = 10;
 
-    for (int32_t i = 100; i >= -100; i -= offset_m)
+    for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
         const VehicleType *const left_vehicle = &vehicles->vehicles_left_lane[left_idx];
         const VehicleType *const center_vehicle = &vehicles->vehicles_center_lane[center_idx];
@@ -202,7 +202,7 @@ LaneAssociationType longitudinal_control(const NeighborVehiclesType *const vehic
     const float crash_distance = mps_to_kmh(ego_vehicle->speed_mps) / 4.0F;
 
     const float front_distance = front_vehicle->distance_m;
-    const float rear_distance = fabs(rear_vehicle->distance_m);
+    const float rear_distance = fabsf(rear_vehicle->distance_m);
 
     bool front_vehicle_too_close = false;
 
@@ -304,7 +304,7 @@ bool gap_is_valid(const VehicleType *const front_vehicle,
     const float minimal_distance = mps_to_kmh(ego_vehicle->speed_mps) / 5.0F;
 
     const float front_distance = front_vehicle->distance_m;
-    const float rear_distance = fabs(rear_vehicle->distance_m);
+    const float rear_distance = fabsf(rear_vehicle->distance_m);
 
     if ((front_distance > minimal_distance) && (rear_distance > minimal_distance))
     {

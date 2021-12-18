@@ -40,7 +40,7 @@ void preload_ego_vehicle_data(const char datapath[128], int use_case_idx)
 
     fgets(line, line_size, fp);
     size_t speed_str_len = strlen("Speed: ");
-    float speed_mps = atof(line + speed_str_len);
+    float speed_mps = (float)atof(line + speed_str_len);
 
     EGO_VEHICLE_DATA.speed_mps = speed_mps;
     EGO_VEHICLE_DATA.distance_m = 0.0F;
@@ -82,7 +82,7 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
 
         fgets(line, line_size, fp);
         size_t distance_str_len = strlen("Distance: ");
-        float distance_m = atof(line + distance_str_len);
+        float distance_m = (float)atof(line + distance_str_len);
 
         while (fgets(line, line_size, fp) != NULL)
         {
@@ -90,7 +90,7 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
             snprintf(start_str, 128, "Speed %d: ", idx);
             size_t start_str_len = strlen(start_str);
 
-            float speed_mps = atof(line + start_str_len);
+            float speed_mps = (float)atof(line + start_str_len);
             VEHICLE_DATA[vehicle_idx][idx].id = vehicle_idx;
             VEHICLE_DATA[vehicle_idx][idx].speed_mps = speed_mps;
             VEHICLE_DATA[vehicle_idx][idx].distance_m = distance_m;
