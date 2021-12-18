@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -7,7 +6,9 @@
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
-    printf("\n\n    \t  L   C   R  \n");
+    printf("\n\n");
+    printf("\t  L   C   R\n");
+
     switch (lane_idx)
     {
     case LANE_ASSOCIATION_TYPE_LEFT:
@@ -25,8 +26,10 @@ void print_scene(float speed_mps, uint32_t lane_idx)
         printf("\t|   |   | V |\n");
         break;
     }
+    case LANE_ASSOCIATION_TYPE_NONE:
     default:
     {
+        printf("\t|   |   |   |\n");
         break;
     }
     }

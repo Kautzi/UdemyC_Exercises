@@ -21,37 +21,6 @@ int main()
     printf("Lane (1=Left, 2=Center, 3=Right): ");
     scanf("%u", &lane_idx);
 
-    printf("\n\n");
-    printf("\t  L   C   R\n");
-
-    switch (lane_idx)
-    {
-    case LANE_ASSOCIATION_TYPE_LEFT:
-    {
-        printf("\t| V |   |   |\n");
-        break;
-    }
-    case LANE_ASSOCIATION_TYPE_CENTER:
-    {
-        printf("\t|   | V |   |\n");
-        break;
-    }
-    case LANE_ASSOCIATION_TYPE_RIGHT:
-    {
-        printf("\t|   |   | V |\n");
-        break;
-    }
-    case LANE_ASSOCIATION_TYPE_NONE:
-    default:
-    {
-        printf("\t|   |   |   |\n");
-        break;
-    }
-    }
-
-    printf("\n");
-    printf("Speed: %f\n", speed_mps);
-    printf("\n");
 
     return 0;
 }
