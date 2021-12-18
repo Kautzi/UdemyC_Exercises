@@ -5,7 +5,7 @@
 
 #include "AdTypes.h"
 
-void print_scene(float speed_mps, float pos_m, uint32_t lane_idx);
+void print_scene(float speed_mps, uint32_t lane_idx);
 
 void get_user_input(float *speed_mps, uint32_t *lane_idx);
 

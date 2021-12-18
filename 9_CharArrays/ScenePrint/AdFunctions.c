@@ -8,7 +8,7 @@
 
 #include "utils.h"
 
-void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
+void print_scene(float speed_mps, uint32_t lane_idx)
 {
     printf("\n\n    \t  L    C    R  \n");
 
@@ -20,38 +20,33 @@ void print_scene(float speed_mps, float pos_m, uint32_t lane_idx)
         char center_string[] = "   ";
         char right_string[] = "   ";
 
-        switch (lane_idx)
+        if (i == 0)
         {
-        case LANE_ASSOCIATION_TYPE_LEFT:
-        {
-            if ((pos_m <= i) && (pos_m > (i - offset_m)))
+            switch (lane_idx)
+            {
+            case LANE_ASSOCIATION_TYPE_LEFT:
             {
                 strncpy(left_string, " V ", 4);
+                break;
             }
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_CENTER:
-        {
-            if ((pos_m <= i) && (pos_m > (i - offset_m)))
+            case LANE_ASSOCIATION_TYPE_CENTER:
             {
                 strncpy(center_string, " V ", 4);
+
+                break;
             }
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_RIGHT:
-        {
-            if ((pos_m <= i) && (pos_m > (i - offset_m)))
+            case LANE_ASSOCIATION_TYPE_RIGHT:
             {
                 strncpy(left_string, " V ", 4);
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
-        }
 
+                break;
+            }
+            default:
+            {
+                break;
+            }
+            }
+        }
         printf("%d\t|%s|%s|%s|\n", i, left_string, center_string, right_string);
     }
 

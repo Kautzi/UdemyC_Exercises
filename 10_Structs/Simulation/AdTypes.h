@@ -13,20 +13,6 @@ typedef enum
     LANE_ASSOCIATION_TYPE_LEFT,
 } LaneAssociationType;
 
-enum LongitudinalAction
-{
-    LONGITUDINAL_ACTION_NONE,
-    LONGITUDINAL_ACTION_ACCELERATE = 'w',
-    LONGITUDINAL_ACTION_DECELERATE = 's',
-};
-
-enum LateralAction
-{
-    LATERAL_ACTION_NONE,
-    LATERAL_ACTION_LEFT = 'a',
-    LATERAL_ACTION_RIGHT = 'd',
-};
-
 typedef struct
 {
     int32_t id;

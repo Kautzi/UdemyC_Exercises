@@ -1,15 +1,12 @@
 # Exercise
 
-Implement the following functions:
+- Update the **print_scene** function such that the following cosole output is printed
 
-```cpp
-bool ...
-```
+![alt](../../media/9_ScenePrint.png)
 
-- ...
-  - ...
-
-Note: Make sure that the input pointer is valid.
+The vehicle will always be placed at the row 0.  
+Only the lane (column) can be changed.  
+In future exercises, this plot will be used to display also other vehicles.  
 
 ## Main Function
 
@@ -31,10 +28,6 @@ int main()
     printf("Speed in m/s: ");
     scanf("%f", &speed_mps);
 
-    float pos_m;
-    printf("Distance in m: ");
-    scanf("%f", &pos_m);
-
     uint32_t lane_idx;
     printf("Lane (1=Right, 2=Center, 3=Left): ");
     scanf("%u", &lane_idx);
@@ -43,8 +36,7 @@ int main()
     {
         clear_console();
 
-        print_scene(speed_mps, pos_m, lane_idx);
-
+        print_scene(speed_mps, lane_idx);
         get_user_input(&speed_mps, &lane_idx);
     }
 
