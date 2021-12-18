@@ -20,18 +20,22 @@ int main()
 
     // is upper case
     bool is_upper_case = false;
+
     if ((character >= 'A') && (character <= 'Z'))
     {
         is_upper_case = true;
     }
+
     printf("is upper case: %d\n", is_upper_case);
 
     // is lower case
     bool is_lower_case = false;
+
     if ((character >= 'a') && (character <= 'z'))
     {
         is_lower_case = true;
     }
+
     printf("is lower case: %d\n", is_lower_case);
 
     // is alpha
@@ -45,24 +49,34 @@ int main()
     printf("is alpha: %d\n", is_alpha);
 
     // is alpha numeric
-    bool is_alpha_numeric = (is_numeric || is_alpha);
+    bool is_alpha_numeric = false;
+
+    if (is_alpha || is_numeric)
+    {
+        is_alpha_numeric = true;
+    }
+
     printf("is alpha numeric: %d\n", is_alpha_numeric);
 
     // to upper case
-    char result1 = character;
+    char upper_case_character = character;
+
     if (is_lower_case)
     {
-        result1 = character - 32;
+        upper_case_character = character - 32;
     }
-    printf("to upper case: %c\n", result1);
+
+    printf("to upper case: %c\n", upper_case_character);
 
     // to lower case
-    char result2 = character;
+    char lower_case_character = character;
+
     if (is_upper_case)
     {
-        result2 = character + 32;
+        lower_case_character = character + 32;
     }
-    printf("to lower case: %c\n", result2);
+
+    printf("to lower case: %c\n", lower_case_character);
 
     return 0;
 }

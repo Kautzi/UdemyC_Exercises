@@ -34,6 +34,9 @@ Afterward, implement the following conversion:
 ## Main Function
 
 ```cpp
+#include <stdbool.h>
+#include <stdio.h>
+
 int main()
 {
     char character;

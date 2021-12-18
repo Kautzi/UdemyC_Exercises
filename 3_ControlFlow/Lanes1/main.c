@@ -18,10 +18,12 @@ int main()
     scanf("%f", &speed_mps);
 
     uint32_t lane_idx;
-    printf("Lane (1=Right, 2=Center, 3=Left): ");
+    printf("Lane (1=Left, 2=Center, 3=Right): ");
     scanf("%u", &lane_idx);
 
-    printf("\n\n    \t  L   C   R  \n");
+    printf("\n\n");
+    printf("\t  L   C   R\n");
+
     switch (lane_idx)
     {
     case LANE_ASSOCIATION_TYPE_LEFT:
@@ -39,8 +41,10 @@ int main()
         printf("\t|   |   | V |\n");
         break;
     }
+    case LANE_ASSOCIATION_TYPE_NONE:
     default:
     {
+        printf("\t|   |   |   |\n");
         break;
     }
     }
