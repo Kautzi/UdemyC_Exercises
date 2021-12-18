@@ -7,21 +7,19 @@ void round_value(float *value, uint8_t num_digits);
 
 int main()
 {
-    float value1 = 2.0f;
-    clamp_value(&value1, -1.33756f, 1.33756f);
-    printf("%f\n", value1);
+    float value = 2.0f;
 
-    float value2 = 2.3456789f;
-    round_value(&value2, 1);
-    printf("%f\n", value2);
+    clamp_value(&value, -1.34567f, 1.24567f);
+    printf("%.16f\n", value);
 
-    float value3 = 2.3456789f;
-    round_value(&value3, 2);
-    printf("%f\n", value3);
+    round_value(&value, 3);
+    printf("%.16f\n", value);
 
-    float value4 = 2.3456789f;
-    round_value(&value4, 3);
-    printf("%f\n", value4);
+    round_value(&value, 2);
+    printf("%.16f\n", value);
+
+    round_value(&value, 1);
+    printf("%.16f\n", value);
 
     return 0;
 }
@@ -37,7 +35,6 @@ void clamp_value(float *value, float min_value, float max_value)
         *value = max_value;
     }
 }
-
 
 void round_value(float *value, uint8_t num_digits)
 {
