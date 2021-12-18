@@ -13,6 +13,10 @@ $z_2 = (x - y)^3 - 3$
 3. For x = -2, y = -3  
 $z_3 = \frac{2 * x^3 - \frac{1}{2} * x^2 - x + 4}{y}$
 
+## Results
+
+![alt](../../media/2_MathComp.png)
+
 ## Main Function
 
 ```cpp
