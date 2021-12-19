@@ -10,9 +10,10 @@
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
-    printf("\n\n    \t  L    C    R  \n");
+    printf("\n\n");
+    printf("\t  L   C   R\n");
 
-    const float offset_m = 20;
+    float offset_m = 20.0f;
 
     for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
@@ -32,21 +33,21 @@ void print_scene(float speed_mps, uint32_t lane_idx)
             case LANE_ASSOCIATION_TYPE_CENTER:
             {
                 strncpy(center_string, " V ", 4);
-
                 break;
             }
             case LANE_ASSOCIATION_TYPE_RIGHT:
             {
-                strncpy(left_string, " V ", 4);
-
+                strncpy(right_string, " V ", 4);
                 break;
             }
+            case LANE_ASSOCIATION_TYPE_NONE:
             default:
             {
                 break;
             }
             }
         }
+
         printf("%d\t|%s|%s|%s|\n", i, left_string, center_string, right_string);
     }
 
