@@ -22,19 +22,27 @@ void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *veh
 
 void print_vehicle_speed(const VehicleType *vehicle, const char *name);
 
-void compute_future_distance(VehicleType *vehicle, const float ego_driven_distance, const float seconds);
+void compute_future_distance(VehicleType *vehicle,
+                             const float ego_driven_distance,
+                             const float seconds);
 
-void compute_future_state(const VehicleType *ego_vehicle, NeighborVehiclesType *vehicles, const float seconds);
+void compute_future_state(const VehicleType *ego_vehicle,
+                          NeighborVehiclesType *vehicles,
+                          const float seconds);
 
-const VehicleType *get_lane_vehicles(const LaneAssociationType lane, const NeighborVehiclesType vehicles);
+const VehicleType *get_lane_vehicles(const LaneAssociationType lane,
+                                     const NeighborVehiclesType vehicles);
 
-LaneAssociationType longitudinal_control(const NeighborVehiclesType *vehicles, VehicleType *ego_vehicle);
+LaneAssociationType longitudinal_control(const NeighborVehiclesType *vehicles,
+                                         VehicleType *ego_vehicle);
 
 LaneAssociationType get_lane_change_request(const VehicleType *ego_vehicle,
                                             const float front_distance,
                                             const float rear_distance);
 
-bool gap_is_valid(const VehicleType *front_vehicle, const VehicleType *rear_vehicle, const VehicleType *ego_vehicle);
+bool gap_is_valid(const VehicleType *front_vehicle,
+                  const VehicleType *rear_vehicle,
+                  const VehicleType *ego_vehicle);
 
 bool lateral_control(const NeighborVehiclesType *vehicles,
                      const LaneAssociationType lane_change_request,

@@ -15,7 +15,11 @@ void handle_longitudinal_user_input(float *speed_mps, char longitudinal_action);
 
 float kph_to_mps(float kph);
 
-void init_vehicle(VehicleType *vehicle, int32_t id, float speed_kph, float distance, LaneAssociationType lane);
+void init_vehicle(VehicleType *vehicle,
+                  int32_t id,
+                  float speed_kph,
+                  float distance,
+                  LaneAssociationType lane);
 
 void init_ego_vehicle(VehicleType *ego_vehicle);
 

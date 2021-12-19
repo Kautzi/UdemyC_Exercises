@@ -95,19 +95,22 @@ void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *veh
             ego_string[1] = 'E';
         }
 
-        if ((range_m >= left_vehicle->distance_m) && (left_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= left_vehicle->distance_m) &&
+            (left_vehicle->distance_m > (range_m - offset_m)))
         {
             left_string[1] = 'V';
             left_idx++;
         }
 
-        if ((range_m >= center_vehicle->distance_m) && (center_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= center_vehicle->distance_m) &&
+            (center_vehicle->distance_m > (range_m - offset_m)))
         {
             center_string[1] = 'V';
             center_idx++;
         }
 
-        if ((range_m >= right_vehicle->distance_m) && (right_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= right_vehicle->distance_m) &&
+            (right_vehicle->distance_m > (range_m - offset_m)))
         {
             right_string[1] = 'V';
             right_idx++;
@@ -126,13 +129,17 @@ void print_vehicle_speed(const VehicleType *vehicle, const char *name)
     printf("%s: (%f mps)", name, vehicle->speed_mps);
 }
 
-void compute_future_distance(VehicleType *vehicle, const float ego_driven_distance, const float seconds)
+void compute_future_distance(VehicleType *vehicle,
+                             const float ego_driven_distance,
+                             const float seconds)
 {
     const float driven_distance = vehicle->speed_mps * seconds;
     vehicle->distance_m += driven_distance - ego_driven_distance;
 }
 
-void compute_future_state(const VehicleType *ego_vehicle, NeighborVehiclesType *vehicles, const float seconds)
+void compute_future_state(const VehicleType *ego_vehicle,
+                          NeighborVehiclesType *vehicles,
+                          const float seconds)
 {
     const float ego_driven_distance = ego_vehicle->speed_mps * seconds;
 
@@ -154,7 +161,8 @@ void decrease_speed(VehicleType *ego_vehicle)
     }
 }
 
-const VehicleType *get_vehicle_array(const LaneAssociationType lane, const NeighborVehiclesType *vehicles)
+const VehicleType *get_vehicle_array(const LaneAssociationType lane,
+                                     const NeighborVehiclesType *vehicles)
 {
     const VehicleType *vehicles_array = NULL;
 
@@ -184,7 +192,8 @@ const VehicleType *get_vehicle_array(const LaneAssociationType lane, const Neigh
     return vehicles_array;
 }
 
-LaneAssociationType longitudinal_control(const NeighborVehiclesType *vehicles, VehicleType *ego_vehicle)
+LaneAssociationType longitudinal_control(const NeighborVehiclesType *vehicles,
+                                         VehicleType *ego_vehicle)
 {
     const VehicleType *vehicles_array = get_vehicle_array(ego_vehicle->lane, vehicles);
 
@@ -295,7 +304,9 @@ LaneAssociationType get_lane_change_request(const VehicleType *ego_vehicle,
     }
 }
 
-bool gap_is_valid(const VehicleType *front_vehicle, const VehicleType *rear_vehicle, const VehicleType *ego_vehicle)
+bool gap_is_valid(const VehicleType *front_vehicle,
+                  const VehicleType *rear_vehicle,
+                  const VehicleType *ego_vehicle)
 {
     const float minimal_distance = mps_to_kmh(ego_vehicle->speed_mps) / 5.0F;
 

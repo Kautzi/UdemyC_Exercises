@@ -95,19 +95,22 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
             ego_string[1] = 'E';
         }
 
-        if ((range_m >= left_vehicle->distance_m) && (left_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= left_vehicle->distance_m) &&
+            (left_vehicle->distance_m > (range_m - offset_m)))
         {
             left_string[1] = 'V';
             left_idx++;
         }
 
-        if ((range_m >= center_vehicle->distance_m) && (center_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= center_vehicle->distance_m) &&
+            (center_vehicle->distance_m > (range_m - offset_m)))
         {
             center_string[1] = 'V';
             center_idx++;
         }
 
-        if ((range_m >= right_vehicle->distance_m) && (right_vehicle->distance_m > (range_m - offset_m)))
+        if ((range_m >= right_vehicle->distance_m) &&
+            (right_vehicle->distance_m > (range_m - offset_m)))
         {
             right_string[1] = 'V';
             right_idx++;
@@ -126,7 +129,9 @@ void print_vehicle_speed(const VehicleType *const vehicle, const char *name)
     printf("%s: (%f mps)", name, vehicle->speed_mps);
 }
 
-void compute_future_distance(VehicleType *const vehicle, const float ego_driven_distance, const float seconds)
+void compute_future_distance(VehicleType *const vehicle,
+                             const float ego_driven_distance,
+                             const float seconds)
 {
     const float driven_distance = vehicle->speed_mps * seconds;
     vehicle->distance_m += driven_distance - ego_driven_distance;
@@ -156,7 +161,8 @@ void decrease_speed(VehicleType *const ego_vehicle)
     }
 }
 
-const VehicleType *get_vehicle_array(const LaneAssociationType lane, const NeighborVehiclesType *const vehicles)
+const VehicleType *get_vehicle_array(const LaneAssociationType lane,
+                                     const NeighborVehiclesType *const vehicles)
 {
     const VehicleType *vehicles_array = NULL;
 
@@ -186,7 +192,8 @@ const VehicleType *get_vehicle_array(const LaneAssociationType lane, const Neigh
     return vehicles_array;
 }
 
-LaneAssociationType longitudinal_control(const NeighborVehiclesType *const vehicles, VehicleType *const ego_vehicle)
+LaneAssociationType longitudinal_control(const NeighborVehiclesType *const vehicles,
+                                         VehicleType *const ego_vehicle)
 {
     const VehicleType *vehicles_array = get_vehicle_array(ego_vehicle->lane, vehicles);
 

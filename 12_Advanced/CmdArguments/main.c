@@ -48,8 +48,10 @@ int main(int argc, char const **argv)
         load_cycle(&vehicles, cycle);
         print_scene(&ego_vehicle, &vehicles);
         compute_future_state(&ego_vehicle, &vehicles, 0.100F);
-        const LaneAssociationType lane_change_request = longitudinal_control(&vehicles, &ego_vehicle);
-        const bool lane_change_successful = lateral_control(&vehicles, lane_change_request, &ego_vehicle);
+        const LaneAssociationType lane_change_request =
+            longitudinal_control(&vehicles, &ego_vehicle);
+        const bool lane_change_successful =
+            lateral_control(&vehicles, lane_change_request, &ego_vehicle);
 
         if (lane_change_request != ego_vehicle.lane)
         {

@@ -18,15 +18,19 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
 
 void print_vehicle_speed(const VehicleType *const vehicle, const char *name);
 
-void compute_future_distance(VehicleType *const vehicle, const float ego_driven_distance, const float seconds);
+void compute_future_distance(VehicleType *const vehicle,
+                             const float ego_driven_distance,
+                             const float seconds);
 
 void compute_future_state(const VehicleType *const ego_vehicle,
                           NeighborVehiclesType *const vehicles,
                           const float seconds);
 
-const VehicleType *get_lane_vehicles(const LaneAssociationType lane, const NeighborVehiclesType vehicles);
+const VehicleType *get_lane_vehicles(const LaneAssociationType lane,
+                                     const NeighborVehiclesType vehicles);
 
-LaneAssociationType longitudinal_control(const NeighborVehiclesType *const vehicles, VehicleType *const ego_vehicle);
+LaneAssociationType longitudinal_control(const NeighborVehiclesType *const vehicles,
+                                         VehicleType *const ego_vehicle);
 
 LaneAssociationType get_lane_change_request(const VehicleType *const ego_vehicle,
                                             const float front_distance,

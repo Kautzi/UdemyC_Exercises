@@ -176,7 +176,11 @@ void init_ego_vehicle(VehicleType *ego_vehicle)
     ego_vehicle->lane = LANE_ASSOCIATION_TYPE_CENTER;
 }
 
-void init_vehicle(VehicleType *vehicle, int32_t id, float speed_kph, float distance, LaneAssociationType lane)
+void init_vehicle(VehicleType *vehicle,
+                  int32_t id,
+                  float speed_kph,
+                  float distance,
+                  LaneAssociationType lane)
 {
     vehicle->id = id;
     vehicle->distance_m = kph_to_mps(speed_kph);
@@ -189,7 +193,11 @@ void init_vehicles(NeighborVehiclesType *vehicles)
     init_vehicle(&vehicles->vehicles_left_lane[0], 0, 130.0f, 80.0f, LANE_ASSOCIATION_TYPE_LEFT);
     init_vehicle(&vehicles->vehicles_left_lane[1], 1, 80.0f, -20.0f, LANE_ASSOCIATION_TYPE_LEFT);
     init_vehicle(&vehicles->vehicles_center_lane[0], 2, 80.0f, 50.0f, LANE_ASSOCIATION_TYPE_CENTER);
-    init_vehicle(&vehicles->vehicles_center_lane[1], 3, 120.0f, -50.0f, LANE_ASSOCIATION_TYPE_CENTER);
+    init_vehicle(&vehicles->vehicles_center_lane[1],
+                 3,
+                 120.0f,
+                 -50.0f,
+                 LANE_ASSOCIATION_TYPE_CENTER);
     init_vehicle(&vehicles->vehicles_right_lane[0], 4, 110.0f, 30.0f, LANE_ASSOCIATION_TYPE_RIGHT);
     init_vehicle(&vehicles->vehicles_right_lane[1], 5, 90.0f, -30.0f, LANE_ASSOCIATION_TYPE_RIGHT);
 }

@@ -207,7 +207,8 @@ Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2)
                 size_t idx_ik = matrixIndex(matrix2->num_rows, i, k);
                 size_t idx_kj = matrixIndex(matrix2->num_cols, k, j);
 
-                result->data[idx_ij] = result->data[idx_ij] + matrix1->data[idx_ik] * matrix2->data[idx_kj];
+                result->data[idx_ij] =
+                    result->data[idx_ij] + matrix1->data[idx_ik] * matrix2->data[idx_kj];
             }
         }
     }

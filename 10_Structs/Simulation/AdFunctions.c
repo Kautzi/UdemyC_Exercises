@@ -23,8 +23,9 @@ void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *veh
     {
         const VehicleType *left_vehicle =
             (left_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_left_lane[left_idx];
-        const VehicleType *center_vehicle =
-            (center_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_center_lane[center_idx];
+        const VehicleType *center_vehicle = (center_idx > NUM_VEHICLES_ON_LANE)
+                                                ? NULL
+                                                : &vehicles->vehicles_center_lane[center_idx];
         const VehicleType *right_vehicle =
             (right_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_right_lane[right_idx];
 
@@ -121,7 +122,11 @@ void init_vehicles(NeighborVehiclesType *vehicles)
     init_vehicle(&vehicles->vehicles_left_lane[0], 0, 130.0f, 80.0f, LANE_ASSOCIATION_TYPE_LEFT);
     init_vehicle(&vehicles->vehicles_left_lane[1], 1, 80.0f, -20.0f, LANE_ASSOCIATION_TYPE_LEFT);
     init_vehicle(&vehicles->vehicles_center_lane[0], 2, 80.0f, 50.0f, LANE_ASSOCIATION_TYPE_CENTER);
-    init_vehicle(&vehicles->vehicles_center_lane[1], 3, 120.0f, -50.0f, LANE_ASSOCIATION_TYPE_CENTER);
+    init_vehicle(&vehicles->vehicles_center_lane[1],
+                 3,
+                 120.0f,
+                 -50.0f,
+                 LANE_ASSOCIATION_TYPE_CENTER);
     init_vehicle(&vehicles->vehicles_right_lane[0], 4, 110.0f, 30.0f, LANE_ASSOCIATION_TYPE_RIGHT);
     init_vehicle(&vehicles->vehicles_right_lane[1], 5, 90.0f, -30.0f, LANE_ASSOCIATION_TYPE_RIGHT);
 }
@@ -144,14 +149,18 @@ void print_neighbor_vehicles(const NeighborVehiclesType *vehicles)
     print_vehicle(&vehicles->vehicles_right_lane[1]);
 }
 
-void compute_future_distance(VehicleType *vehicle, const float ego_driven_distance, const float seconds)
+void compute_future_distance(VehicleType *vehicle,
+                             const float ego_driven_distance,
+                             const float seconds)
 {
     const float driven_distance = vehicle->speed_mps * seconds;
 
     vehicle->distance_m = vehicle->distance_m + (driven_distance - ego_driven_distance);
 }
 
-void compute_future_state(const VehicleType *ego_vehicle, NeighborVehiclesType *vehicles, const float seconds)
+void compute_future_state(const VehicleType *ego_vehicle,
+                          NeighborVehiclesType *vehicles,
+                          const float seconds)
 {
     const float ego_driven_distance = ego_vehicle->speed_mps * seconds;
 
