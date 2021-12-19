@@ -47,7 +47,6 @@ bool string_starts_with(char *string, char *substr)
     return true;
 }
 
-
 bool string_ends_with(char *string, char *substr)
 {
     if (string == NULL || substr == NULL)
@@ -55,20 +54,16 @@ bool string_ends_with(char *string, char *substr)
         return false;
     }
 
-    size_t string_length = strlen(string);
     size_t substr_length = strlen(substr);
+    size_t string_length = strlen(string);
 
-    for (size_t i = string_length - substr_length; i < string_length; i++)
-    {
-        size_t offset_idx = i - (string_length - substr_length);
+    size_t offset_idx = string_length - substr_length;
 
-        if (string[i] != substr[offset_idx])
-        {
-            return false;
-        }
-    }
+    string += offset_idx;
 
-    return true;
+    int comparison = strncmp(string, substr, substr_length);
+
+    return (comparison == 0);
 }
 
 char *string_find_first_not_of(char *string, char *substr)
@@ -78,21 +73,18 @@ char *string_find_first_not_of(char *string, char *substr)
         return NULL;
     }
 
-    char *result = NULL;
-
     while (*string != '\0')
     {
         if (*string != *substr)
         {
-            result = string;
-            break;
+            return string;
         }
 
         string++;
         substr++;
     }
 
-    return result;
+    return NULL;
 }
 
 char *string_n_copy(char *dest, char *src, size_t count)
