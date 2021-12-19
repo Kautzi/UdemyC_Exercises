@@ -1,18 +1,5 @@
 # Exercise
 
-Update the existing code:
-
-- Remove the user input of the ego vehicle values
-- Add const to every parameter and variable where it is appropiate
-- print_scene
-  - This function now takes
-  ```cpp
-  const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles
-  ```
-  - Inside the for-loop print out all vehicles at their position
-
-![alt](../../media/10_VehiclePrint.png)
-
 Implement the following functions:
 
 ```cpp
@@ -65,7 +52,7 @@ int main()
     {
         clear_console();
 
-        compute_future_state(&ego_vehicle, &vehicles, 1);
+        compute_future_state(&ego_vehicle, &vehicles, 0.500f);
         print_scene(&ego_vehicle, &vehicles);
 
         sleep_console(500);

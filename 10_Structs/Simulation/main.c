@@ -28,7 +28,7 @@ int main()
     {
         clear_console();
 
-        compute_future_state(&ego_vehicle, &vehicles, 1);
+        compute_future_state(&ego_vehicle, &vehicles, 0.500f);
         print_scene(&ego_vehicle, &vehicles);
 
         sleep_console(500);

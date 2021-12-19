@@ -5,17 +5,15 @@
 
 #include "AdTypes.h"
 
-void print_scene(float speed_mps, uint32_t lane_idx);
+void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles);
 
-void get_user_input(float *speed_mps, uint32_t *lane_idx);
+float kph_to_mps(const float kph);
 
-void handle_lateral_user_input(uint32_t *lane_idx, char lateral_action);
-
-void handle_longitudinal_user_input(float *speed_mps, char longitudinal_action);
-
-float kph_to_mps(float kph);
-
-void init_vehicle(VehicleType *vehicle, int32_t id, float speed_kph, float distance, LaneAssociationType lane);
+void init_vehicle(VehicleType *vehicle,
+                  const int32_t id,
+                  const float speed_kph,
+                  const float distance,
+                  const LaneAssociationType lane);
 
 void init_ego_vehicle(VehicleType *ego_vehicle);
 

@@ -8,36 +8,70 @@
 
 #include "utils.h"
 
-void print_scene(float speed_mps, uint32_t lane_idx)
+void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles)
 {
     printf("\n\n");
     printf("\t  L   C   R\n");
+
+    size_t left_idx = 0;
+    size_t center_idx = 0;
+    size_t right_idx = 0;
 
     float offset_m = 20.0f;
 
     for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
+        const VehicleType *left_vehicle =
+            (left_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_left_lane[left_idx];
+        const VehicleType *center_vehicle =
+            (center_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_center_lane[center_idx];
+        const VehicleType *right_vehicle =
+            (right_idx > NUM_VEHICLES_ON_LANE) ? NULL : &vehicles->vehicles_right_lane[right_idx];
+
         char left_string[] = "   ";
         char center_string[] = "   ";
         char right_string[] = "   ";
 
+        const float range_m = (float)(i);
+
+        if ((left_vehicle != NULL) && (range_m >= left_vehicle->distance_m) &&
+            (left_vehicle->distance_m > (range_m - offset_m)))
+        {
+            strncpy(left_string, " V ", 4);
+            left_idx++;
+        }
+
+        if ((center_vehicle != NULL) && (range_m >= center_vehicle->distance_m) &&
+            (center_vehicle->distance_m > (range_m - offset_m)))
+        {
+            strncpy(center_string, " V ", 4);
+            center_idx++;
+        }
+
+        if ((right_vehicle != NULL) && (range_m >= right_vehicle->distance_m) &&
+            (right_vehicle->distance_m > (range_m - offset_m)))
+        {
+            strncpy(right_string, " V ", 4);
+            right_idx++;
+        }
+
         if (i == 0)
         {
-            switch (lane_idx)
+            switch (ego_vehicle->lane)
             {
             case LANE_ASSOCIATION_TYPE_LEFT:
             {
-                strncpy(left_string, " V ", 4);
+                strncpy(left_string, " E ", 4);
                 break;
             }
             case LANE_ASSOCIATION_TYPE_CENTER:
             {
-                strncpy(center_string, " V ", 4);
+                strncpy(center_string, " E ", 4);
                 break;
             }
             case LANE_ASSOCIATION_TYPE_RIGHT:
             {
-                strncpy(right_string, " V ", 4);
+                strncpy(right_string, " E ", 4);
                 break;
             }
             case LANE_ASSOCIATION_TYPE_NONE:
@@ -52,117 +86,11 @@ void print_scene(float speed_mps, uint32_t lane_idx)
     }
 
     printf("\n");
-    printf("Speed: %f\n", speed_mps);
+    printf("Speed: %f\n", ego_vehicle->speed_mps);
     printf("\n");
 }
 
-void get_user_input(float *speed_mps, uint32_t *lane_idx)
-{
-    printf("\n");
-    char longitudinal_action;
-    printf("LongitudinalAction (w=Increase, s=Decrease): ");
-    scanf(" %c", &longitudinal_action);
-    printf("\n");
-    char lateral_action;
-    printf("LateralAction (a=Left, d=Right): ");
-    scanf(" %c", &lateral_action);
-
-    handle_lateral_user_input(lane_idx, lateral_action);
-    handle_longitudinal_user_input(speed_mps, longitudinal_action);
-}
-
-void handle_lateral_user_input(uint32_t *lane_idx, char lateral_action)
-{
-    switch (lateral_action)
-    {
-    case LATERAL_ACTION_LEFT:
-    {
-        switch (*lane_idx)
-        {
-        case LANE_ASSOCIATION_TYPE_LEFT:
-        {
-            return;
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_CENTER:
-        {
-            *lane_idx = LANE_ASSOCIATION_TYPE_LEFT;
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_RIGHT:
-        {
-            *lane_idx = LANE_ASSOCIATION_TYPE_CENTER;
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_NONE:
-        {
-            return;
-            break;
-        }
-        }
-        break;
-    }
-    case LATERAL_ACTION_RIGHT:
-    {
-        switch (*lane_idx)
-        {
-        case LANE_ASSOCIATION_TYPE_LEFT:
-        {
-            *lane_idx = LANE_ASSOCIATION_TYPE_CENTER;
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_CENTER:
-        {
-            *lane_idx = LANE_ASSOCIATION_TYPE_RIGHT;
-
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_RIGHT:
-        {
-            return;
-            break;
-        }
-        case LANE_ASSOCIATION_TYPE_NONE:
-        {
-            return;
-            break;
-        }
-        }
-        break;
-    }
-    case LATERAL_ACTION_NONE:
-    {
-        return;
-        break;
-    }
-    }
-}
-
-void handle_longitudinal_user_input(float *speed_mps, char longitudinal_action)
-{
-    switch (longitudinal_action)
-    {
-    case LONGITUDINAL_ACTION_ACCELERATE:
-    {
-        float new_speed = (*speed_mps) + ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
-        *speed_mps = new_speed;
-        break;
-    }
-    case LONGITUDINAL_ACTION_DECELERATE:
-    {
-        float new_speed = (*speed_mps) - ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
-        *speed_mps = new_speed;
-        break;
-    }
-    case LONGITUDINAL_ACTION_NONE:
-    {
-        return;
-        break;
-    }
-    }
-}
-
-float kph_to_mps(float kph)
+float kph_to_mps(const float kph)
 {
     return kph / 3.6f;
 }
@@ -176,11 +104,15 @@ void init_ego_vehicle(VehicleType *ego_vehicle)
     ego_vehicle->lane = LANE_ASSOCIATION_TYPE_CENTER;
 }
 
-void init_vehicle(VehicleType *vehicle, int32_t id, float speed_kph, float distance, LaneAssociationType lane)
+void init_vehicle(VehicleType *vehicle,
+                  const int32_t id,
+                  const float speed_kph,
+                  const float distance,
+                  const LaneAssociationType lane)
 {
     vehicle->id = id;
-    vehicle->distance_m = kph_to_mps(speed_kph);
-    vehicle->speed_mps = distance;
+    vehicle->speed_mps = kph_to_mps(speed_kph);
+    vehicle->distance_m = distance;
     vehicle->lane = lane;
 }
 
