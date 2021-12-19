@@ -107,3 +107,61 @@ char to_lower_case(char character)
 }
 
 /* CHAR ARRAYS */
+
+char *to_upper_case_str(char *text)
+{
+    if (text == NULL)
+    {
+        return NULL;
+    }
+
+    char *current_character = text;
+
+    while (*current_character != '\0')
+    {
+        *current_character = to_upper_case(*current_character);
+
+        current_character++;
+    }
+
+    return text;
+}
+
+char *to_lower_case_str(char *text)
+{
+    if (text == NULL)
+    {
+        return NULL;
+    }
+
+    char *current_character = text;
+
+    while (*current_character != '\0')
+    {
+        *current_character = to_lower_case(*current_character);
+
+        current_character++;
+    }
+
+    return text;
+}
+
+char *char_search(char *text, char character)
+{
+    if (text == NULL)
+    {
+        return NULL;
+    }
+
+    while ((*text != character) && (*text != '\0'))
+    {
+        text++;
+    }
+
+    if (*text == '\0')
+    {
+        return NULL;
+    }
+
+    return text;
+}

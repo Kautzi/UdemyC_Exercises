@@ -8,8 +8,6 @@ char *to_upper_case_str(char *text);
 char *to_lower_case_str(char *text);
 
 char *char_search(char *text, char character);
-
-bool string_equal(char *string1, char *string2);
 ```
 
 - To Upper Case
