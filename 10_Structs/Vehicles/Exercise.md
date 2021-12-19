@@ -4,6 +4,7 @@ Create the following structs:
 
 - VehicleType
   - vehicle id (int)
+    - Ego vehicle id is (-1), create a define for this
   - lane association
   - speed in m/s
   - distance to ego vehicle in meter
@@ -11,25 +12,28 @@ Create the following structs:
   - vehicles on left lane array [2 entries in total]
   - vehicles on center lane array [2 entries in total]
   - vehicles on right lane array [2 entries in total]
+  - Create a define for the array length of these vehicle on lanes
 
-Implement the following functions:
+Implement the following functions
 
 ```cpp
-void compute_future_distance(VehicleType *const vehicle,
-                             const float ego_driven_distance,
-                             const float seconds);
+void init_ego_vehicle(VehicleType *ego_vehicle);
 
-void compute_future_state(const VehicleType *const ego_vehicle,
-                          NeighborVehiclesType vehicles,
-                          const float seconds);
+void init_vehicles(NeighborVehiclesType *vehicles);
+
+void print_vehicle(const VehicleType *vehicle);
+
+void print_neighbor_vehicles(const NeighborVehiclesType *vehicles);
 ```
 
-- compute_future_state
-  - Compute the position of all vehicles in **n** seconds
-- compute_future_distance
-  - Helper function for **compute_future_state**
-
-Hint: The future distance of a vehicle is dependent on the ego vehicle, since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle is the origin of the coordinate system.
+- init_ego_vehicle
+  - Just choose any current speed, and lane of the ego vehilce
+- init_vehicles
+  - Just choose any current speed, and lane of all other vehicles (6 in total)
+- print_vehicle
+  - print out all information of a vehicle
+- print_neighbor_vehicles
+  - iterate over all other vehicles and print out their information
 
 ## Main Function
 

@@ -13,12 +13,4 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action);
 
 void handle_longitudinal_user_inpur(float *speed_mps, char longitudinal_action);
 
-void init_ego_vehicle(VehicleType *ego_vehicle);
-
-void init_vehicles(NeighborVehiclesType *vehicles);
-
-void print_vehicle(const VehicleType *vehicle);
-
-void print_neighbor_vehicles(const NeighborVehiclesType *vehicles);
-
 #endif
