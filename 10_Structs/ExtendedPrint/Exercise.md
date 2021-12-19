@@ -13,25 +13,6 @@ Update the existing code:
 
 ![alt](../../media/10_VehiclePrint.png)
 
-Implement the following functions:
-
-```cpp
-void compute_future_distance(VehicleType *const vehicle,
-                             const float ego_driven_distance,
-                             const float seconds);
-
-void compute_future_state(const VehicleType *const ego_vehicle,
-                          NeighborVehiclesType vehicles,
-                          const float seconds);
-```
-
-- compute_future_state
-  - Compute the position of all vehicles in **n** seconds
-- compute_future_distance
-  - Helper function for **compute_future_state**
-
-Hint: The future distance of a vehicle is dependent on the ego vehicle, since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle is the origin of the coordinate system.
-
 ## Main Function
 
 ```cpp
@@ -65,7 +46,6 @@ int main()
     {
         clear_console();
 
-        compute_future_state(&ego_vehicle, &vehicles, 1);
         print_scene(&ego_vehicle, &vehicles);
 
         sleep_console(500);

@@ -67,11 +67,11 @@ void get_user_input(float *speed_mps, uint32_t *lane_idx)
     printf("LateralAction (a=Left, d=Right): ");
     scanf(" %c", &lateral_action);
 
-    handle_lateral_user_inpur(lane_idx, lateral_action);
-    handle_longitudinal_user_inpur(speed_mps, longitudinal_action);
+    handle_lateral_user_input(lane_idx, lateral_action);
+    handle_longitudinal_user_input(speed_mps, longitudinal_action);
 }
 
-void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
+void handle_lateral_user_input(uint32_t *lane_idx, char lateral_action)
 {
     switch (lateral_action)
     {
@@ -138,7 +138,7 @@ void handle_lateral_user_inpur(uint32_t *lane_idx, char lateral_action)
     }
 }
 
-void handle_longitudinal_user_inpur(float *speed_mps, char longitudinal_action)
+void handle_longitudinal_user_input(float *speed_mps, char longitudinal_action)
 {
     switch (longitudinal_action)
     {
