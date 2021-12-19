@@ -3,7 +3,7 @@
 Update the following functions:
 
 ```cpp
-void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
+void print_scene(const VehicleType * ego_vehicle, const NeighborVehiclesType * vehicles);
 
 LaneAssociationType longitudinal_control(const NeighborVehiclesType vehicles,VehicleType ego_vehicle);
 ```
@@ -17,13 +17,13 @@ LaneAssociationType longitudinal_control(const NeighborVehiclesType vehicles,Veh
 Implement the following functions:
 
 ```cpp
-LaneAssociationType get_lane_change_request(const VehicleType *const ego_vehicle,
+LaneAssociationType get_lane_change_request(const VehicleType * ego_vehicle,
                                             const float front_distance,
                                             const float rear_distance);
 
-bool lateral_control(const NeighborVehiclesType *const vehicles,
+bool lateral_control(const NeighborVehiclesType * vehicles,
                      const LaneAssociationType lane_change_request,
-                     VehicleType *const ego_vehicle);
+                     VehicleType * ego_vehicle);
 ```
 
 - get_lane_change_request:

@@ -3,7 +3,7 @@
 Update the following functions
 
 ```cpp
-void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesType *const vehicles);
+void print_scene(const VehicleType * ego_vehicle, const NeighborVehiclesType * vehicles);
 ```
 
 - print_scene:
@@ -13,7 +13,7 @@ void print_scene(const VehicleType *const ego_vehicle, const NeighborVehiclesTyp
 Implement the following functions:
 
 ```cpp
-void longitudinal_control(const VehicleType *const front_vehicle, VehicleType *const ego_vehicle);
+void longitudinal_control(const VehicleType * front_vehicle, VehicleType * ego_vehicle);
 ```
 
 If there is a vehicle in front of the ego vehicle and the distance is below half speed (kph, "halbe tacho"), the vehicle needs to slow down (brake pedal).  

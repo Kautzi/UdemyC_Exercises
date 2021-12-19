@@ -3,12 +3,12 @@
 Implement the following functions:
 
 ```cpp
-void compute_future_distance(VehicleType *const vehicle,
+void compute_future_distance(VehicleType * vehicle,
                              const float ego_driven_distance,
                              const float seconds);
 
-void compute_future_state(const VehicleType *const ego_vehicle,
-                          NeighborVehiclesType vehicles,
+void compute_future_state(const VehicleType * ego_vehicle,
+                          NeighborVehiclesType * vehicles,
                           const float seconds);
 ```
 
