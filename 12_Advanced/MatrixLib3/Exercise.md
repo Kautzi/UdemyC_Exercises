@@ -48,15 +48,26 @@ int main()
 {
     Matrix *m1 = createMatrix(3, 3, -1.0f);
     Matrix *m2 = createMatrix(3, 3, +1.0f);
-    printMatrix(m1);
-    printMatrix(m2);
 
     Matrix *m3 = addMatrix(m1, m2);
+    printMatrix(m1);
+    printf("+\n");
+    printMatrix(m2);
+    printf("=\n");
+    printMatrix(m3);
+
     Matrix *m4 = subMatrix(m3, m1);
     printMatrix(m3);
+    printf("-\n");
+    printMatrix(m1);
+    printf("=\n");
     printMatrix(m4);
 
     Matrix *m5 = multiplyMatrix(m1, m2);
+    printMatrix(m1);
+    printf("*\n");
+    printMatrix(m2);
+    printf("=\n");
     printMatrix(m5);
 
     Matrix *m6 = createMatrix(2, 3, 0.0f);
@@ -68,18 +79,27 @@ int main()
     m6->data[5] = 6;
 
     Vector *min_axis0 = minMatrix(m6, AXIS_0);
-    Vector *max_axis0 = maxMatrix(m6, AXIS_0);
+    printf("min axis=0 of m6");
     printVector(min_axis0);
+
+    Vector *max_axis0 = maxMatrix(m6, AXIS_0);
+    printf("max axis=0 of m6");
     printVector(max_axis0);
 
     Vector *min_axis1 = minMatrix(m6, AXIS_1);
-    Vector *max_axis1 = maxMatrix(m6, AXIS_1);
+    printf("min axis=1 of m6");
     printVector(min_axis1);
+
+    Vector *max_axis1 = maxMatrix(m6, AXIS_1);
+    printf("max axis=1 of m6");
     printVector(max_axis1);
 
     Vector *mean_axis0 = meanMatrix(m6, AXIS_0);
-    Vector *mean_axis1 = meanMatrix(m6, AXIS_1);
+    printf("mean axis=0 of m6");
     printVector(mean_axis0);
+
+    Vector *mean_axis1 = meanMatrix(m6, AXIS_1);
+    printf("mean axis=1 of m6");
     printVector(mean_axis1);
 
     freeMatrix(m1);
@@ -97,7 +117,3 @@ int main()
     return 0;
 }
 ```
-
-## Expected Console Output
-
-![alt](../../media/12_Matrix2.png)

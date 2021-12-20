@@ -29,7 +29,7 @@ Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float v
         return NULL;
     }
 
-    for (size_t i = 0; i < num_rows * num_cols; i++)
+    for (size_t i = 0; i < num_cols * num_rows; i++)
     {
         data[i] = value;
     }
@@ -55,6 +55,7 @@ Matrix *freeMatrix(Matrix *matrix)
     }
 
     free(matrix);
+
     return NULL;
 }
 
@@ -124,7 +125,7 @@ void printMatrix(const Matrix *matrix)
 }
 
 /**********************/
-/*  MATH. FUNCTIONS   */
+/*  MATH FUNCTIONS    */
 /**********************/
 
 Matrix *addMatrix(const Matrix *matrix1, const Matrix *matrix2)
@@ -188,27 +189,27 @@ Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2)
         return NULL;
     }
 
-    Matrix *result = createMatrix(matrix1->num_rows, matrix1->num_cols, 0.0f);
+    Matrix *result = createMatrix(matrix1->num_rows, matrix2->num_cols, 0.0f);
 
     if (result == NULL)
     {
         return NULL;
     }
 
-    for (size_t i = 0; i != matrix1->num_rows; ++i)
+    for (size_t i = 0; i < matrix1->num_rows; i++)
     {
-        for (size_t j = 0; j != matrix2->num_cols; ++j)
+        for (size_t j = 0; j < matrix2->num_cols; j++)
         {
-            size_t idx_ij = matrixIndex(matrix2->num_cols, i, j);
-            result->data[idx_ij] = 0.0f;
+            const size_t index_ij = matrixIndex(matrix2->num_cols, i, j);
+            result->data[index_ij] = 0.0f;
 
-            for (size_t k = 0; k != matrix2->num_rows; ++k)
+            for (size_t k = 0; k < matrix2->num_rows; k++)
             {
-                size_t idx_ik = matrixIndex(matrix2->num_rows, i, k);
-                size_t idx_kj = matrixIndex(matrix2->num_cols, k, j);
+                const size_t index_ik = matrixIndex(matrix2->num_rows, i, k);
+                const size_t index_kj = matrixIndex(matrix2->num_cols, k, j);
 
-                result->data[idx_ij] =
-                    result->data[idx_ij] + matrix1->data[idx_ik] * matrix2->data[idx_kj];
+                result->data[index_ij] =
+                    result->data[index_ij] + matrix1->data[index_ik] * matrix2->data[index_kj];
             }
         }
     }

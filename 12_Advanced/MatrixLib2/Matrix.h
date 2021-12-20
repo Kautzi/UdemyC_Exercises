@@ -44,7 +44,7 @@ bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const mat
 void printMatrix(const Matrix *matrix);
 
 /**********************/
-/*  MATH. FUNCTIONS   */
+/*  MATH FUNCTIONS    */
 /**********************/
 
 Matrix *addMatrix(const Matrix *matrix1, const Matrix *matrix2);
