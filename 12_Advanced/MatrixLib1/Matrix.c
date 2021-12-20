@@ -29,7 +29,7 @@ Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float v
         return NULL;
     }
 
-    for (size_t i = 0; i < num_rows * num_cols; i++)
+    for (size_t i = 0; i < num_cols * num_rows; i++)
     {
         data[i] = value;
     }
@@ -55,6 +55,7 @@ Matrix *freeMatrix(Matrix *matrix)
     }
 
     free(matrix);
+
     return NULL;
 }
 
