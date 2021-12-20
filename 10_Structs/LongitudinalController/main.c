@@ -26,8 +26,8 @@ int main()
     {
         clear_console();
 
+        compute_future_state(&ego_vehicle, &vehicles, 0.500f);
         print_scene(&ego_vehicle, &vehicles);
-        compute_future_state(&ego_vehicle, &vehicles, 0.100F);
         longitudinal_control(&vehicles.vehicles_center_lane[0], &ego_vehicle);
 
         sleep_console(100);

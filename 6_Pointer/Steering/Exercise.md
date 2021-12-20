@@ -17,7 +17,7 @@ After processing the user input, do a lane change and adapt the vehicle speed re
 - handle_lateral_user_input(lane_idx, lateral_action);
 - handle_longitudinal_user_input(speed_mps, longitudinal_action);
 
-The acc/deceleration is applied by increasing/reducing the current speed (m/s) by 5%.  
+The acc/deceleration is applied by increasing/reducing the current speed ($\frac{m}{s}$) by 5%.  
 For this create a define **LONGITUDINAL_DIFFERENCE_PERCENTAGE** in a new file called **AdConstants.h**
 
 ## Example Console Output
@@ -40,7 +40,7 @@ int main()
     printf("Create the properties of a vehicle.\n");
 
     float speed_mps;
-    printf("Speed in m/s: ");
+    printf("Speed in $\frac{m}{s}$: ");
     scanf("%f", &speed_mps);
 
     uint32_t lane_idx;

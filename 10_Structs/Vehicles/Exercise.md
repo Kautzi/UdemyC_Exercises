@@ -6,7 +6,7 @@ Create the following structs:
   - vehicle id (int)
     - Ego vehicle id is (-1), create a define for this
   - lane association
-  - speed in m/s
+  - speed in $\frac{m}{s}$
   - distance to ego vehicle in meter
 - NeighborVehiclesType
   - vehicles on left lane array [2 entries in total]

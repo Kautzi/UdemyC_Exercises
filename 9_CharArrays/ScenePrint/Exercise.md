@@ -25,7 +25,7 @@ int main()
     printf("Create the properties of a vehicle.\n");
 
     float speed_mps;
-    printf("Speed in m/s: ");
+    printf("Speed in $\frac{m}{s}$: ");
     scanf("%f", &speed_mps);
 
     uint32_t lane_idx;

@@ -4,7 +4,7 @@ In this exercise, we will start with a project that will be extended over the wh
 The scenario will be an autonomous driving car on a highway with three lanes.  
 For this exercise, we will read-in the following information from the console:
 
-- The current speed (in meter per second *m/s*) of our vehicle
+- The current speed (in meter per second *$\frac{m}{s}$*) of our vehicle
 - The current lane (There are three lanes in total)
 
 The lane will be represented by an enum **LaneAssociationType** with the following properties:
