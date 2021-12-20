@@ -26,7 +26,7 @@ bool lateral_control(const NeighborVehiclesType *vehicles,
   - Send a lane change request if the vehicle would crash with the rear vehicle
     - If there is enough space on the right lane, send a request
     - Else If there is enough space on the left lane, send a request
-    - Else, dont do anything
+    - Else, don't do anything
     - Check the size of the gap on the target lane
 - lateral_control
   - If there is a request from **get_lane_change_request** do a lane change

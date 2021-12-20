@@ -1,10 +1,10 @@
 # Exercise
 
-- Update the **print_scene** function such that the following cosole output is printed
+- Update the **print_scene** function such that the following console output is printed
 
 ![alt](../../media/9_ScenePrint.png)
 
-The vehicle will always be placed at the row 0.  
+The vehicle will always be placed in row 0.  
 Only the lane (column) can be changed.  
 In future exercises, this plot will be used to display also other vehicles.  
 

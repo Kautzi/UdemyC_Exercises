@@ -3,13 +3,13 @@
 Update the existing code:
 
 - Remove the user input of the ego vehicle values
-- Add const to every parameter and variable where it is appropiate
+- Add const to every parameter and variable where it is appropriate
 - print_scene
   - This function now takes
   ```cpp
   const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles
   ```
-  - Inside the for-loop print out all vehicles at their position
+  - Inside the for-loop print out all vehicles at their correct position (distance and lane)
 
 ![alt](../../media/10_VehiclePrint.png)
 

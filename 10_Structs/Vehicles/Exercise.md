@@ -12,7 +12,14 @@ Create the following structs:
   - vehicles on left lane array [2 entries in total]
   - vehicles on center lane array [2 entries in total]
   - vehicles on right lane array [2 entries in total]
-  - Create a define for the array length of these vehicle on lanes
+  - Create a define for the array length from above
+
+Note:
+
+The logic of these arrays is:
+
+- Index 0: Vehicle is in the front of the ego vehicle (distance > 0 at the start)
+- Index 1: Vehicle is in the back (rear) of the ego vehicle (distance < 0 at the start)
 
 Implement the following functions
 
@@ -27,7 +34,7 @@ void print_neighbor_vehicles(const NeighborVehiclesType *vehicles);
 ```
 
 - init_ego_vehicle
-  - Just choose any current speed, and lane of the ego vehilce
+  - Just choose any current speed, and lane of the ego vehicle
 - init_vehicles
   - Just choose any current speed, and lane of all other vehicles (6 in total)
 - print_vehicle

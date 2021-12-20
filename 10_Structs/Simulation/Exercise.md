@@ -17,7 +17,10 @@ void compute_future_state(const VehicleType * ego_vehicle,
 - compute_future_distance
   - Helper function for **compute_future_state**
 
-Hint: The future distance of a vehicle is dependent on the ego vehicle, since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle is the origin of the coordinate system.
+Hint:
+
+The future distance of a vehicle is dependent on the ego vehicle speed and the others vehicle speed.  
+Since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle is the origin of the coordinate system.
 
 ## Main Function
 

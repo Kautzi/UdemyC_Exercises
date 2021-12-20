@@ -4,7 +4,7 @@ Create a matrix struct with the following properties
 
 - float pointer to 1d heap array
 - number of rows
-- numer of cols
+- number of cols
 
 Implement the following functions for a **matrix** library:
 
@@ -28,7 +28,7 @@ void printMatrix(const Matrix *matrix);
   - Free the allocated heap memory
 - matrixIndex
   - Return the 1D-array index for the index (i, j)
-  - Note: I talked about this use-case in the main course
+  - Note: I talked about this use case in the main course
 - matrixNumElements
   - Return the number of elements of the array
 - matrixSameSize

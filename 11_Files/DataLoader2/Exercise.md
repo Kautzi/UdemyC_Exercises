@@ -17,7 +17,7 @@ void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle);
 - **init_ego_vehicle**
   - Load the ego vehicle data of the static global variable
 - **load_cycle**
-  - Load the other vehicle data of the currenty cycle of the static global variable
+  - Load the other vehicle data of the current cycle of the static global variable
 
 ## Main Function
 
