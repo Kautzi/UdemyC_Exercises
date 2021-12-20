@@ -301,7 +301,6 @@ Vector *minMatrix(const Matrix *matrix, const Axis axis)
         }
 
         return result;
-        break;
     }
     case AXIS_1:
     {
@@ -325,15 +324,12 @@ Vector *minMatrix(const Matrix *matrix, const Axis axis)
         }
 
         return result;
-        break;
     }
     default:
     {
-        break;
+        return NULL;
     }
     }
-
-    return NULL;
 }
 
 Vector *maxMatrix(const Matrix *matrix, const Axis axis)
@@ -367,7 +363,6 @@ Vector *maxMatrix(const Matrix *matrix, const Axis axis)
         }
 
         return result;
-        break;
     }
     case AXIS_1:
     {
@@ -391,15 +386,12 @@ Vector *maxMatrix(const Matrix *matrix, const Axis axis)
         }
 
         return result;
-        break;
     }
     default:
     {
-        break;
+        return NULL;
     }
     }
-
-    return NULL;
 }
 
 Vector *meanMatrix(const Matrix *matrix, const Axis axis)
@@ -417,20 +409,19 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
 
         for (size_t j = 0; j < matrix->num_cols; j++)
         {
-            float mean = 0.0f;
+            float sum = 0.0f;
 
             for (size_t i = 0; i < matrix->num_rows; i++)
             {
                 const size_t idx = matrixIndex(matrix->num_cols, i, j);
 
-                mean += matrix->data[idx];
+                sum += matrix->data[idx];
             }
 
-            result->data[j] = mean / (float)(matrix->num_rows);
+            result->data[j] = sum / matrix->num_rows;
         }
 
         return result;
-        break;
     }
     case AXIS_1:
     {
@@ -438,26 +429,23 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
 
         for (size_t i = 0; i < matrix->num_rows; i++)
         {
-            float mean = 0.0f;
+            float sum = 0.0f;
 
             for (size_t j = 0; j < matrix->num_cols; j++)
             {
                 const size_t idx = matrixIndex(matrix->num_cols, i, j);
 
-                mean += matrix->data[idx];
+                sum += matrix->data[idx];
             }
 
-            result->data[i] = mean / (float)(matrix->num_cols);
+            result->data[i] = sum / matrix->num_cols;
         }
 
         return result;
-        break;
     }
     default:
     {
-        break;
+        return NULL;
     }
     }
-
-    return NULL;
 }

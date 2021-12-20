@@ -30,13 +30,11 @@ int main()
     printf("=\n");
     printMatrix(m5);
 
-    Matrix *m6 = createMatrix(2, 3, 0.0f);
+    Matrix *m6 = createMatrix(2, 2, 0.0f);
     m6->data[0] = 1;
     m6->data[1] = 2;
     m6->data[2] = 3;
     m6->data[3] = 4;
-    m6->data[4] = 5;
-    m6->data[5] = 6;
 
     Vector *min_axis0 = minMatrix(m6, AXIS_0);
     printf("min axis=0 of m6");
