@@ -26,7 +26,6 @@ void preload_ego_vehicle_data(const char datapath[128]);
 
 void preload_vehicle_data(const char datapath[128]);
 
-// The functions below will be implemented in the next exercise
 void init_ego_vehicle(VehicleType *ego_vehicle);
 
 void init_vehicle(VehicleType *vehicle, const int32_t id, const uint32_t cycle);
@@ -42,6 +41,12 @@ void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle);
 - **preload_vehicle_data**
   - Read in the complete data from the files **./data/vehicle_0...6.txt**
     - Store the information into a global **static** struct variable **VEHICLE_DATA**
+- **init_vehicle** and **init_vehicles**
+  - Load the other vehicle data of the first cycle (index=0) of the static global variable
+- **init_ego_vehicle**
+  - Load the ego vehicle data of the static global variable
+- **load_cycle**
+  - Load the other vehicle data of the currenty cycle of the static global variable
 
 ## Main Function
 
