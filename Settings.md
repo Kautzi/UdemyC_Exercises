@@ -22,6 +22,14 @@ We will use clang-format and clang-tidy.
 Clang-format: Formatter tool for source code, will be installed by the Microsoft C/C++ extension  
 Clang-tidy: Checks for issues in the code (similar to the compiler warnings), will be installed by the  
 
+## Steps from the video
+
+0. Install all tools from the main course (including C/C++ Runner)
+1. Copy settings below
+2. Select folder in the blue status bar down below
+3. F1 (Command Palette) > C Config Files (Minimal)
+4. Paste the copied settings into the **settings.json** file
+
 ### Extra settings (for local .vscode/settings.json file)
 
 ```json
