@@ -33,6 +33,12 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis);
   - E.g. M = max([[1, 2], [3, 4]]), axis = 1 => [1.5, 3.5]
 
 Hint:
+
+Operations on axis=0 means, that we will do the operations for each column.
+Operations on axis=1 means, that we will do the operations for each row.
+
+Note:
+
 You can use the **vector** library as a starting point!
 
 ## Main Function
