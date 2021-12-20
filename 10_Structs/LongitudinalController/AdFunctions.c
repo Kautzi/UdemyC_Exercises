@@ -8,7 +8,6 @@
 
 #include "utils.h"
 
-
 void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *vehicles)
 {
     printf("\n\n");
@@ -18,7 +17,7 @@ void print_scene(const VehicleType *ego_vehicle, const NeighborVehiclesType *veh
     size_t center_idx = 0;
     size_t right_idx = 0;
 
-    float offset_m = 20.0f;
+    float offset_m = 10.0f;
 
     for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
@@ -180,36 +179,21 @@ float mps_to_kph(const float mps)
 
 void decrease_speed(VehicleType *ego_vehicle)
 {
-    const float decrease = ego_vehicle->speed_mps * LONGITUDINAL_DIFFERENCE_PERCENTAGE;
+    const float speed_decrease = ego_vehicle->speed_mps * LONGITUDINAL_DIFFERENCE_PERCENTAGE;
 
-    if (ego_vehicle->speed_mps - decrease > 0.0F)
+    if ((ego_vehicle->speed_mps - speed_decrease) > 0.0f)
     {
-        ego_vehicle->speed_mps -= decrease;
+        ego_vehicle->speed_mps = ego_vehicle->speed_mps - speed_decrease;
     }
 }
 
 void longitudinal_control(const VehicleType *front_vehicle, VehicleType *ego_vehicle)
 {
-    const float minimal_distance = mps_to_kph(front_vehicle->speed_mps) / 2.0F;
+    const float minimal_distance_m = mps_to_kph(ego_vehicle->speed_mps) / 2.0f;
+    const float front_distance_m = front_vehicle->distance_m;
 
-    const float front_distance = front_vehicle->distance_m;
-
-    if (front_distance < 0.0F)
+    if (front_distance_m < minimal_distance_m)
     {
-        return;
+        decrease_speed(ego_vehicle);
     }
-
-    bool front_vehicle_too_close = false;
-
-    if (front_distance < minimal_distance)
-    {
-        front_vehicle_too_close = true;
-    }
-
-    if (!front_vehicle_too_close)
-    {
-        return;
-    }
-
-    decrease_speed(ego_vehicle);
 }
