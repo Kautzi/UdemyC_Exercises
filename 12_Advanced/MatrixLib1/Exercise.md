@@ -1,5 +1,11 @@
 # Exercise
 
+Create a matrix struct with the following properties
+
+- float pointer to 1d heap array
+- number of rows
+- numer of cols
+
 Implement the following functions for a **matrix** library:
 
 ```cpp
@@ -22,7 +28,7 @@ void printMatrix(const Matrix *matrix);
   - Free the allocated heap memory
 - matrixIndex
   - Return the 1D-array index for the index (i, j)
-  - Note: I talked about this in the main course, that 1d-heap arrays are more performant than 2d-heap arrays
+  - Note: I talked about this use-case in the main course
 - matrixNumElements
   - Return the number of elements of the array
 - matrixSameSize
