@@ -1,13 +1,19 @@
 # Exercise
 
-Implement the following functions:
+Update the following functions:
 
 ```cpp
-...
+void preload_ego_vehicle_data(const char datapath[128], int use_case_idx);
+
+void preload_vehicle_data(const char datapath[128], int use_case_idx);
 ```
 
-- ...
-  - ...
+- **preload_ego_vehicle_data** and **preload_vehicle_data**
+  - The new data path has the following naming:
+    - PROJECT_DIR/12_Advanced/CmdArguments/data/**UseCaseIndex**/..
+  - Adapt the code such that the files of a certain use case index can be read in
+- **main**
+  - read in use-case index and datapath from argv/argc
 
 ## Main Function
 
@@ -17,9 +23,9 @@ Implement the following functions:
 #include <stdlib.h>
 #include <string.h>
 
+#include "AdDataLoader.h"
 #include "AdFunctions.h"
 #include "AdTypes.h"
-#include "AdDataLoader.h"
 
 #include "utils.h"
 
@@ -27,17 +33,7 @@ char datapath[128] = "C:/Users/Jan/Dropbox/_Coding/UdemyCExt/12_Advanced/CmdArgu
 
 int main(int argc, char const **argv)
 {
-    int use_case_idx = 0;
-
-    if (argc >= 2)
-    {
-        strncpy(datapath, argv[1], 128);
-    }
-
-    if (argc == 3)
-    {
-        use_case_idx = atoi(argv[2]);
-    }
+    // read in argc/argv
 
     VehicleType ego_vehicle;
     NeighborVehiclesType vehicles;
@@ -58,25 +54,28 @@ int main(int argc, char const **argv)
     for (uint32_t cycle = 0; cycle < NUM_CYCLES; cycle++)
     {
         clear_console();
-
         load_cycle(&vehicles, cycle);
+
         print_scene(&ego_vehicle, &vehicles);
         compute_future_state(&ego_vehicle, &vehicles, 0.100F);
-        const LaneAssociationType lane_change_request = longitudinal_control(&vehicles, &ego_vehicle);
-        const bool lane_change_successful = lateral_control(&vehicles, lane_change_request, &ego_vehicle);
 
-        if (lane_change_request != ego_vehicle.lane)
+        const VehicleType *ego_lane_vehicles = get_vehicle_array(ego_vehicle.lane, &vehicles);
+        longitudinal_control(&ego_lane_vehicles[0], &ego_vehicle);
+
+        const LaneAssociationType lane_change_request =
+            get_lane_change_request(&ego_vehicle, &vehicles);
+        const bool lane_change_executed = lateral_control(lane_change_request, &ego_vehicle);
+
+        if (lane_change_executed)
         {
-            printf("Lane change request: %d", (int)(lane_change_request));
-        }
-        if (lane_change_successful)
-        {
-            printf("Lane change successull");
+            printf("Executed lane change!");
         }
 
         sleep_console(100);
     }
 
+
     return 0;
 }
+
 ```

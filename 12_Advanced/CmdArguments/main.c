@@ -20,7 +20,7 @@ int main(int argc, char const **argv)
         strncpy(datapath, argv[1], 128);
     }
 
-    if (argc == 3)
+    if (argc >= 3)
     {
         use_case_idx = atoi(argv[2]);
     }
@@ -44,26 +44,26 @@ int main(int argc, char const **argv)
     for (uint32_t cycle = 0; cycle < NUM_CYCLES; cycle++)
     {
         clear_console();
-
         load_cycle(&vehicles, cycle);
+
         print_scene(&ego_vehicle, &vehicles);
         compute_future_state(&ego_vehicle, &vehicles, 0.100F);
-        const LaneAssociationType lane_change_request =
-            longitudinal_control(&vehicles, &ego_vehicle);
-        const bool lane_change_successful =
-            lateral_control(&vehicles, lane_change_request, &ego_vehicle);
 
-        if (lane_change_request != ego_vehicle.lane)
+        const VehicleType *ego_lane_vehicles = get_vehicle_array(ego_vehicle.lane, &vehicles);
+        longitudinal_control(&ego_lane_vehicles[0], &ego_vehicle);
+
+        const LaneAssociationType lane_change_request =
+            get_lane_change_request(&ego_vehicle, &vehicles);
+        const bool lane_change_executed = lateral_control(lane_change_request, &ego_vehicle);
+
+        if (lane_change_executed)
         {
-            printf("Lane change request: %d", (int)(lane_change_request));
-        }
-        if (lane_change_successful)
-        {
-            printf("Lane change successull");
+            printf("Executed lane change!");
         }
 
         sleep_console(100);
     }
+
 
     return 0;
 }

@@ -1,31 +1,8 @@
 # Exercise
 
-Remove the following functions from AdFunctuns.c/h:
-
-```cpp
-void init_vehicle(VehicleType *vehicle,
-                  const int32_t id,
-                  const float speed_kph,
-                  const float distance,
-                  const LaneAssociationType lane);
-
-void init_ego_vehicle(VehicleType *ego_vehicle);
-
-void init_vehicles(NeighborVehiclesType *vehicles);
-```
-
-Add the following defines to AdConstants.h
-
-- NUM_CYCLES = 1000
-- NUM_VEHICLES = 6
-
 Implement the following functions in the AdDataLoader.c/h:
 
 ```cpp
-void preload_ego_vehicle_data(const char datapath[128]);
-
-void preload_vehicle_data(const char datapath[128]);
-
 void init_ego_vehicle(VehicleType *ego_vehicle);
 
 void init_vehicle(VehicleType *vehicle, const int32_t id, const uint32_t cycle);
@@ -35,12 +12,6 @@ void init_vehicles(NeighborVehiclesType *vehicles);
 void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle);
 ```
 
-- **preload_ego_vehicle_data**
-  - Read in the data from the file **./data/ego_data.txt**
-    - Store the information into a global **static** struct variable **EGO_VEHICLE_DATA**
-- **preload_vehicle_data**
-  - Read in the complete data from the files **./data/vehicle_0...6.txt**
-    - Store the information into a global **static** struct variable **VEHICLE_DATA**
 - **init_vehicle** and **init_vehicles**
   - Load the other vehicle data of the first cycle (index=0) of the static global variable
 - **init_ego_vehicle**
@@ -108,34 +79,4 @@ int main()
 
     return 0;
 }
-```
-
-```cpp
-// AdDataLoader.c
-#ifndef DATA_LOADER_H
-#define DATA_LOADER_H
-
-#include <stdint.h>
-
-#include "AdConstants.h"
-#include "AdTypes.h"
-
-#endif
-```
-
-```cpp
-// AdDataLoader.c
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "AdConstants.h"
-#include "AdFunctions.h"
-#include "AdTypes.h"
-#include "AdDataLoader.h"
-
-#include "utils.h"
-
-static VehicleType EGO_VEHICLE_DATA;
-static VehicleType VEHICLE_DATA[NUM_VEHICLES][NUM_CYCLES];
-```
+``

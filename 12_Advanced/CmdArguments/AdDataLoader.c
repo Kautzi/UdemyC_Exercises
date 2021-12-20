@@ -16,14 +16,13 @@ void preload_ego_vehicle_data(const char datapath[128], int use_case_idx)
 {
     char filepath[256] = {'\0'};
     strncpy(filepath, datapath, 128);
-    char use_case_str[128];
+    char use_case_str[128] = {'\0'};
     snprintf(use_case_str, 128, "/%d/", use_case_idx);
     strncat(filepath, use_case_str, 128);
-    char filename[128] = {"ego_data.txt"};
+    char filename[128] = "ego_data.txt";
     strncat(filepath, filename, 128);
 
     printf("Loading ego data from: %s\n", filepath);
-
     FILE *fp = fopen(filepath, "r");
 
     if (fp == NULL)
@@ -43,7 +42,7 @@ void preload_ego_vehicle_data(const char datapath[128], int use_case_idx)
     float speed_mps = (float)atof(line + speed_str_len);
 
     EGO_VEHICLE_DATA.speed_mps = speed_mps;
-    EGO_VEHICLE_DATA.distance_m = 0.0F;
+    EGO_VEHICLE_DATA.distance_m = 0.0f;
     EGO_VEHICLE_DATA.lane = lane_idx;
     EGO_VEHICLE_DATA.id = EGO_VEHICLE_ID;
 
@@ -56,7 +55,7 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
     {
         char filepath[256] = {'\0'};
         strncpy(filepath, datapath, 128);
-        char use_case_str[128];
+        char use_case_str[128] = {'\0'};
         snprintf(use_case_str, 128, "/%d/", use_case_idx);
         strncat(filepath, use_case_str, 128);
         char filename[128] = {'\0'};
@@ -64,15 +63,13 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
         strncat(filepath, filename, 128);
 
         printf("Loading vehicle %d data from: %s\n", vehicle_idx, filepath);
-
         FILE *fp = fopen(filepath, "r");
 
         if (fp == NULL)
         {
-            continue;
+            return;
         }
 
-        int idx = 0;
         int line_size = 256;
         char line[256] = {'\0'};
 
@@ -84,13 +81,15 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
         size_t distance_str_len = strlen("Distance: ");
         float distance_m = (float)atof(line + distance_str_len);
 
+        int idx = 0;
         while (fgets(line, line_size, fp) != NULL)
         {
-            char start_str[128] = {'\0'};
-            snprintf(start_str, 128, "Speed %d: ", idx);
-            size_t start_str_len = strlen(start_str);
+            char speed_str[128] = {'\0'};
+            snprintf(speed_str, 128, "Speed %d: ", idx);
+            size_t speed_str_len = strlen(speed_str);
 
-            float speed_mps = (float)atof(line + start_str_len);
+            float speed_mps = (float)atof(line + speed_str_len);
+
             VEHICLE_DATA[vehicle_idx][idx].id = vehicle_idx;
             VEHICLE_DATA[vehicle_idx][idx].speed_mps = speed_mps;
             VEHICLE_DATA[vehicle_idx][idx].distance_m = distance_m;
@@ -103,7 +102,7 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx)
     }
 }
 
-void init_ego_vehicle(VehicleType *const ego_vehicle)
+void init_ego_vehicle(VehicleType *ego_vehicle)
 {
     ego_vehicle->id = EGO_VEHICLE_DATA.id;
     ego_vehicle->speed_mps = EGO_VEHICLE_DATA.speed_mps;
@@ -111,7 +110,7 @@ void init_ego_vehicle(VehicleType *const ego_vehicle)
     ego_vehicle->lane = EGO_VEHICLE_DATA.lane;
 }
 
-void init_vehicle(VehicleType *const vehicle, const int32_t id, const uint32_t cycle)
+void init_vehicle(VehicleType *vehicle, const int32_t id, const uint32_t cycle)
 {
     vehicle->id = VEHICLE_DATA[id][cycle].id;
     vehicle->speed_mps = VEHICLE_DATA[id][cycle].speed_mps;
@@ -119,7 +118,7 @@ void init_vehicle(VehicleType *const vehicle, const int32_t id, const uint32_t c
     vehicle->lane = VEHICLE_DATA[id][cycle].lane;
 }
 
-void init_vehicles(NeighborVehiclesType *const vehicles)
+void init_vehicles(NeighborVehiclesType *vehicles)
 {
     init_vehicle(&vehicles->vehicles_left_lane[0], 0, 0);
     init_vehicle(&vehicles->vehicles_left_lane[1], 1, 0);
@@ -129,7 +128,7 @@ void init_vehicles(NeighborVehiclesType *const vehicles)
     init_vehicle(&vehicles->vehicles_right_lane[1], 5, 0);
 }
 
-void load_cycle(NeighborVehiclesType *const vehicles, const uint32_t cycle)
+void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle)
 {
     vehicles->vehicles_left_lane[0].speed_mps = VEHICLE_DATA[0][cycle].speed_mps;
     vehicles->vehicles_left_lane[1].speed_mps = VEHICLE_DATA[1][cycle].speed_mps;
