@@ -1,6 +1,6 @@
 # Exercise
 
-Implement a variadic function for our Vector and Matrix library
+Implement a variadic function for our Vector and Matrix library:
 
 - setVectorValues
   - Input Parameters
@@ -12,6 +12,15 @@ Implement a variadic function for our Vector and Matrix library
     - The matrix
     - The number of elements to set
     - The values to set (variadic)
+
+Note:
+
+Check inside the function if the number of elements to set is larger than the number of elements of the vetor/matrix.  
+In general, you can use the vararg summation code from the main course as a starting point.  
+Dont forget to include
+```cpp
+#include <stdarg.h>
+```
 
 ## Main Function
 
