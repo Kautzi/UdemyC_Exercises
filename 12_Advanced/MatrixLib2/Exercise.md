@@ -3,7 +3,7 @@
 Implement the following functions for a **matrix** library:
 
 ```cpp
-bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const matrix2);
+bool matrixMultiplyPossible(const Matrix *matrix1, const Matrix *matrix2);
 
 Matrix *addMatrix(const Matrix *matrix1, const Matrix *matrix2);
 

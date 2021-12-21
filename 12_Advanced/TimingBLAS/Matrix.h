@@ -43,6 +43,8 @@ bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2);
 
 bool matrixMultiplyPossible(const Matrix *matrix1, const Matrix *matrix2);
 
+bool matrixMultiplyByVectorPossible(const Matrix *matrix, const Vector *vector);
+
 /**********************/
 /*  I/O FUNCTIONS     */
 /**********************/
@@ -68,5 +70,9 @@ Vector *minMatrix(const Matrix *matrix, const Axis axis);
 Vector *maxMatrix(const Matrix *matrix, const Axis axis);
 
 Vector *meanMatrix(const Matrix *matrix, const Axis axis);
+
+Matrix *matrixTranspose(const Matrix *matrix);
+
+Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector);
 
 #endif // MATRIX_H

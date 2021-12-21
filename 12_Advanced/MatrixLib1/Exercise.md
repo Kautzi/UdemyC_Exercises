@@ -15,9 +15,9 @@ Matrix *freeMatrix(Matrix *matrix);
 
 size_t matrixIndex(const size_t num_cols, const size_t i, const size_t j);
 
-size_t matrixNumElements(const Matrix *const matrix);
+size_t matrixNumElements(const Matrix *matrix);
 
-bool matrixSameSize(const Matrix *const matrix1, const Matrix *const matrix2);
+bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2);
 
 void printMatrix(const Matrix *matrix);
 ```

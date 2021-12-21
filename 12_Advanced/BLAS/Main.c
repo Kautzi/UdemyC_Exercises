@@ -6,7 +6,7 @@
 
 int main()
 {
-    Matrix *m1 = createMatrix(2, 3, -1.0f);
+    Matrix *m1 = createMatrix(500, 400, -1.0f);
     m1->data[0] = 1;
     m1->data[1] = 2;
     m1->data[2] = 3;

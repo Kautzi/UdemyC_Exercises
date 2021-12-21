@@ -68,17 +68,17 @@ size_t matrixIndex(const size_t num_cols, const size_t i, const size_t j)
     return i * num_cols + j;
 }
 
-size_t matrixNumElements(const Matrix *const matrix)
+size_t matrixNumElements(const Matrix *matrix)
 {
     return matrix->num_cols * matrix->num_rows;
 }
 
-bool matrixSameSize(const Matrix *const matrix1, const Matrix *const matrix2)
+bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2)
 {
     return ((matrix1->num_rows == matrix2->num_rows) && (matrix1->num_cols == matrix2->num_cols));
 }
 
-bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const matrix2)
+bool matrixMultiplyPossible(const Matrix *matrix1, const Matrix *matrix2)
 {
     return (matrix1->num_cols == matrix2->num_rows);
 }

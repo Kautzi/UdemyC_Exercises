@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -58,6 +59,22 @@ Matrix *freeMatrix(Matrix *matrix)
     return NULL;
 }
 
+void setMatrixValues(Matrix *matrix, size_t count, ...)
+{
+    va_list args;
+    va_start(args, count);
+
+    size_t num_elements = matrixNumElements(matrix);
+    size_t range = (count > num_elements) ? num_elements : count;
+
+    for (size_t i = 0; i < range; i++)
+    {
+        matrix->data[i] = (float)va_arg(args, double);
+    }
+
+    va_end(args);
+}
+
 /**********************/
 /*  HELPER FUNCTIONS  */
 /**********************/
@@ -67,17 +84,17 @@ size_t matrixIndex(const size_t num_cols, const size_t i, const size_t j)
     return i * num_cols + j;
 }
 
-size_t matrixNumElements(const Matrix *const matrix)
+size_t matrixNumElements(const Matrix *matrix)
 {
     return matrix->num_cols * matrix->num_rows;
 }
 
-bool matrixSameSize(const Matrix *const matrix1, const Matrix *const matrix2)
+bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2)
 {
     return ((matrix1->num_rows == matrix2->num_rows) && (matrix1->num_cols == matrix2->num_cols));
 }
 
-bool matrixMultiplyPossible(const Matrix *const matrix1, const Matrix *const matrix2)
+bool matrixMultiplyPossible(const Matrix *matrix1, const Matrix *matrix2)
 {
     return (matrix1->num_cols == matrix2->num_rows);
 }
