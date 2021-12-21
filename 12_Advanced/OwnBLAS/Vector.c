@@ -1,4 +1,5 @@
 #include <float.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -216,4 +217,21 @@ float maxVector(const Vector *vector)
     }
 
     return current_max;
+}
+
+float vectorEuclidNorm(const Vector *vector)
+{
+    if (vector == NULL)
+    {
+        return 0.0f;
+    }
+
+    float sum = 0.0f;
+
+    for (size_t i = 0; i < vector->length; i++)
+    {
+        sum += powf(vector->data[i], 2.0f);
+    }
+
+    return sqrtf(sum);
 }

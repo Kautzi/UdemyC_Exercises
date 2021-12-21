@@ -3,24 +3,29 @@
 Implement the following functions for our **vector**:
 
 ```cpp
-Vector *vectorNorm(const Vector *vector);
+float vectorEuclidNorm(const Vector *vector);
 ```
 
-- vectorNorm
-  - ...
+- vectorEuclidNorm
+  - Example for 2d vector: $\vec{v} = \begin{pmatrix}x \\ y\end{pmatrix} = \sqrt{x^2 + y^2}$
+  - Generalized formula: $\vec{v} = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} = \sqrt{\sum_{i = 1}^n x_i^2}$
 
 Implement the following functions for our **matrix**:
 
 ```cpp
 Matrix *matrixTranspose(const Matrix *matrix);
 
+bool matrixMultiplyByVectorPossible(const Matrix *matrix, const Vector *vector);
+
 Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector);
 ```
 
 - matrixTranspose
-  - ...
+  - Adapt the transpose function from the main course to our matrix data structure
 - multiplyMatrixByVector
-  - ...
+  - $\underset{m\times 1}{\vec{v_{2}} } =  \underset{m\times n}{M_1} \times 
+\underset{n\times 1}{\vec{v_{1}}}$
+  - More information: [see here](https://mathinsight.org/matrix_vector_multiplication)
 
 ## Main Function
 
@@ -35,59 +40,8 @@ int main()
 {
     Matrix *m1 = createMatrix(3, 3, -1.0f);
     Matrix *m2 = createMatrix(3, 3, +1.0f);
-
-    Matrix *m3 = addMatrix(m1, m2);
-    printMatrix(m1);
-    printf("+\n");
-    printMatrix(m2);
-    printf("=\n");
-    printMatrix(m3);
-
-    Matrix *m4 = subMatrix(m3, m1);
-    printMatrix(m3);
-    printf("-\n");
-    printMatrix(m1);
-    printf("=\n");
-    printMatrix(m4);
-
-    Matrix *m5 = multiplyMatrix(m1, m2);
-    printMatrix(m1);
-    printf("*\n");
-    printMatrix(m2);
-    printf("=\n");
-    printMatrix(m5);
-
-    Matrix *m6 = createMatrix(2, 3, 0.0f);
-    m6->data[0] = 1;
-    m6->data[1] = 2;
-    m6->data[2] = 3;
-    m6->data[3] = 4;
-    m6->data[4] = 5;
-    m6->data[5] = 6;
-
-    Vector *min_axis0 = minMatrix(m6, AXIS_0);
-    printf("min axis=0 of m6");
-    printVector(min_axis0);
-
-    Vector *max_axis0 = maxMatrix(m6, AXIS_0);
-    printf("max axis=0 of m6");
-    printVector(max_axis0);
-
-    Vector *min_axis1 = minMatrix(m6, AXIS_1);
-    printf("min axis=1 of m6");
-    printVector(min_axis1);
-
-    Vector *max_axis1 = maxMatrix(m6, AXIS_1);
-    printf("max axis=1 of m6");
-    printVector(max_axis1);
-
-    Vector *mean_axis0 = meanMatrix(m6, AXIS_0);
-    printf("mean axis=0 of m6");
-    printVector(mean_axis0);
-
-    Vector *mean_axis1 = meanMatrix(m6, AXIS_1);
-    printf("mean axis=1 of m6");
-    printVector(mean_axis1);
+    Vector *v1 = createVector();
+    
 
     freeMatrix(m1);
     freeMatrix(m2);

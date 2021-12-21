@@ -4,17 +4,14 @@ import numpy as np
 
 
 def main() -> int:
-    a = np.array([[1, 2, ], [3, 4, ]], dtype=np.float32)
-    print(a)
+    M = np.array([[1, 2, 3], [4, 5, 6]], dtype=np.float32)
+    v = np.array([1, 2, 3], dtype=np.float32)
+    print("M: ", M)
+    print("v: ", v)
 
-    print("np.min(a, axis=0): ", np.min(a, axis=0))
-    print("np.max(a, axis=0): ", np.max(a, axis=0))
-
-    print("np.min(a, axis=1): ", np.min(a, axis=1))
-    print("np.max(a, axis=1): ", np.max(a, axis=1))
-
-    print("np.mean(a, axis=0): ", np.mean(a, axis=0))
-    print("np.mean(a, axis=1): ", np.mean(a, axis=1))
+    print("norm v: ", np.linalg.norm(v))
+    print("M_T = ", np.transpose(M))
+    print("M * v = ", np.dot(M, v))
 
     return 0
 

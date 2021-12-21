@@ -195,14 +195,14 @@ Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2)
         return NULL;
     }
 
-    for (size_t i = 0; i != matrix1->num_rows; ++i)
+    for (size_t i = 0; i != matrix1->num_rows; i++)
     {
-        for (size_t j = 0; j != matrix2->num_cols; ++j)
+        for (size_t j = 0; j != matrix2->num_cols; j++)
         {
             size_t idx_ij = matrixIndex(matrix2->num_cols, i, j);
             result->data[idx_ij] = 0.0f;
 
-            for (size_t k = 0; k != matrix2->num_rows; ++k)
+            for (size_t k = 0; k != matrix2->num_rows; k++)
             {
                 size_t idx_ik = matrixIndex(matrix2->num_rows, i, k);
                 size_t idx_kj = matrixIndex(matrix2->num_cols, k, j);
@@ -418,7 +418,7 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
                 sum += matrix->data[idx];
             }
 
-            result->data[j] = sum / matrix->num_rows;
+            result->data[j] = sum / (float)matrix->num_rows;
         }
 
         return result;
@@ -438,7 +438,7 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
                 sum += matrix->data[idx];
             }
 
-            result->data[i] = sum / matrix->num_cols;
+            result->data[i] = sum / (float)matrix->num_cols;
         }
 
         return result;
