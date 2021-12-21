@@ -1,6 +1,5 @@
 #include <float.h>
 #include <math.h>
-#include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,6 +64,7 @@ void setMatrixValues(Matrix *matrix, size_t count, ...)
     va_start(args, count);
 
     size_t num_elements = matrixNumElements(matrix);
+
     size_t range = (count > num_elements) ? num_elements : count;
 
     for (size_t i = 0; i < range; i++)
