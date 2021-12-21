@@ -14,10 +14,6 @@ typedef struct Vector
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-float *createArray(const size_t length, const float value);
-
-float *freeArray(float *array);
-
 Vector *createVector(const size_t length, const float value);
 
 Vector *freeVector(Vector *vector);
@@ -25,10 +21,6 @@ Vector *freeVector(Vector *vector);
 /**********************/
 /*  I/O FUNCTIONS     */
 /**********************/
-
-int readInVectorData(Vector *vec, const char *filepath);
-
-int writeOutVectorData(Vector *vec, const char *filepath);
 
 void printVector(const Vector *vector);
 

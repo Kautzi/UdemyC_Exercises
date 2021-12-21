@@ -8,35 +8,6 @@
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-float *createArray(const size_t length, const float value)
-{
-    float *data = (float *)malloc(length * sizeof(float));
-
-    if (data == NULL)
-    {
-        return NULL;
-    }
-
-    for (size_t i = 0; i < length; i++)
-    {
-        data[i] = value;
-    }
-
-    return data;
-}
-
-float *freeArray(float *array)
-{
-    if (array == NULL)
-    {
-        return NULL;
-    }
-
-    free(array);
-
-    return NULL;
-}
-
 Vector *createVector(const size_t length, const float value)
 {
     Vector *result = (Vector *)malloc(sizeof(Vector));
@@ -46,14 +17,21 @@ Vector *createVector(const size_t length, const float value)
         return NULL;
     }
 
-    result->data = createArray(length, value);
+    float *data = (float *)malloc(length * sizeof(float));
 
-    if (result->data == NULL)
+    if (data == NULL)
     {
         free(result);
         return NULL;
     }
 
+    for (size_t i = 0; i < length; i++)
+    {
+        data[i] = value;
+    }
+
+
+    result->data = data;
     result->length = length;
 
     return result;
@@ -81,63 +59,6 @@ Vector *freeVector(Vector *vector)
 /*  I/O FUNCTIONS     */
 /**********************/
 
-int readInVectorData(Vector *vec, const char *filepath)
-{
-    if (vec == NULL || filepath == NULL)
-    {
-        return 1;
-    }
-
-    FILE *fp = fopen(filepath, "r");
-
-    if (fp == NULL)
-    {
-        return 1;
-    }
-
-    for (size_t i = 0; i < vec->length; i++)
-    {
-        fscanf(fp, "%f", &vec->data[i]);
-    }
-
-    fclose(fp);
-    fp = NULL;
-
-    return 0;
-}
-
-int writeOutVectorData(Vector *vec, const char *filepath)
-{
-    if (vec == NULL || filepath == NULL)
-    {
-        return 1;
-    }
-
-    FILE *fp = fopen(filepath, "w");
-
-    if (fp == NULL)
-    {
-        return 1;
-    }
-
-    for (size_t i = 0; i < vec->length; i++)
-    {
-        if (i < vec->length - 1)
-        {
-            fprintf(fp, "%f\n", vec->data[i]);
-        }
-        else
-        {
-            fprintf(fp, "%f", vec->data[i]);
-        }
-    }
-
-    fclose(fp);
-    fp = NULL;
-
-    return 0;
-}
-
 void printVector(const Vector *vector)
 {
     if (vector->data == NULL)
@@ -159,10 +80,9 @@ void printVector(const Vector *vector)
 /*  MATH. FUNCTIONS   */
 /**********************/
 
-Vector *addVectors(const Vector *vec1, const Vector *vec2)
+Vector *addVector(const Vector *vec1, const Vector *vec2)
 {
-    if (vec1 == NULL || vec2 == NULL || vec1->data == NULL || vec2->data == NULL ||
-        vec1->length != vec2->length)
+    if ((vec1 == NULL) || (vec2 == NULL) || (vec1->length != vec2->length))
     {
         return NULL;
     }
@@ -177,13 +97,13 @@ Vector *addVectors(const Vector *vec1, const Vector *vec2)
     return result;
 }
 
-Vector *subVectors(const Vector *vec1, const Vector *vec2)
+Vector *subVector(const Vector *vec1, const Vector *vec2)
 {
-    if (vec1 == NULL || vec2 == NULL || vec1->data == NULL || vec2->data == NULL ||
-        vec1->length != vec2->length)
+    if ((vec1 == NULL) || (vec2 == NULL) || (vec1->length != vec2->length))
     {
         return NULL;
     }
+
 
     Vector *result = createVector(vec1->length, 0.0);
 
@@ -195,10 +115,9 @@ Vector *subVectors(const Vector *vec1, const Vector *vec2)
     return result;
 }
 
-float multiplyVectors(const Vector *vec1, const Vector *vec2)
+float multiplyVector(const Vector *vec1, const Vector *vec2)
 {
-    if (vec1 == NULL || vec2 == NULL || vec1->data == NULL || vec2->data == NULL ||
-        vec1->length != vec2->length)
+    if ((vec1 == NULL) || (vec2 == NULL) || (vec1->length != vec2->length))
     {
         return 0.0f;
     }
@@ -213,9 +132,9 @@ float multiplyVectors(const Vector *vec1, const Vector *vec2)
     return result;
 }
 
-Vector *multiplyScalar(const Vector *vec, const float scalar)
+Vector *multiplyVectorByScalar(const Vector *vec, const float scalar)
 {
-    if (vec == NULL || vec->data == NULL)
+    if (vec == NULL)
     {
         return NULL;
     }
@@ -230,9 +149,9 @@ Vector *multiplyScalar(const Vector *vec, const float scalar)
     return result;
 }
 
-Vector *divideScalar(const Vector *vec, const float scalar)
+Vector *divideVectorByScalar(const Vector *vec, const float scalar)
 {
-    if (vec == NULL || vec->data == NULL || scalar == 0.0f)
+    if ((vec == NULL) || (scalar == 0.0f))
     {
         return NULL;
     }
