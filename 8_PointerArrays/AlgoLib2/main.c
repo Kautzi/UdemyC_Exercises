@@ -21,15 +21,8 @@ int main()
     printf("inclusive_scan: \n");
     print_int32_array(inc_scan_values, length);
 
-    int32_t *exc_scan_values = exclusive_scan(array, length);
-    printf("exclusive_scan: \n");
-    print_int32_array(exc_scan_values, length);
-
     free(inc_scan_values);
     inc_scan_values = NULL;
-
-    free(exc_scan_values);
-    exc_scan_values = NULL;
 
     return 0;
 }
@@ -58,25 +51,6 @@ int32_t *inclusive_scan(int32_t *array, size_t length)
     for (size_t i = 1; i < length; i++)
     {
         result[i] = result[i - 1] + array[i];
-    }
-
-    return result;
-}
-
-int32_t *exclusive_scan(int32_t *array, size_t length)
-{
-    if (array == NULL)
-    {
-        return NULL;
-    }
-
-    int32_t *result = (int32_t *)malloc(length * sizeof(int32_t));
-
-    result[0] = 0;
-
-    for (size_t i = 1; i < length; i++)
-    {
-        result[i] = result[i - 1] + array[i - 1];
     }
 
     return result;
