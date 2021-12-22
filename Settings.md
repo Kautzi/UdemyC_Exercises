@@ -52,7 +52,9 @@ Clang-tidy: Checks for issues in the code (similar to the compiler warnings), wi
   ],
   "C_Cpp_Runner.cStandard": "c99",
   "C_Cpp_Runner.cppStandard": "c++17",
-  "C_Cpp_Runner.excludeSearch": [],
+  "C_Cpp_Runner.excludeSearch": [
+    "**/scripts"
+  ],
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
   "Workspace_Formatter.includePattern": [

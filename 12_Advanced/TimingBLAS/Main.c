@@ -8,22 +8,26 @@
 
 int main()
 {
-    Matrix *m1 = createMatrix(249, 249, +1.0f);
-    Matrix *m2 = createMatrix(249, 249, -1.0f);
+    Matrix *m1 = createMatrix(500, 500, +1.0f);
+    Matrix *m2 = createMatrix(500, 500, -1.0f);
 
-    const clock_t time_start = clock();
+    double total_time = 0.0;
+    uint32_t num_runs = 100;
 
-    Matrix *m3 = multiplyMatrix(m1, m2);
+    for (uint32_t run_idx = 0; run_idx < num_runs; run_idx++)
+    {
+        const clock_t time_start = clock();
+        Matrix *m3 = multiplyMatrix(m1, m2);
+        const clock_t time_end = clock();
 
-    const clock_t time_end = clock();
+        total_time += get_timing_milliseconds(&time_start, &time_end);
+        freeMatrix(m3);
+    }
 
-    printf("ms: %lf\n", get_timing_milliseconds(&time_start, &time_end));
-    printf("us: %lf\n", get_timing_microseconds(&time_start, &time_end));
-    printf("ns: %lf\n", get_timing_nanoseconds(&time_start, &time_end));
+    printf("Mean execution time: %lf ms", total_time / (double)(num_runs));
 
     freeMatrix(m1);
     freeMatrix(m2);
-    freeMatrix(m3);
 
     return 0;
 }
