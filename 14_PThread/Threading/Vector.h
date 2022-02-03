@@ -1,16 +1,40 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <stdint.h>
 #include <stdlib.h>
 
 /**********************/
 /* DEFINES AND TYPES  */
 /**********************/
-typedef struct Vector
+
+/**
+ * Serial: 3593.75 ns
+ *      2: 49843.75 ns
+ *      4: 102656.25 ns
+ *      6: 196406.25 ns
+ *      8: 290312.50 ns
+ */
+#define USE_THREADING
+#define NUM_THREADS (uint32_t)(1)
+
+#ifdef USE_THREADING
+#include <pthread.h>
+#endif
+
+typedef struct
 {
     float *data;
     size_t length;
 } Vector;
+
+typedef struct
+{
+    float *data1;
+    float *data2;
+    float *result;
+    size_t length;
+} ThreadData_t;
 
 /**********************/
 /*   MAIN FUNCTIONS   */
@@ -33,6 +57,8 @@ void printVector(const Vector *const vector);
 /**********************/
 
 Vector *addVector(const Vector *const vec1, const Vector *const vec2);
+
+Vector *addVectorParallel(const Vector *const vec1, const Vector *const vec2);
 
 Vector *subVector(const Vector *const vec1, const Vector *const vec2);
 

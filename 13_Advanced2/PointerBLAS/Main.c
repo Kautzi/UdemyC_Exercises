@@ -8,26 +8,16 @@
 
 int main()
 {
-    Matrix *m1 = createMatrix(500, 500, +1.0f);
-    Matrix *m2 = createMatrix(500, 500, -1.0f);
+    Vector *v1 = createVector(5, 0.0f);
+    setVectorValues(v1, 5, 1.0, 2.0, 3.0, 4.0, 5.0);
+    printVector(v1);
 
-    double total_time = 0.0;
-    uint32_t num_runs = 100;
+    Matrix *m1 = createMatrix(2, 3, 0.0f);
+    setMatrixValues(m1, 6, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+    printMatrix(m1);
 
-    for (uint32_t run_idx = 0; run_idx < num_runs; run_idx++)
-    {
-        const clock_t time_start = clock();
-        Matrix *m3 = multiplyMatrix(m1, m2);
-        const clock_t time_end = clock();
-
-        total_time += get_timing_milliseconds(&time_start, &time_end);
-        freeMatrix(m3);
-    }
-
-    printf("Mean execution time: %lf ms", total_time / (double)(num_runs));
-
+    freeVector(v1);
     freeMatrix(m1);
-    freeMatrix(m2);
 
     return 0;
 }

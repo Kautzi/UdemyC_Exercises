@@ -114,13 +114,58 @@ Vector *addVector(const Vector *const vec1, const Vector *const vec2)
     return result;
 }
 
-Vector *subVector(const Vector *const vec1, const Vector *const vec2)
+void *_addVectorParallel(void *args)
+{
+    ThreadData_t *const thread_data = (ThreadData_t *)(args);
+
+    for (size_t i = 0; i < thread_data->length; i++)
+    {
+        thread_data->result[i] = thread_data->data1[i] + thread_data->data2[i];
+    }
+
+    pthread_exit(NULL);
+}
+
+Vector *addVectorParallel(const Vector *const vec1, const Vector *const vec2)
 {
     if ((vec1 == NULL) || (vec2 == NULL) || (vec1->length != vec2->length))
     {
         return NULL;
     }
 
+    Vector *result = createVector(vec1->length, 0.0);
+
+    pthread_t threads[NUM_THREADS];
+    ThreadData_t thread_datas[NUM_THREADS];
+
+    const size_t slice_length = vec1->length / NUM_THREADS;
+
+    for (uint32_t t = 0; t < NUM_THREADS; ++t)
+    {
+        size_t offset = t * slice_length;
+
+        thread_datas[t].data1 = &vec1->data[offset];
+        thread_datas[t].data2 = &vec2->data[offset];
+        thread_datas[t].result = &result->data[offset];
+        thread_datas[t].length = slice_length;
+
+        pthread_create(&threads[t], NULL, &_addVectorParallel, (void *)(&thread_datas[t]));
+    }
+
+    for (uint32_t t = 0; t < NUM_THREADS; ++t)
+    {
+        pthread_join(threads[t], NULL);
+    }
+
+    return result;
+}
+
+Vector *subVector(const Vector *const vec1, const Vector *const vec2)
+{
+    if ((vec1 == NULL) || (vec2 == NULL) || (vec1->length != vec2->length))
+    {
+        return NULL;
+    }
 
     Vector *result = createVector(vec1->length, 0.0);
 

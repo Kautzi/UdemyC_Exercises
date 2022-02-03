@@ -59,6 +59,8 @@ void printMatrix(const Matrix *const matrix);
 
 Matrix *addMatrix(const Matrix *const matrix1, const Matrix *const matrix2);
 
+Matrix *addMatrixParallel(const Matrix *const matrix1, const Matrix *const matrix2);
+
 Matrix *subMatrix(const Matrix *const matrix1, const Matrix *const matrix2);
 
 Matrix *multiplyMatrix(const Matrix *const matrix1, const Matrix *const matrix2);

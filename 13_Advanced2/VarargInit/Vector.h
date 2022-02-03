@@ -32,11 +32,11 @@ void printVector(const Vector *vector);
 /*  MATH. FUNCTIONS   */
 /**********************/
 
-Vector *addVectors(const Vector *vec1, const Vector *vec2);
+Vector *addVector(const Vector *vec1, const Vector *vec2);
 
-Vector *subVectors(const Vector *vec1, const Vector *vec2);
+Vector *subVector(const Vector *vec1, const Vector *vec2);
 
-float multiplyVectors(const Vector *vec1, const Vector *vec2);
+float multiplyVector(const Vector *vec1, const Vector *vec2);
 
 Vector *multiplyScalar(const Vector *vec, const float scalar);
 
