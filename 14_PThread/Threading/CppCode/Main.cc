@@ -7,11 +7,11 @@
 #include "Timer.h"
 
 /**
- * Serial:  825.00 us
- *      2: 1112.40 us
- *      4: 1415.60 us
- *      6: 1604.70 us
- *      8: 1915.60 us
+ * Serial: 824.60 us
+ *      2: 595.71 us
+ *      4: 500.29 us
+ *      6: 557.03 us
+ *      8: 819.31 us
  */
 #define USE_THREADING
 #define NUM_THREADS (uint32_t)(8)
@@ -118,11 +118,9 @@ int main()
 
     for (uint32_t run_idx = 0; run_idx < NUM_RUNS; run_idx++)
     {
-        const clock_t time_start = clock();
+        cpptiming::Timer t2;
         volatile float sum = serial_sum(arr, LENGTH);
-        const clock_t time_end = clock();
-
-        total_time += get_timing_microseconds(&time_start, &time_end);
+        total_time += t2.elapsed_time<cpptiming::microsecs, double>();
 
 #ifndef NDEBUG
         assert(sum == 0.0F);
@@ -137,11 +135,9 @@ int main()
 
     for (uint32_t run_idx = 0; run_idx < NUM_RUNS; run_idx++)
     {
-        const clock_t time_start = clock();
+        cpptiming::Timer t2;
         volatile float sum = parallel_sum(arr, LENGTH);
-        const clock_t time_end = clock();
-
-        total_time += get_timing_microseconds(&time_start, &time_end);
+        total_time += t2.elapsed_time<cpptiming::microsecs, double>();
 
 #ifndef NDEBUG
         assert(sum == 0.0F);
@@ -150,7 +146,7 @@ int main()
 #endif
     }
 
-    printf("Parall - Mean execution time: %.2lf us\n", total_time / (double)(NUM_RUNS));
+    printf("Parallel - Mean execution time: %.2lf us\n", total_time / (double)(NUM_RUNS));
 
     return 0;
 }
