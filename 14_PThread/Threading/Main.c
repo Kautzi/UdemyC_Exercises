@@ -1,26 +1,25 @@
 #include <assert.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-
-#include "Timer.h"
 
 /**
- * Serial:  825.00 us
- *      2: 1112.40 us
- *      4: 1415.60 us
- *      6: 1604.70 us
- *      8: 1915.60 us
+ * Serial: 9ms
+ *      2: 4ms
+ *      4: 3ms
+ *      6: 2ms
+ *      8: 1ms
  */
 #define USE_THREADING
 #define NUM_THREADS (uint32_t)(8)
-#define LENGTH (size_t)(1000000)
+#define LENGTH (size_t)(1e07)
 #ifndef NDEBUG
 #define NUM_RUNS (uint32_t)(10)
 #else
-#define NUM_RUNS (uint32_t)(10000)
+#define NUM_RUNS (uint32_t)(1e3)
 #endif
+// #define TEST_SERIAL
 
 #ifdef USE_THREADING
 #include <pthread.h>
@@ -116,41 +115,42 @@ int main()
 
     double total_time = 0.0;
 
+#ifdef TEST_SERIAL
+    const time_t start = time(NULL);
     for (uint32_t run_idx = 0; run_idx < NUM_RUNS; run_idx++)
     {
-        const clock_t time_start = clock();
         volatile float sum = serial_sum(arr, LENGTH);
-        const clock_t time_end = clock();
-
-        total_time += get_timing_microseconds(&time_start, &time_end);
-
 #ifndef NDEBUG
         assert(sum == 0.0F);
 #else
         (void)sum;
 #endif
     }
+    const time_t end = time(NULL);
+    total_time = (difftime(end, start) * 1000.0F) / (double)(NUM_RUNS);
 
-    printf("Serial - Mean execution time: %.2lf us\n", total_time / (double)(NUM_RUNS));
+    printf("Serial - Mean execution time: %.2lf ms\n", total_time);
 
     total_time = 0.0;
+#endif
 
+    const time_t start = time(NULL);
     for (uint32_t run_idx = 0; run_idx < NUM_RUNS; run_idx++)
     {
-        const clock_t time_start = clock();
         volatile float sum = parallel_sum(arr, LENGTH);
-        const clock_t time_end = clock();
-
-        total_time += get_timing_microseconds(&time_start, &time_end);
-
 #ifndef NDEBUG
         assert(sum == 0.0F);
 #else
         (void)sum;
 #endif
     }
+    const time_t end = time(NULL);
+    total_time = (difftime(end, start) * 1000.0F) / (double)(NUM_RUNS);
 
-    printf("Parall - Mean execution time: %.2lf us\n", total_time / (double)(NUM_RUNS));
+    printf("Parall - Mean execution time: %.2lf ms\n", total_time);
+
+    free(arr);
+    arr = NULL;
 
     return 0;
 }

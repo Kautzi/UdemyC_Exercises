@@ -7,20 +7,21 @@
 #include "Timer.h"
 
 /**
- * Serial: 824.60 us
- *      2: 595.71 us
- *      4: 500.29 us
- *      6: 557.03 us
- *      8: 819.31 us
+ * Serial: 9137.66 us
+ *      2: 4825.89 us
+ *      4: 2577.69 us
+ *      6: 1817.76 us
+ *      8: 1446.42 us
  */
 #define USE_THREADING
 #define NUM_THREADS (uint32_t)(8)
-#define LENGTH (size_t)(1000000)
+#define LENGTH (size_t)(1e07)
 #ifndef NDEBUG
 #define NUM_RUNS (uint32_t)(10)
 #else
-#define NUM_RUNS (uint32_t)(10000)
+#define NUM_RUNS (uint32_t)(5000)
 #endif
+#define TEST_SERIAL
 
 #ifdef USE_THREADING
 #include <pthread.h>
@@ -116,6 +117,7 @@ int main()
 
     double total_time = 0.0;
 
+#ifdef TEST_SERIAL
     for (uint32_t run_idx = 0; run_idx < NUM_RUNS; run_idx++)
     {
         cpptiming::Timer t2;
@@ -130,6 +132,7 @@ int main()
     }
 
     printf("Serial - Mean execution time: %.2lf us\n", total_time / (double)(NUM_RUNS));
+#endif
 
     total_time = 0.0;
 
