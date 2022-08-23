@@ -18,7 +18,7 @@ int main()
     printf("string_ends_with: %d\n", string_ends_with(text, "anek"));
 
     printf("string_starts_with: %d\n", string_starts_with(text, "an"));
-    printf("string_ends_with: %d\n", string_ends_with(text, "ane"));
+    printf("string_ends_with: %d\n", string_ends_with(text, "and"));
 
     printf("string_find_first_not_of: %s\n", string_find_first_not_of(text, "jan "));
     printf("string_find_first_not_of: %s\n", string_find_first_not_of(text, "an "));

@@ -5,7 +5,7 @@ int main()
 {
     uint32_t number = 0;
 
-    printf("Please enter a unsinged integer: ");
+    printf("Please enter a unsigned integer: ");
     scanf("%u", &number);
 
     // sum_of_digits
