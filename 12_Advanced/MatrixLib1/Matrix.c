@@ -12,7 +12,9 @@
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float value)
+Matrix *createMatrix(const size_t num_rows,
+                     const size_t num_cols,
+                     const float value)
 {
     Matrix *matrix = (Matrix *)malloc(sizeof(Matrix));
 
@@ -75,7 +77,8 @@ size_t matrixNumElements(const Matrix *matrix)
 
 bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2)
 {
-    return ((matrix1->num_rows == matrix2->num_rows) && (matrix1->num_cols == matrix2->num_cols));
+    return ((matrix1->num_rows == matrix2->num_rows) &&
+            (matrix1->num_cols == matrix2->num_cols));
 }
 
 /**********************/
@@ -104,7 +107,8 @@ void printMatrix(const Matrix *matrix)
             printf("%f, ", matrix->data[idx]);
         }
 
-        const size_t idx = matrixIndex(matrix->num_cols, i, matrix->num_cols - 1);
+        const size_t idx =
+            matrixIndex(matrix->num_cols, i, matrix->num_cols - 1);
 
         if (i < (matrix->num_rows - 1))
         {

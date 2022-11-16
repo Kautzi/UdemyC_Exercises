@@ -24,28 +24,11 @@ Any GCC, Clang or MSVC Compiler
 ### Extra settings (for local .vscode/settings.json file)
 
 ```json
-  "C_Cpp_Runner.warnings": [
-    "-Wall",
-    "-Wextra",
-    "-Wpedantic",
-    "-Wshadow",
-    "-Wconversion",
-    "-Woverflow",
-    "-Wformat=2",
-    "-Wsign-conversion",
-    "-Wstrict-overflow=1",
-    "-Wnull-dereference",
-  ],
-  "C_Cpp_Runner.compilerArgs": [],
-  "C_Cpp_Runner.includePaths": [],
+    // Linux Only
   "C_Cpp_Runner.linkerArgs": [
       "-lm"
   ],
-  "C_Cpp_Runner.cStandard": "c99",
-  "C_Cpp_Runner.cppStandard": "c++17",
   "C_Cpp_Runner.excludeSearch": [
       "**/scripts/"
   ],
-  "C_Cpp_Runner.enableWarnings": true,
-  "C_Cpp_Runner.warningsAsError": false
 ```
