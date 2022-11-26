@@ -45,7 +45,7 @@ void round_value(float *value, uint8_t num_digits)
         multiplier *= 10.0f;
     }
 
-    uint32_t temp = (*value) * multiplier;
+    uint32_t temp = (uint32_t)((*value) * multiplier);
 
-    *value = temp / multiplier;
+    *value = (float)(temp) / multiplier;
 }
