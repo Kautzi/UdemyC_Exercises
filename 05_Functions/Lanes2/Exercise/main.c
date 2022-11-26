@@ -1,26 +1,3 @@
-# Exercise
-
-For this exercise, we will edit the following files:
-
-- AdFunctions.h
-- AdFunctions.c
-- AdTypes.h
-
-Content of AdFunctions.c/h:
-
-- The **print_scene** function that prints out the console output from exercise **Lanes1**
-
-Content of AdTypes.h:
-
-- The Lane Enum
-
-Note:
-
-Don't forget to use include guards!
-
-## Main Function
-
-```cpp
 #include <stdint.h>
 #include <stdio.h>
 
@@ -42,4 +19,3 @@ int main()
 
     return 0;
 }
-```

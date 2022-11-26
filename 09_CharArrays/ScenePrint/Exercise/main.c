@@ -1,22 +1,6 @@
-# Exercise
-
-We will extend the use-case from the "Steering" video.
-
-- Update the **print_scene** function such that the following console output is printed
-
-![alt](../../media/9_ScenePrint.png)
-
-The vehicle will always be placed in row 0.  
-Only the lane (column) can be changed.  
-In future exercises, this plot will be used to display also other vehicles.  
-
-## Main Function
-
-```cpp
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <string.h>
 
 #include "utils.h"
 
@@ -44,4 +28,3 @@ int main()
 
     return 0;
 }
-```
