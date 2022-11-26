@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +13,9 @@
 /*   MAIN FUNCTIONS   */
 /**********************/
 
-Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float value)
+Matrix *createMatrix(const size_t num_rows,
+                     const size_t num_cols,
+                     const float value)
 {
     Matrix *matrix = (Matrix *)malloc(sizeof(Matrix));
 
@@ -91,7 +94,8 @@ size_t matrixNumElements(const Matrix *matrix)
 
 bool matrixSameSize(const Matrix *matrix1, const Matrix *matrix2)
 {
-    return ((matrix1->num_rows == matrix2->num_rows) && (matrix1->num_cols == matrix2->num_cols));
+    return ((matrix1->num_rows == matrix2->num_rows) &&
+            (matrix1->num_cols == matrix2->num_cols));
 }
 
 bool matrixMultiplyPossible(const Matrix *matrix1, const Matrix *matrix2)
@@ -130,7 +134,8 @@ void printMatrix(const Matrix *matrix)
             printf("%f, ", matrix->data[idx]);
         }
 
-        const size_t idx = matrixIndex(matrix->num_cols, i, matrix->num_cols - 1);
+        const size_t idx =
+            matrixIndex(matrix->num_cols, i, matrix->num_cols - 1);
 
         if (i < (matrix->num_rows - 1))
         {
@@ -205,7 +210,8 @@ Matrix *subMatrix(const Matrix *matrix1, const Matrix *matrix2)
 
 Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2)
 {
-    if (matrix1 == NULL || matrix2 == NULL || !matrixMultiplyPossible(matrix1, matrix2))
+    if (matrix1 == NULL || matrix2 == NULL ||
+        !matrixMultiplyPossible(matrix1, matrix2))
     {
         return NULL;
     }
@@ -230,7 +236,8 @@ Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2)
                 size_t idx_kj = matrixIndex(matrix2->num_cols, k, j);
 
                 result->data[idx_ij] =
-                    result->data[idx_ij] + matrix1->data[idx_ik] * matrix2->data[idx_kj];
+                    result->data[idx_ij] +
+                    matrix1->data[idx_ik] * matrix2->data[idx_kj];
             }
         }
     }
@@ -502,7 +509,8 @@ Matrix *matrixTranspose(const Matrix *matrix)
 
 Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector)
 {
-    if (matrix == NULL || vector == NULL || !matrixMultiplyByVectorPossible(matrix, vector))
+    if (matrix == NULL || vector == NULL ||
+        !matrixMultiplyByVectorPossible(matrix, vector))
     {
         return NULL;
     }
