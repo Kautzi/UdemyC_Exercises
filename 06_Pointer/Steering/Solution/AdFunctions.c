@@ -123,19 +123,21 @@ void handle_lateral_user_input(uint32_t *lane_idx, char lateral_action)
     }
 }
 
-void handle_longitudinal_user_input(float *speed_mps, char lateral_action)
+void handle_longitudinal_user_input(float *speed_mps, char long_action)
 {
-    switch (lateral_action)
+    switch (long_action)
     {
     case LONGITUDINAL_ACTION_ACCELERATE:
     {
-        float new_speed = (*speed_mps) + ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
+        float new_speed =
+            (*speed_mps) + ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
         *speed_mps = new_speed;
         break;
     }
-    case LONGITUDINAL_ACTION_DECELRATE:
+    case LONGITUDINAL_ACTION_DECELERATE:
     {
-        float new_speed = (*speed_mps) - ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
+        float new_speed =
+            (*speed_mps) - ((*speed_mps) * LONGITUDINAL_DIFFERENCE_PERCENTAGE);
         *speed_mps = new_speed;
         break;
     }
