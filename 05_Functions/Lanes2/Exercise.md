@@ -1,5 +1,6 @@
 # Exercise
 
+We will extens the self-driving car use-case from the *Lanes1* video.  
 For this exercise, we will edit the following files:
 
 - AdFunctions.h
