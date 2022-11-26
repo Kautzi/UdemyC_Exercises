@@ -87,13 +87,18 @@ void clear_console()
 #endif
 }
 
-
 void sleep_console(int ms)
 {
 #ifdef _WIN32
     Sleep((DWORD)(ms));
 #else
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+#endif
     usleep(ms * 1000);
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 #endif
 }
 

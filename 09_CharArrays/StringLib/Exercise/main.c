@@ -3,6 +3,26 @@
 
 /* CHARS */
 
+bool is_lower_case(char character)
+{
+    if ((character >= 'a') && (character <= 'z'))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool is_upper_case(char character)
+{
+    if ((character >= 'A') && (character <= 'Z'))
+    {
+        return true;
+    }
+
+    return false;
+}
+
 bool is_numeric(char character)
 {
     if ((character >= '0') && (character <= '9'))
@@ -28,26 +48,6 @@ bool is_alpha_numeric(char character)
     return is_numeric(character) || is_alpha(character);
 }
 
-bool is_upper_case(char character)
-{
-    if ((character >= 'A') && (character <= 'Z'))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_lower_case(char character)
-{
-    if ((character >= 'a') && (character <= 'z'))
-    {
-        return true;
-    }
-
-    return false;
-}
-
 char to_upper_case(char character)
 {
     if (is_lower_case(character))
@@ -68,7 +68,7 @@ char to_lower_case(char character)
     return character;
 }
 
-/* CHAR ARRAYS */
+/* STRINGS */
 
 char *to_upper_case_str(char *text);
 

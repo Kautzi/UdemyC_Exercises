@@ -73,7 +73,7 @@ void remove_duplicates(int32_t *array, size_t *length)
 
     for (size_t i = 0; i < *length; i++)
     {
-        size_t duplicate_index = -1;
+        size_t duplicate_index = (size_t)(-1);
         int32_t current_value = array[i];
 
         for (size_t j = i + 1; j < *length; j++)
@@ -86,7 +86,7 @@ void remove_duplicates(int32_t *array, size_t *length)
             }
         }
 
-        if (duplicate_index == -1)
+        if (duplicate_index == (size_t)(-1))
         {
             continue;
         }
