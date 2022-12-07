@@ -1,9 +1,10 @@
+#include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
 
-void clamp_value(float *value, float min_value, float max_value);
+#include "lib.h"
 
-void round_value(float *value, uint8_t num_digits);
+void tests();
 
 int main()
 {
@@ -21,31 +22,24 @@ int main()
     round_value(&value, 1);
     printf("%.16f\n", value);
 
+    tests();
+
     return 0;
 }
 
-void clamp_value(float *value, float min_value, float max_value)
+void tests()
 {
-    if (*value < min_value)
-    {
-        *value = min_value;
-    }
-    else if (*value > max_value)
-    {
-        *value = max_value;
-    }
-}
+    float value = 2.0f;
+    clamp_value(&value, -2.0F, 2.0F);
+    assert(value == 2.0F);
+    clamp_value(&value, -1.0F, 1.0F);
+    assert(value == 1.0F);
 
-void round_value(float *value, uint8_t num_digits)
-{
-    float multiplier = 1.0f;
+    float value2 = 0.0f;
+    clamp_value(&value2, -1.0F, 1.0F);
+    assert(value2 == 0.0F);
 
-    for (uint8_t i = 0; i < num_digits; i++)
-    {
-        multiplier *= 10.0f;
-    }
-
-    uint32_t temp = (uint32_t)((*value) * multiplier);
-
-    *value = (float)(temp) / multiplier;
+    float value3 = 1.55f;
+    round_value(&value3, 1);
+    assert(value3 == 1.5F);
 }

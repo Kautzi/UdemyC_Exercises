@@ -1,16 +1,12 @@
+#include <assert.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
-#include <string.h>
 
+#include "lib.h"
 #include "utils.h"
 
-void unique_elements(int32_t *array, size_t length);
-
-void remove_duplicates(int32_t *array, size_t *length);
-
-void rotate_left(int32_t *array, size_t length);
-
-void rotate_right(int32_t *array, size_t length);
+void test_cases();
 
 int main()
 {
@@ -29,5 +25,24 @@ int main()
     rotate_right(array, length);
     print_int32_array(array, length);
 
+    test_cases(); // This should not fail
+
     return 0;
+}
+
+void test_cases()
+{
+    size_t length = 6;
+    int32_t array[] = {1, 1, 2, 3, 3, 4};
+    int32_t array_cpy[] = {1, 1, 2, 3, 3, 4};
+    int32_t array_del[] = {1, 2, 3, 4};
+
+    rotate_left(array_cpy, length);
+    assert(ranges_are_same(array, array_cpy, length) == false);
+    rotate_right(array_cpy, length);
+    assert(ranges_are_same(array, array_cpy, length) == true);
+
+    remove_duplicates(array_cpy, &length);
+    assert(ranges_are_same(array_cpy, array_del, length) == true);
+    assert(ranges_are_same(array, array_del, length) == false);
 }

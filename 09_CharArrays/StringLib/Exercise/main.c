@@ -1,80 +1,11 @@
+#include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 
-/* CHARS */
+#include "lib.h"
 
-bool is_lower_case(char character)
-{
-    if ((character >= 'a') && (character <= 'z'))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_upper_case(char character)
-{
-    if ((character >= 'A') && (character <= 'Z'))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_numeric(char character)
-{
-    if ((character >= '0') && (character <= '9'))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_alpha(char character)
-{
-    if (is_upper_case(character) || is_lower_case(character))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-bool is_alpha_numeric(char character)
-{
-    return is_numeric(character) || is_alpha(character);
-}
-
-char to_upper_case(char character)
-{
-    if (is_lower_case(character))
-    {
-        return character - 32;
-    }
-
-    return character;
-}
-
-char to_lower_case(char character)
-{
-    if (is_upper_case(character))
-    {
-        return character + 32;
-    }
-
-    return character;
-}
-
-/* STRINGS */
-
-char *to_upper_case_str(char *text);
-
-char *to_lower_case_str(char *text);
-
-char *char_search(char *text, char character);
+void test_cases();
 
 int main()
 {
@@ -87,5 +18,19 @@ int main()
     printf("to_lower_case: %s\n", to_lower_case_str(input_text));
     printf("char_search: %s\n", char_search(input_text, 'a'));
 
+    test_cases(); // This should not fail
+
     return 0;
+}
+
+void test_cases()
+{
+    char in_text[] = "JaNa";
+    char text_up[] = "JANA";
+    char text_low[] = "jana";
+
+    char *to_upper = to_upper_case_str(in_text);
+    assert(strncmp(to_upper, text_up, 4) == 0);
+    char *to_lower = to_lower_case_str(in_text);
+    assert(strncmp(to_lower, text_low, 4) == 0);
 }

@@ -29,10 +29,10 @@ int main()
 
 void test_cases()
 {
-    const auto lowercase_alpha = 'a';
-    const auto uppercase_alpha = 'A';
-    const auto numeric = '5';
-    const auto something_else = '#';
+    const char lowercase_alpha = 'a';
+    const char uppercase_alpha = 'A';
+    const char numeric = '5';
+    const char something_else = '#';
 
     assert(is_numeric(lowercase_alpha) == false);
     assert(is_numeric(uppercase_alpha) == false);

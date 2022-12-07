@@ -1,14 +1,11 @@
+#include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
-bool string_starts_with(char *string, char *substr);
+#include "lib.h"
 
-bool string_ends_with(char *string, char *substr);
-
-char *string_find_first_not_of(char *string, char *substr);
-
-char *string_n_copy(char *dest, char *src, size_t count);
+void test_cases();
 
 int main()
 {
@@ -25,5 +22,18 @@ int main()
     printf("string_find_first_not_of: %s\n",
            string_find_first_not_of(text, "an "));
 
+    test_cases();
+
     return 0;
+}
+
+void test_cases()
+{
+    assert(string_ends_with("anna", "a") == true);
+    assert(string_ends_with("anna", "na") == true);
+    assert(string_ends_with("anna", "ann") == false);
+
+    assert(string_starts_with("anna", "a") == true);
+    assert(string_starts_with("anna", "na") == false);
+    assert(string_starts_with("anna", "ann") == true);
 }

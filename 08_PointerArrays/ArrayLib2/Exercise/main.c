@@ -1,23 +1,13 @@
+#include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "lib.h"
 #include "utils.h"
 
-bool array_equal(int32_t *array1,
-                 size_t length1,
-                 int32_t *array2,
-                 size_t length2);
-
-void array_clamp(int32_t *array,
-                 size_t length,
-                 int32_t min_value,
-                 int32_t max_value);
-
-void array_reverse(int32_t *array, size_t length);
-
-void array_fill_n(int32_t *array, size_t length, size_t n, int32_t value);
+void test_cases();
 
 int main()
 {
@@ -39,5 +29,25 @@ int main()
     array_reverse(array1, length);
     print_int32_array(array1, length);
 
+    test_cases(); // This should not fail
+
     return 0;
+}
+
+void test_cases()
+{
+    size_t length = 5;
+    int32_t array1[] = {-2, -1, 0, 1, 2};
+    int32_t array1_clamped[] = {-1, -1, 0, 1, 1};
+    int32_t array1_filled[] = {-3, -3, 0, 1, 1};
+    int32_t array1_rev[] = {1, 1, 0, -1, -1};
+
+    array_clamp(array1, length, -1, 1);
+    assert(ranges_are_same(array1, array1_clamped, length) == true);
+
+    array_fill_n(array1, length, 2, -3);
+    assert(ranges_are_same(array1, array1_filled, length) == true);
+
+    array_reverse(array1, length);
+    assert(ranges_are_same(array1, array1_rev, length) == true);
 }
