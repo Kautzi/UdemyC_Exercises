@@ -26,15 +26,6 @@ void longitudinal_control(const VehicleType *front_vehicle, VehicleType *ego_veh
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "AdFunctions.h"
-#include "AdTypes.h"
-
-#include "utils.h"
-
 int main()
 {
     VehicleType ego_vehicle;

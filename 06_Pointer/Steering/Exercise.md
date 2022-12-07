@@ -30,14 +30,6 @@ For this we have the define **LONGITUDINAL_DIFFERENCE_PERCENTAGE** in **AdConsta
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-
-#include "utils.h"
-
-#include "AdFunctions.h"
-
 int main()
 {
     printf("Create the properties of a vehicle.\n");

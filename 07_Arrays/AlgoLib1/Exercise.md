@@ -34,19 +34,6 @@ Note: Make sure that the input pointers are valid.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-bool all_of(int32_t *array, size_t length, int32_t value);
-
-bool any_of(int32_t *array, size_t length, int32_t value);
-
-bool none_of(int32_t *array, size_t length, int32_t value);
-
-size_t count(int32_t *array, size_t length, int32_t value);
-
 int main()
 {
     int32_t array[] = {3, 1, 4, 1, 5, 9, 2, 6};

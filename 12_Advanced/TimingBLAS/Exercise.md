@@ -22,14 +22,6 @@ double get_timing_nanoseconds(const clock_t *time_start, const clock_t *time_end
 ## Main Function
 
 ```cpp
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-#include "Matrix.h"
-#include "Timer.h"
-#include "Vector.h"
-
 int main()
 {
     Matrix *m1 = createMatrix(249, 249, +1.0f);

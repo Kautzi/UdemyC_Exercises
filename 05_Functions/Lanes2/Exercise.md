@@ -22,17 +22,12 @@ Don't forget to use include guards!
 ## Main Function
 
 ```cpp
-#include <stdint.h>
-#include <stdio.h>
-
-#include "AdFunctions.h"
-
 int main()
 {
     printf("Create the properties of a vehicle.\n");
 
     float speed_mps;
-    printf("Speed in $\frac{m}{s}$: ");
+    printf("Speed in m_per_s: ");
     scanf("%f", &speed_mps);
 
     uint32_t lane_idx;

@@ -18,19 +18,6 @@ void preload_vehicle_data(const char datapath[128], int use_case_idx);
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "AdDataLoader.h"
-#include "AdFunctions.h"
-#include "AdTypes.h"
-
-#include "utils.h"
-
-char datapath[128] = "C:/Users/Jan/OneDrive/_Coding/UdemyCExt/12_Advanced/CmdArguments/data/";
-
 int main(int argc, char const **argv)
 {
     // read in argc/argv
@@ -77,5 +64,4 @@ int main(int argc, char const **argv)
 
     return 0;
 }
-
 ```

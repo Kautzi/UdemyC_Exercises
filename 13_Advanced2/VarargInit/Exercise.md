@@ -25,14 +25,6 @@ Dont forget to include
 ## Main Function
 
 ```cpp
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-#include "Matrix.h"
-#include "Timer.h"
-#include "Vector.h"
-
 int main()
 {
     Vector *v1 = createVector(5, 0.0f);

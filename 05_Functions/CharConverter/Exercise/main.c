@@ -1,19 +1,10 @@
+#include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
 
-bool is_numeric(char character);
+#include "lib.h"
 
-bool is_alpha(char character);
-
-bool is_alpha_numeric(char character);
-
-bool is_upper_case(char character);
-
-bool is_lower_case(char character);
-
-char to_upper_case(char character);
-
-char to_lower_case(char character);
+void test_cases();
 
 int main()
 {
@@ -31,5 +22,45 @@ int main()
     printf("to_upper_case: %c\n", to_upper_case(character));
     printf("to_lower_case: %c\n", to_lower_case(character));
 
+    test_cases(); // These tests should not fail!
+
     return 0;
+}
+
+void test_cases()
+{
+    const auto lowercase_alpha = 'a';
+    const auto uppercase_alpha = 'A';
+    const auto numeric = '5';
+    const auto something_else = '#';
+
+    assert(is_numeric(lowercase_alpha) == false);
+    assert(is_numeric(uppercase_alpha) == false);
+    assert(is_numeric(numeric) == true);
+    assert(is_numeric(something_else) == false);
+
+    assert(is_alpha(lowercase_alpha) == true);
+    assert(is_alpha(uppercase_alpha) == true);
+    assert(is_alpha(numeric) == false);
+    assert(is_alpha(something_else) == false);
+
+    assert(is_alpha_numeric(lowercase_alpha) == true);
+    assert(is_alpha_numeric(uppercase_alpha) == true);
+    assert(is_alpha_numeric(numeric) == true);
+    assert(is_alpha_numeric(something_else) == false);
+
+    assert(is_upper_case(lowercase_alpha) == false);
+    assert(is_upper_case(uppercase_alpha) == true);
+    assert(is_upper_case(numeric) == false);
+    assert(is_upper_case(something_else) == false);
+
+    assert(is_lower_case(lowercase_alpha) == true);
+    assert(is_lower_case(uppercase_alpha) == false);
+    assert(is_lower_case(numeric) == false);
+    assert(is_lower_case(something_else) == false);
+
+    assert(to_upper_case(lowercase_alpha) == uppercase_alpha);
+    assert(to_upper_case(uppercase_alpha) == uppercase_alpha);
+    assert(to_upper_case(numeric) == numeric);
+    assert(to_upper_case(something_else) == something_else);
 }

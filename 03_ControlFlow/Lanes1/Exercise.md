@@ -21,12 +21,6 @@ After reading in the information produce the following console output:
 ## Main Function
 
 ```cpp
-#include <stdint.h>
-#include <stdio.h>
-
-... LaneAssociationType
-...
-
 int main()
 {
     printf("Create the properties of a vehicle.\n");
@@ -34,5 +28,4 @@ int main()
 
     return 0;
 }
-
 ```

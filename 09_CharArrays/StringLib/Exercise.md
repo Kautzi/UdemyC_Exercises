@@ -27,17 +27,6 @@ Note: Make sure that the input pointer is valid.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-
-// HERE: CHAR FUNCTIONS FROM BEFORE
-
-char *to_upper_case_str(char *text);
-
-char *to_lower_case_str(char *text);
-
-char *char_search(char *text, char character);
-
 int main()
 {
     char input_text[50] = {'\0'};

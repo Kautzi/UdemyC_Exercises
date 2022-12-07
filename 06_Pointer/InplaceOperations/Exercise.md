@@ -22,13 +22,6 @@ In this exercise, you have to implement the following time computations:
 ## Main Function
 
 ```cpp
-#include <stdint.h>
-#include <stdio.h>
-
-void clamp_value(...);
-
-void round_value(...);
-
 int main()
 {
     float value = 2.0f;

@@ -46,19 +46,6 @@ void load_cycle(NeighborVehiclesType *vehicles, const uint32_t cycle);
 ## Main Function
 
 ```cpp
-// Main.c
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "AdFunctions.h"
-#include "AdTypes.h"
-#include "AdDataLoader.h"
-
-#include "utils.h"
-
-const char datapath[128] = "C:/Users/Jan/OneDrive/_Coding/UdemyCExt/11_Files/DataLoader/data/";
-
 int main()
 {
     VehicleType ego_vehicle;
@@ -103,34 +90,4 @@ int main()
 
     return 0;
 }
-```
-
-```cpp
-// AdDataLoader.c
-#ifndef DATA_LOADER_H
-#define DATA_LOADER_H
-
-#include <stdint.h>
-
-#include "AdConstants.h"
-#include "AdTypes.h"
-
-#endif
-```
-
-```cpp
-// AdDataLoader.c
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "AdConstants.h"
-#include "AdFunctions.h"
-#include "AdTypes.h"
-#include "AdDataLoader.h"
-
-#include "utils.h"
-
-static VehicleType EGO_VEHICLE_DATA;
-static VehicleType VEHICLE_DATA[NUM_VEHICLES][NUM_CYCLES];
 ```

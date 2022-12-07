@@ -19,8 +19,6 @@ Note:
 ## Main Function
 
 ```cpp
-#include <stdio.h>
-
 int main()
 {
     float millisconds = 0.0F;

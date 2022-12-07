@@ -37,10 +37,6 @@ pow(2, i)
 ## Main Function
 
 ```cpp
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-
 int main()
 {
     // calculate_pi
@@ -56,5 +52,4 @@ int main()
 
     return 0;
 }
-
 ```

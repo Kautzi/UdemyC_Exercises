@@ -13,15 +13,6 @@ In future exercises, this plot will be used to display also other vehicles.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "utils.h"
-
-#include "AdFunctions.h"
-
 int main()
 {
     printf("Create the properties of a vehicle.\n");

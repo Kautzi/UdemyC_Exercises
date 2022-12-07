@@ -21,6 +21,5 @@ int main()
     printf("Lane (1=Left, 2=Center, 3=Right): ");
     scanf("%u", &lane_idx);
 
-
     return 0;
 }

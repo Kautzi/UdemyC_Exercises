@@ -44,12 +44,6 @@ You can use the **vector** library as a starting point!
 ## Main Function
 
 ```cpp
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "Matrix.h"
-#include "Vector.h"
-
 int main()
 {
     Matrix *m1 = createMatrix(3, 3, -1.0f);

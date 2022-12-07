@@ -16,15 +16,6 @@ Update the existing code:
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "utils.h"
-
-#include "AdFunctions.h"
-#include "AdTypes.h"
-
 int main()
 {
     VehicleType ego_vehicle;

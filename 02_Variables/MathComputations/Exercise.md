@@ -16,15 +16,3 @@ $z_3 = \frac{2 * x^3 - \frac{1}{2} * x^2 - x + 4}{y}$
 ## Results
 
 ![alt](../../media/2_MathComp.png)
-
-## Main Function
-
-```cpp
-#include <stdio.h>
-
-int main()
-{
-
-    return 0;
-}
-```

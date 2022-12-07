@@ -1,9 +1,10 @@
+#include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
 
-uint32_t recursive_sum(uint32_t lower_value, uint32_t upper_value);
+#include "lib.h"
 
-uint32_t recursive_product(uint32_t lower_value, uint32_t upper_value);
+void tests();
 
 int main()
 {
@@ -11,27 +12,26 @@ int main()
     uint32_t upper_value = 5;
 
     printf("recursive_sum: %u\n", recursive_sum(lower_value, upper_value));
-    printf("recursive_product: %u\n", recursive_product(lower_value, upper_value));
+    printf("recursive_product: %u\n",
+           recursive_product(lower_value, upper_value));
+
+    tests();
 
     return 0;
 }
 
-uint32_t recursive_sum(uint32_t lower_value, uint32_t upper_value)
+void tests()
 {
-    if (lower_value <= upper_value)
-    {
-        return lower_value + recursive_sum(lower_value + 1, upper_value);
-    }
+    assert(recursive_sum(0, 0) == 0);
+    assert(recursive_sum(0, 1) == 1);
+    assert(recursive_sum(3, 4) == 7);
+    assert(recursive_sum(4, 4) == 4);
+    assert(recursive_sum(4, 3) == 0);
 
-    return 0;
-}
-
-uint32_t recursive_product(uint32_t lower_value, uint32_t upper_value)
-{
-    if (lower_value <= upper_value)
-    {
-        return lower_value * recursive_product(lower_value + 1, upper_value);
-    }
-
-    return 1;
+    assert(recursive_product(0, 0) == 0);
+    assert(recursive_product(0, 1) == 0);
+    assert(recursive_product(3, 4) == 12);
+    assert(recursive_product(4, 4) == 4);
+    assert(recursive_product(4, 3) == 0);
+    assert(recursive_product(1, 5) == 120);
 }

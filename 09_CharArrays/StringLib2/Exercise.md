@@ -32,18 +32,6 @@ Note: Make sure that the input pointer is valid.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-bool string_starts_with(char *string, char *substr);
-
-bool string_ends_with(char *string, char *substr);
-
-char *string_find_first_not_of(char *string, char *substr);
-
-char *string_n_copy(char *dest, char *src, size_t count);
-
 int main()
 {
     char text[50] = "jan schaffranek";

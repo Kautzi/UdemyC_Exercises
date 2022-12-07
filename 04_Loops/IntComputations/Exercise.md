@@ -14,9 +14,6 @@ Implement the following logic:
 ## Main Function
 
 ```cpp
-#include <stdint.h>
-#include <stdio.h>
-
 int main()
 {
     uint32_t number = 0;
@@ -32,5 +29,4 @@ int main()
 
     printf("cross_sum: %d\n", cross_sum);
 }
-
 ```

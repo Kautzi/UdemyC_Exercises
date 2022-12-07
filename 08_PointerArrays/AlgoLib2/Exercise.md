@@ -24,17 +24,6 @@ Note: Make sure that the input pointers are valid.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "utils.h"
-
-void iota(int32_t *array, size_t length, int32_t start_value);
-
-int32_t *inclusive_scan(int32_t *array, size_t length);
-
 int main()
 {
     int32_t array[8] = {0};

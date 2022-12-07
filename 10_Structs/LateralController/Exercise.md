@@ -34,15 +34,6 @@ bool lateral_control(const NeighborVehiclesType *vehicles,
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "AdFunctions.h"
-#include "AdTypes.h"
-
-#include "utils.h"
-
 int main()
 {
     VehicleType ego_vehicle;

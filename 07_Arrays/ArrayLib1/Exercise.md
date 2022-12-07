@@ -30,20 +30,6 @@ Note: Make sure that the input pointers are valid.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "utils.h"
-
-void unique_elements(int32_t *array, size_t length);
-
-void remove_duplicates(int32_t *array, size_t *length);
-
-void rotate_left(int32_t *array, size_t length);
-
-void rotate_right(int32_t *array, size_t length);
-
 int main()
 {
     int32_t array[] = {1, 1, 2, 3, 3, 4};

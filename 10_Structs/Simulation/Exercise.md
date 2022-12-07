@@ -25,15 +25,6 @@ Since the ego vehicle is always at the distance (x) = 0, hence the ego vehicle i
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-#include "utils.h"
-
-#include "AdFunctions.h"
-#include "AdTypes.h"
-
 int main()
 {
     VehicleType ego_vehicle;

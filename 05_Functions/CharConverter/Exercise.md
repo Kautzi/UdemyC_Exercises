@@ -16,23 +16,6 @@ Make sure that you reuse as many functions as possible.
 ## Main Function
 
 ```cpp
-#include <stdbool.h>
-#include <stdio.h>
-
-bool is_numeric(char character);
-
-bool is_alpha(char character);
-
-bool is_alpha_numeric(char character);
-
-bool is_upper_case(char character);
-
-bool is_lower_case(char character);
-
-char to_upper_case(char character);
-
-char to_lower_case(char character);
-
 int main()
 {
     char character;
@@ -48,6 +31,8 @@ int main()
 
     printf("to_upper_case: %c\n", to_upper_case(character));
     printf("to_lower_case: %c\n", to_lower_case(character));
+
+    test_cases(); // These tests should not fail!
 
     return 0;
 }

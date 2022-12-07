@@ -34,12 +34,6 @@ Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector);
 ## Main Function
 
 ```cpp
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "Matrix.h"
-#include "Vector.h"
-
 int main()
 {
     Matrix *m1 = createMatrix(2, 3, -1.0f);
