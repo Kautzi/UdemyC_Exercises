@@ -5,10 +5,11 @@
 //### Types ###
 typedef struct time_conv
 {
-    uint32_t hour;
-    uint32_t min;
-    uint32_t sec;
-    uint32_t mills;
+    float hour;
+    float min;
+    float sec;
+    float mills;
+    float day;
 }time_conv_t;
 //### END TYPES ###
 
@@ -29,11 +30,12 @@ float mills;
     time_conv_t* time = time_conv(mills);
 
 
-    printf("Milliseconds: %d\n",time->mills);
-    printf("Seconds: %d\n",time->sec);
-    printf("Minutes: %d\n",time->min);
-    printf("Hours: %d\n",time->hour);
-    printf("Milliseconds: %d\n",time->mills);
+    printf("Milliseconds: %0.5f\n",time->mills);
+    printf("Seconds: %0.5f\n",time->sec);
+    printf("Minutes: %0.5f\n",time->min);
+    printf("Hours: %0.5f\n",time->hour);
+    printf("Day: %0.5f\n",time->day);
+
 
     free(time);
     return 0;
@@ -44,10 +46,11 @@ float mills;
 time_conv_t *time_conv(float mills)
 {
     time_conv_t *time = (time_conv_t*)malloc(sizeof(time_conv_t));
-    time->mills = (uint32_t)mills;
-    time->sec = (uint32_t)mills / 1000;
-    time->min = time->sec / 60;
-    time->hour = time->min / 60;
+    time->mills = mills;
+    time->sec = mills / 1000.0F; //remember to set an F course only 1000.0 is interpreated as double by the compiler as default
+    time->min = time->sec / 60.0F;
+    time->hour = time->min / 60.0F;
+    time->day = time->hour /24.0f;
 
     return time;
 }
