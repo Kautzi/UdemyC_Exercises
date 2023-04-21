@@ -23,7 +23,10 @@ int main()
         printf("Its alpha numerical\n");
 
     }
-    printf("Its alpha numerical\n");
+    else
+    {
+        printf("NOT alpha numerical\n");
+    }
     return 0;
 }
 //### END MAIN ###
