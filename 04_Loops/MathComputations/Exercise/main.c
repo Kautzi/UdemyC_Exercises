@@ -19,7 +19,23 @@ int main()
 
     // print_dec_to_bin
     uint8_t dec = 142;
+    uint32_t exp = 0;
+    //uint32_t temp1=0;
 
+    for( int8_t i = 7; i >= 0; i--)
+    {
+        uint8_t current_exp = pow(2,i);
+        if(dec >= current_exp)
+        {
+            printf("1");
+            dec-= current_exp;
 
+        }
+        else
+        {
+            printf("0");
+
+        }
+    }
     return 0;
 }
