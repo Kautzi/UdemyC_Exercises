@@ -4,10 +4,10 @@
 
 
 //### Function Declaration ###
-uint32_t is_numeric(char character); // returns 1 if its numerical checks if its a numerber = 1,2,3,4
-uint32_t is_alpha(char character);  // checks if its an alphabetikal aA,bB,cC
-uint32_t is_alpha_num(char character); // returns 1 if its alphanumerical  returns 0 if its a number checks if its 1,2,3,4,5 or aA,bB,cC
-uint32_t is_upper_lower(char haracter); // returns 1 if upper case 0 if lower,check if its a or A, b or B
+bool is_numeric(char character); // returns 1 if its numerical checks if its a numerber = 1,2,3,4
+bool is_alpha(char character);  // checks if its an alphabetikal aA,bB,cC
+bool is_alpha_num(char character); // returns 1 if its alphanumerical  returns 0 if its a number checks if its 1,2,3,4,5 or aA,bB,cC
+bool is_upper_lower(char haracter); // returns 1 if upper case 0 if lower,check if its a or A, b or B
 char converte_up_low(char character);
 //### END Declaration ###
 
@@ -19,13 +19,13 @@ int main()
     printf("please insert one character:\n");
     scanf("%c",&character);
 
-    if(is_alpha_num(character) == 1)
+    if(is_alpha_num(character) == true)
     {
         printf("Its alpha numerical "" %c ""\n",character);
-        if (is_alpha(character) == 1)
+        if (is_alpha(character) == false)
     {
         printf("Its alpha "" %c ""\n",character);
-        if(is_upper_lower(character) == 1)
+        if(is_upper_lower(character) == true)
         {
             printf("And its upper case!\n");
             printf("And now its lower case ""%c""\n",converte_up_low(character));
@@ -37,7 +37,7 @@ int main()
         }
 
     }
-    else if(is_numeric(character) == 1)
+    else if(is_numeric(character) == true)
     {
         printf("Its numerical ""%c""\n",character);
     }
@@ -53,47 +53,47 @@ int main()
 
 //### Function Definition ###
 
-uint32_t is_numeric(char character)
+bool is_numeric(char character)
 {
     if(character >= 48 && character <= 57)
     {
-    return 1;
+    return true;
     }
-    return 0;
+    return false;
 }
 
-uint32_t is_alpha(char character)
+bool is_alpha(char character)
 {
     if(is_alpha_num(character) == 1 && is_numeric(character) == 0)
     {
         if((character >= 65 && character <= 90)||(character >= 97 && character <= 122 ))
         {
-        return 1;
+        return true;
         }
-        return 0;
+        return false;
     }
-    return 0;
+    return true;
 }
 
-uint32_t is_alpha_num(char character) //checks if its a printable character and alpha numerical
+bool is_alpha_num(char character) //checks if its a printable character and alpha numerical
 {
     if(character <= 47 || (character >=58 && character <= 64)||(character >= 91 && character <= 96 ))//||(character >= 123 && character <= 127))
     {
-    return 0;
+    return false;
     }
-    return 1;
+    return true;
 
 }
 
-uint32_t is_upper_lower(char character)
+bool is_upper_lower(char character)
 {
     if(is_alpha(character) == 1)
     {
         if((character >= 65 && character <= 90))
         {
-            return 1;//is upper
+            return true;//is upper
         }
-        return 0;//is lower
+        return false;//is lower
     }
     return 2;
 }
