@@ -31,6 +31,6 @@ void tests()
     assert(recursive_product(0, 1) == 0);
     assert(recursive_product(3, 4) == 12);
     assert(recursive_product(4, 4) == 4);
-    assert(recursive_product(4, 3) == 1);
+    assert(recursive_product(4, 3) == 0);
     assert(recursive_product(1, 5) == 120);
 }
