@@ -14,13 +14,13 @@ int main()
     printf("%.16f\n", value);
 
     round_value(&value, 3);
-    printf("%.16f\n", value);
+    printf("%f\n", value);
 
     round_value(&value, 2);
-    printf("%.16f\n", value);
+    printf("%f\n", value);
 
     round_value(&value, 1);
-    printf("%.16f\n", value);
+    printf("%f\n", value);
 
     tests();
 
