@@ -38,3 +38,47 @@ void print_scene(float speed_mps, uint32_t lane_idx)
     printf("Speed: %f\n", speed_mps);
     printf("\n");
 }
+
+LaneAssociationType_t handle_lateral_user_input(LaneAssociationType_t lane_idx,LateraAction_t lateral_action)
+{
+switch(lateral_action)
+{
+    case a://LEFT
+    {
+        if (lane_idx == LANE_ASSOCIATION_TYPE_LEFT)
+        {
+            break;
+        }
+        else
+        {
+            lane_idx--;
+        }
+
+    break;
+    }
+    case d://Right
+    {
+        if (lane_idx == LANE_ASSOCIATION_TYPE_RIGHT)
+        {
+            break;
+        }
+        else
+        {
+            lane_idx++;
+        }
+
+    break;
+    }
+    case c://NONE
+    default:
+    {
+        break;
+    }
+
+
+}
+
+return lane_idx;
+}
+
+float handle_longitudinal_user_input(float speed_mps,LongitudinalAction_t de_increase_none);
