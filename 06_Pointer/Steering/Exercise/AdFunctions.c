@@ -3,6 +3,7 @@
 
 #include "AdFunctions.h"
 #include "AdTypes.h"
+#include "AdConstants.h"
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
@@ -81,4 +82,44 @@ switch(lateral_action)
 return lane_idx;
 }
 
-float handle_longitudinal_user_input(float speed_mps,LongitudinalAction_t de_increase_none);
+float handle_longitudinal_user_input(float speed_mps,LongitudinalAction_t de_increase_none)
+{
+
+switch(de_increase_none)
+{
+    case w:
+    {
+        speed_mps +=speed_mps * LONGITUDINAL_DIFFERENCE_PERCENTAGE;
+        break;
+    }
+
+    case s:
+    {
+        speed_mps -=speed_mps * LONGITUDINAL_DIFFERENCE_PERCENTAGE;
+        break;
+    }
+
+
+    case q:
+    default:
+    {
+        break;
+    }
+}
+
+
+return speed_mps;
+}
+
+void get_user_input(float* speed_mps, uint32_t* lane_idx)
+{
+int de_acc = 0;
+int right_left = 0;
+scanf("%d", &de_acc);
+scanf("%d", &right_left);
+*lane_idx = handle_lateral_user_input(*lane_idx,right_left);
+*speed_mps =  handle_longitudinal_user_input(*speed_mps,de_acc);
+
+
+    return;
+}
