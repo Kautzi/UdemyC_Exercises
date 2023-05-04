@@ -11,16 +11,16 @@ typedef enum LaneAssociationType
 
 typedef enum LongitudinalAction
 {
-    w,//Increase
-    s,//Decreas
-    q,//NONE
+    LONGITUDINAL_ACTION_INCREASE ='w',//Increase
+    LONGITUDINAL_ACTION_DECREASE ='s',//Decreas
+    LONGITUDINAL_ACTION_NONE,//NONE
 }LongitudinalAction_t;
 
 typedef enum LateraAction
 {
-a,//Left
-d,//Right
-c,//NONE
+LATERAL_ACTION_TYPE_LEFT = 'a',//Left
+LATERAL_ACTION_TYPE_RIGTH = 'd',//Right
+LATERAL_ACTION_TYPE_NONE,//NONE
 }LateraAction_t;
 
 
