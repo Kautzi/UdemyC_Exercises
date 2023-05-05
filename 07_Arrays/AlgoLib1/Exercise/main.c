@@ -17,7 +17,7 @@ int main()
     printf("all_of: %d\n", all_of(array, length, 5));
     printf("any_of: %d\n", any_of(array, length, 5));
     printf("none_of: %d\n", none_of(array, length, 5));
-    printf("count of 1: %zu", count(array, length, 1));
+    printf("count of 1: %zu\n", count(array, length, 1));
 
     test_cases(); // This should not fail!
 
