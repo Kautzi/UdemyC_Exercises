@@ -15,6 +15,7 @@ int main()
     int32_t array2[] = {-3, -2, -1, 0, 1, 2, 4};
     size_t length = 7;
 
+
     printf("array_equal: %d\n", array_equal(array1, length, array2, length));
 
     array_clamp(array1, length, -1, 1);

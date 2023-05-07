@@ -10,8 +10,14 @@ void test_cases();
 
 int main()
 {
+
+
     int32_t array[] = {1, 1, 2, 3, 3, 4};
     size_t length = 6;
+
+
+
+
 
     printf("unique_elements: \n");
     unique_elements(array, length);
