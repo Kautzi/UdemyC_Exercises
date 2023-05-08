@@ -49,11 +49,11 @@ void array_clamp(int32_t *array,
     //else the element is >= max_value set to max_value
     for(size_t i = 0; i < length; i++)
     {
-        if(array[i] <= min_value)
+        if(array[i] < min_value)
         {
             array[i]= min_value;
         }
-        else if(array[i] >= max_value)
+        else if(array[i] > max_value)
         {
             array[i]=max_value;
         }
@@ -89,7 +89,7 @@ void array_fill_n(int32_t *array, size_t length, size_t n, int32_t value) // TES
     }
     if(n > length)
     {
-        return;
+        n = length;
     }
     for(size_t i = 0; i < n;i++)
     {
