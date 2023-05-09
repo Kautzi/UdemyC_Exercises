@@ -5,32 +5,43 @@
 
 #include "lib.h"
 
-void iota(int32_t *array, size_t length, int32_t start_value)
+void iota(int32_t *array, size_t length, int32_t start_value)// TEST => PASS
 {
     if(array == NULL)
     {
         return;
     }
 
-    bool is_element = false;
-    int32_t temp = 0;
-    size_t index_value_found;
-
-    for(size_t i = 0; i < length; i++ )
+    for(size_t i = 0; i < length; i++)
     {
-        if(array[i]== start_value)
-        is_element = true;
-        temp = array[0];
-        index_value_found = i;
-
+        array[i] = start_value;
+        start_value ++;
     }
-    if(is_element)
-    {
-
-    }
-
 }
 
 int32_t *inclusive_scan(int32_t *array, size_t length)
 {
+    if(array == NULL)
+    {
+        return NULL;
+    }
+    int32_t * sum_result = (int32_t*)malloc(sizeof(int32_t)*length);
+    if(sum_result == NULL)
+    {
+        return NULL;
+    }
+
+    for(size_t i = 0; i < length; i++)
+    {
+        if(i == 0)
+        {
+            sum_result[i] = array[i];
+        }
+        else
+        {
+        sum_result[i]=sum_result[i-1]+array[i];
+        }
+    }
+
+    return sum_result;
 }

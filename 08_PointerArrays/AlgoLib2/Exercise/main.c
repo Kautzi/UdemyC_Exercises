@@ -11,6 +11,7 @@ int main()
     int32_t array[8] = {0};
     size_t length = 8;
 
+
     iota(array, length, 0);
     print_int32_array(array, length);
 
