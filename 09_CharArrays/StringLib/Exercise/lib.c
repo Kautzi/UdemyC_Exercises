@@ -74,12 +74,68 @@ char to_lower_case(char character)
 
 char *to_upper_case_str(char *text)
 {
+    if(text == NULL)
+    {
+        return NULL;
+    }
+
+    while( *text != '\0')
+    {
+
+        if(is_lower_case(*text))
+        {
+            *text = to_upper_case(*text);
+            text ++;
+        }
+        else
+        {
+            text ++;
+        }
+
+    }
+    return &text[0];
 }
 
 char *to_lower_case_str(char *text)
 {
+    if(text == NULL)
+    {
+        return NULL;
+    }
+
+    while( *text != '\0')
+    {
+
+        if(is_upper_case(*text))
+        {
+            *text = to_lower_case(*text);
+            text ++;
+        }
+        else
+        {
+            text ++;
+        }
+    }
+    return &text[0];
 }
 
 char *char_search(char *text, char character)
 {
+    if(text == NULL)
+    {
+        return NULL;
+    }
+
+    while(*text !='\0')
+    {
+        if(*text == character)
+        {
+            return text;
+        }
+        else
+        {
+            text ++;
+        }
+    }
+    return NULL;
 }
