@@ -78,7 +78,7 @@ char *to_upper_case_str(char *text)
     {
         return NULL;
     }
-
+    size_t reset = 0;
     while( *text != '\0')
     {
 
@@ -86,14 +86,21 @@ char *to_upper_case_str(char *text)
         {
             *text = to_upper_case(*text);
             text ++;
+            reset ++;
         }
         else
         {
             text ++;
+            reset ++;
         }
 
     }
-    return &text[0];
+    //Reset text index
+    for(size_t i = 0; i < reset; i++)
+    {
+        text--;
+    }
+    return text;
 }
 
 char *to_lower_case_str(char *text)
@@ -102,7 +109,7 @@ char *to_lower_case_str(char *text)
     {
         return NULL;
     }
-
+    size_t reset = 0;
     while( *text != '\0')
     {
 
@@ -110,13 +117,20 @@ char *to_lower_case_str(char *text)
         {
             *text = to_lower_case(*text);
             text ++;
+            reset++;
         }
         else
         {
             text ++;
+            reset++;
         }
     }
-    return &text[0];
+    //Reset text index
+    for(size_t i = 0; i < reset; i++)
+    {
+        text--;
+    }
+    return text;
 }
 
 char *char_search(char *text, char character)
@@ -125,16 +139,24 @@ char *char_search(char *text, char character)
     {
         return NULL;
     }
-
+    size_t reset = 0;
+    size_t index_found = 0;
     while(*text !='\0')
     {
         if(*text == character)
         {
-            return text;
+        //Reset text index
+        index_found = reset;
+        for(size_t i = 0; i < reset; i++)
+        {
+        text--;
+        }
+            return &text[index_found];
         }
         else
         {
             text ++;
+            reset++;
         }
     }
     return NULL;
