@@ -10,7 +10,14 @@ void test_cases();
 int main()
 {
     char text[50] = "jan schaffranek";
+//### TEST AREA Alex
+printf("string_starts_with: %d\n", string_starts_with(text, "jan"));
+printf("string_ends_with: %d\n", string_ends_with(text, "fhranek"));
+printf("string_find_first_not_of: %s\n",
+           string_find_first_not_of(text, "jan sc"));
 
+//### END TEST AREA Alex
+/*
     printf("string_starts_with: %d\n", string_starts_with(text, "jan"));
     printf("string_ends_with: %d\n", string_ends_with(text, "anek"));
 
@@ -23,7 +30,7 @@ int main()
            string_find_first_not_of(text, "an "));
 
     test_cases();
-
+*/
     return 0;
 }
 
