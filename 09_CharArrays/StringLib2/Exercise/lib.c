@@ -16,7 +16,7 @@ bool string_starts_with(char *string, char *substr)
 
     while(*substr != '\0')
     {
-        if(*compare != *substr)
+        if((*compare == '\0') || (*compare != *substr))
         {
             return false;
         }
@@ -83,4 +83,28 @@ char *string_find_first_not_of(char *string, char *substr)
 
 char *string_n_copy(char *dest, char *src, size_t count)
 {
+    if(dest == 0 || src == NULL)
+    {
+        return NULL;
+    }
+    char* find_last = dest;
+    //find '\0' in dest to get the adress where src starts
+    while(*find_last != '\0')
+    {
+    find_last++;
+    }
+    //now replace the found '\0' through a ' '<= Space chracter
+    *find_last = ' ';
+    find_last++;
+
+    // and lastly concatenate the src string with length count to the dest string
+    // and append a '\0'
+    for(size_t i = 0; i < count; i++)
+    {
+    *find_last= src[i];
+    find_last++;
+    }
+    *find_last ='\0';
+
+    return dest;
 }

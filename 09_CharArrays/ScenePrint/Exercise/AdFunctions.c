@@ -7,37 +7,50 @@
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
+    int32_t lane_count = 100;// this Varable counts the lanes in front and behind the actual lane of the vehicle
+
     printf("\n\n");
     printf("\t  L   C   R\n");
-
-    switch (lane_idx)
+    while(lane_count >= -100)
+    {
+    if(lane_count == 0)
+    {
+        switch (lane_idx)
     {
     case LANE_ASSOCIATION_TYPE_LEFT:
     {
-        printf("\t| V |   |   |\n");
+        printf("%d\t| V |   |   |\n",lane_count);
         break;
     }
     case LANE_ASSOCIATION_TYPE_CENTER:
     {
-        printf("\t|   | V |   |\n");
+        printf("%d\t|   | V |   |\n",lane_count);
         break;
     }
     case LANE_ASSOCIATION_TYPE_RIGHT:
     {
-        printf("\t|   |   | V |\n");
+        printf("%d\t|   |   | V |\n",lane_count);
         break;
     }
     case LANE_ASSOCIATION_TYPE_NONE:
     default:
     {
-        printf("\t|   |   |   |\n");
+        printf("%d\t|   |   |   |\n",lane_count);
         break;
     }
     }
+    lane_count-=20;
+    }
+    else
+    {
+    printf("%d\t|   |   |   |\n",lane_count);
+    }
+    lane_count-=20;
+    }
 
-    printf("\n");
-    printf("Speed: %f\n", speed_mps);
-    printf("\n");
+        printf("\n");
+        printf("Speed: %f\n", speed_mps);
+        printf("\n");
 }
 
 void get_user_input(float *speed_mps, uint32_t *lane_idx)
