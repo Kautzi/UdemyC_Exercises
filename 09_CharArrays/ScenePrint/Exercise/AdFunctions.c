@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "AdConstants.h"
 #include "AdFunctions.h"
@@ -7,45 +8,49 @@
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
-    int32_t lane_count = 100;// this Varable counts the lanes in front and behind the actual lane of the vehicle
 
     printf("\n\n");
     printf("\t  L   C   R\n");
-    while(lane_count >= -100)
+
+    float offset_m = 20.0f;
+
+    for(int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
-    if(lane_count == 0)
+        char left_string[]="   ";
+        char center_string[]="   ";
+        char right_string[]="   ";
+
+    if(i == 0)
     {
         switch (lane_idx)
     {
     case LANE_ASSOCIATION_TYPE_LEFT:
     {
-        printf("%d\t| V |   |   |\n",lane_count);
+        strncpy(left_string," V ",4);
         break;
     }
     case LANE_ASSOCIATION_TYPE_CENTER:
     {
-        printf("%d\t|   | V |   |\n",lane_count);
+        strncpy(center_string," V ",4);;
         break;
     }
     case LANE_ASSOCIATION_TYPE_RIGHT:
     {
-        printf("%d\t|   |   | V |\n",lane_count);
+        strncpy(right_string," V ",4);;
         break;
     }
     case LANE_ASSOCIATION_TYPE_NONE:
     default:
     {
-        printf("%d\t|   |   |   |\n",lane_count);
+
         break;
     }
     }
-    lane_count-=20;
+
     }
-    else
-    {
-    printf("%d\t|   |   |   |\n",lane_count);
-    }
-    lane_count-=20;
+
+    printf("%d\t|%s|%s|%s|\n",i,left_string,center_string,right_string);
+
     }
 
         printf("\n");
