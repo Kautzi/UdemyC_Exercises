@@ -13,7 +13,7 @@ int main()
     NeighborVehiclesType vehicles;
 
     init_ego_vehicle(&ego_vehicle);
-    init_vehicles(&vehicles);
+/*  init_vehicles(&vehicles);
 
     print_vehicle(&ego_vehicle);
     print_neighbor_vehicles(&vehicles);
@@ -35,5 +35,6 @@ int main()
         print_scene(speed_mps, lane_idx);
         get_user_input(&speed_mps, &lane_idx);
     }
+*/
     return 0;
 }

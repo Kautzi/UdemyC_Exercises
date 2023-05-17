@@ -5,7 +5,9 @@
 
 #define LONGITUDINAL_DIFFERENCE_PERCENTAGE 0.05F
 
-#define EGO_ID (INT)(-1)
+#define EGO_ID (-1)
+
+#define Vehicle_Array_Length 2
 
 #endif
 

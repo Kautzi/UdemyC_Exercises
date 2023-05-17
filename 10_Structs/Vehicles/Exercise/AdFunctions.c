@@ -166,3 +166,34 @@ void handle_longitudinal_user_input(float *speed_mps, char long_action)
     }
     }
 }
+
+void init_ego_vehicle(VehicleType *ego_vehicle)
+{
+    if(ego_vehicle == NULL)
+    {
+        return;
+    }
+    ego_vehicle->Vehicle_ID= EGO_ID;
+    ego_vehicle->distance_to_ego_ID=0;
+    printf("Enter the initil Speed of Ego Vehicle >= 20 <= 50:\n");
+    scanf("%f",&ego_vehicle->speed);
+    printf("Enter the lane on which the Ego Vehicle is on 1= left 2= center 3= right:\n");
+    scanf("%u",&ego_vehicle->lane);
+
+
+}
+
+void init_vehicles(NeighborVehiclesType *vehicles)
+{
+
+}
+
+void print_vehicle(const VehicleType *vehicle)
+{
+
+}
+
+void print_neighbor_vehicles(const NeighborVehiclesType *vehicles)
+{
+
+}
