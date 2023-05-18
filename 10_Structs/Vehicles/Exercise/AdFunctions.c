@@ -167,6 +167,11 @@ void handle_longitudinal_user_input(float *speed_mps, char long_action)
     }
 }
 
+float kph_to_mps(float kph)
+{
+    return kph / 3.6f;
+}
+
 void init_ego_vehicle(VehicleType *ego_vehicle)
 {
     if(ego_vehicle == NULL)
@@ -183,17 +188,43 @@ void init_ego_vehicle(VehicleType *ego_vehicle)
 
 }
 
-void init_vehicles(NeighborVehiclesType *vehicles)
+void init_vehicle(VehicleType * vehicle,int32_t id, float speed_mps, float distance, LaneAssociationType lane)
 {
-
+    vehicle->Vehicle_ID=id;
+    vehicle->distance_to_ego_ID= distance;
+    vehicle->speed=kph_to_mps(speed_mps);
+    vehicle->lane=lane;
 }
 
+void init_vehicles(NeighborVehiclesType *vehicles)
+{
+    init_vehicle(&vehicles->vehicles_left_lane[0],0,130.0f,80.0f,LANE_ASSOCIATION_TYPE_LEFT);
+    init_vehicle(&vehicles->vehicles_left_lane[1],1,50.0f,-60.0f,LANE_ASSOCIATION_TYPE_LEFT);
+
+    init_vehicle(&vehicles->vehicles_center_lane[0],2,90.0f,-10.0f,LANE_ASSOCIATION_TYPE_CENTER);
+    init_vehicle(&vehicles->vehicles_center_lane[1],3,55.0f,30.0f,LANE_ASSOCIATION_TYPE_CENTER);
+
+    init_vehicle(&vehicles->vehicles_right_lane[0],4,160.0f,-10.0f,LANE_ASSOCIATION_TYPE_RIGHT);
+    init_vehicle(&vehicles->vehicles_right_lane[1],5,20.0f,-90.0f,LANE_ASSOCIATION_TYPE_RIGHT);
+
+}
 void print_vehicle(const VehicleType *vehicle)
 {
+    printf("ID: %d\n",vehicle->Vehicle_ID);
+    printf("Speed (m/s): %f\n",vehicle->speed);
+    printf("Distance (m): %f\n",vehicle->distance_to_ego_ID);
+    printf("Lane: %u\n",vehicle->lane);
 
 }
 
 void print_neighbor_vehicles(const NeighborVehiclesType *vehicles)
 {
+
+    print_vehicle(&vehicles->vehicles_left_lane[0]);
+    print_vehicle(&vehicles->vehicles_left_lane[1]);
+    print_vehicle(&vehicles->vehicles_center_lane[0]);
+    print_vehicle(&vehicles->vehicles_center_lane[1]);
+    print_vehicle(&vehicles->vehicles_right_lane[0]);
+    print_vehicle(&vehicles->vehicles_right_lane[1]);
 
 }
