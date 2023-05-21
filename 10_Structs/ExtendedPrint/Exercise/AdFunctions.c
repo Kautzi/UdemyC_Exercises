@@ -21,9 +21,9 @@ void print_scene(const VehicleType * ego_vehicle, const NeighborVehiclesType * v
     for(int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
     {
 
-        const VehicleType *left_vehicle = (left_idx > Vehicle_Array_Length) ? NULL: &vehicle->vehicles_left_lane[left_idx];
-        const VehicleType *center_vehicle =(center_idx > Vehicle_Array_Length) ? NULL: &vehicle->vehicles_center_lane[center_idx];
-        const VehicleType *right_vehicle =(right_idx > Vehicle_Array_Length) ? NULL: &vehicle->vehicles_right_lane[right_idx];
+        const VehicleType *left_vehicle = (left_idx == Vehicle_Array_Length) ? NULL: &vehicle->vehicles_left_lane[left_idx];
+        const VehicleType *center_vehicle =(center_idx == Vehicle_Array_Length) ? NULL: &vehicle->vehicles_center_lane[center_idx];
+        const VehicleType *right_vehicle =(right_idx == Vehicle_Array_Length) ? NULL: &vehicle->vehicles_right_lane[right_idx];
 
         char left_string[]="   ";
         char center_string[]="   ";
@@ -111,7 +111,7 @@ void init_ego_vehicle(VehicleType *ego_vehicle)
 
 }
 
-void init_vehicle(VehicleType * vehicle,const int32_t id,const float speed_mps,const float distance,const LaneAssociationType lane)
+void init_vehicle(VehicleType * vehicle,const int32_t id,const float distance,const float speed_mps,const LaneAssociationType lane)
 {
     vehicle->Vehicle_ID=id;
     vehicle->distance_to_ego_ID= distance;
@@ -122,13 +122,13 @@ void init_vehicle(VehicleType * vehicle,const int32_t id,const float speed_mps,c
 void init_vehicles(NeighborVehiclesType *vehicles)
 {
     init_vehicle(&vehicles->vehicles_left_lane[0],0,100.0f,80.0f,LANE_ASSOCIATION_TYPE_LEFT);
-    init_vehicle(&vehicles->vehicles_left_lane[1],1,60.0f,60.0f,LANE_ASSOCIATION_TYPE_LEFT);
+    init_vehicle(&vehicles->vehicles_left_lane[1],1,-100.0f,60.0f,LANE_ASSOCIATION_TYPE_LEFT);
 
     init_vehicle(&vehicles->vehicles_center_lane[0],2,40.0f,10.0f,LANE_ASSOCIATION_TYPE_CENTER);
     init_vehicle(&vehicles->vehicles_center_lane[1],3,-60.0f,30.0f,LANE_ASSOCIATION_TYPE_CENTER);
 
-    init_vehicle(&vehicles->vehicles_right_lane[0],4,-80.0f,10.0f,LANE_ASSOCIATION_TYPE_RIGHT);
-    init_vehicle(&vehicles->vehicles_right_lane[1],5,20.0f,-90.0f,LANE_ASSOCIATION_TYPE_RIGHT);
+    init_vehicle(&vehicles->vehicles_right_lane[0],4,80.0f,10.0f,LANE_ASSOCIATION_TYPE_RIGHT);
+    init_vehicle(&vehicles->vehicles_right_lane[1],5,-20.0f,90.0f,LANE_ASSOCIATION_TYPE_RIGHT);
 
 }
 
