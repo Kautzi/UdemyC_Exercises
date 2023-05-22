@@ -8,6 +8,6 @@
 
 #define Vehicle_Array_Length (2)
 
-//#define NUM_VEHICLES_ON_LANE (2)
+
 
 #endif
