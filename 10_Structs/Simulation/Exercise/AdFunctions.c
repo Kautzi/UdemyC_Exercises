@@ -158,6 +158,9 @@ void compute_future_distance(VehicleType * vehicle,
                              const float seconds)
 {
 
+const float driven_distance = vehicle->speed * seconds;
+
+vehicle->distance_to_ego_ID = vehicle->distance_to_ego_ID + ( driven_distance - ego_driven_distance);
 
 }
 
@@ -165,10 +168,12 @@ void compute_future_state(const VehicleType * ego_vehicle,
                           NeighborVehiclesType * vehicles,
                           const float seconds)
 {
-/*### Description ###
+const float ego_driven_distance = ego_vehicle->speed * seconds;
 
-
-### END Description ##*/
-
-
+for(size_t i = 0; i <= Vehicle_Array_Length; i++)
+{
+    compute_future_distance(&vehicles->vehicles_left_lane[i],ego_driven_distance,seconds);
+    compute_future_distance(&vehicles->vehicles_center_lane[i],ego_driven_distance,seconds);
+    compute_future_distance(&vehicles->vehicles_right_lane[i],ego_driven_distance,seconds);
+}
 }
