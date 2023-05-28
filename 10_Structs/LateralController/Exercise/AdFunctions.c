@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
+#include <stdbool.h>
 
 #include "AdConstants.h"
 #include "AdFunctions.h"
@@ -111,35 +113,8 @@ if((ego_vehicle->speed - decrease_speed) > 0)
 
 }
 
-void longitudinal_control(const VehicleType *front_vehicle, VehicleType *ego_vehicle)
+void longitudinal_control(const VehicleType* front_vehicle, VehicleType *ego_vehicle)
 {
-//Für später
-/*{
-    switch(ego_vehicle->lane)
-    {
-        case LANE_ASSOCIATION_TYPE_LEFT:
-        {
-        break;
-        }
-
-        case LANE_ASSOCIATION_TYPE_CENTER:
-        {
-        break;
-        }
-
-        case LANE_ASSOCIATION_TYPE_RIGHT:
-        {
-        break;
-        }
-
-        case LANE_ASSOCIATION_TYPE_NONE:
-        default:
-        {
-            break;
-        }
-
-    }
-}*/
 
 const float min_distance = mps_to_kph(ego_vehicle->speed)/2.0f;
 const float front_distance = front_vehicle->distance_to_ego_ID;
@@ -151,6 +126,8 @@ if(front_distance < min_distance)
 
 
 }
+
+
 
 void init_ego_vehicle(VehicleType *ego_vehicle)
 {
@@ -233,4 +210,129 @@ for(size_t i = 0; i <= Vehicle_Array_Length; i++)
     compute_future_distance(&vehicles->vehicles_center_lane[i],ego_driven_distance,seconds);
     compute_future_distance(&vehicles->vehicles_right_lane[i],ego_driven_distance,seconds);
 }
+}
+
+const VehicleType *get_vehicle_array(const LaneAssociationType ego_lane,
+                                     const NeighborVehiclesType *vehicles)
+{
+    /*
+    LANE_ASSOCIATION_TYPE_NONE,
+    LANE_ASSOCIATION_TYPE_LEFT,
+    LANE_ASSOCIATION_TYPE_CENTER,
+    LANE_ASSOCIATION_TYPE_RIGHT,*/
+    switch(ego_lane)
+    {
+
+        case LANE_ASSOCIATION_TYPE_LEFT:
+        {
+            return vehicles->vehicles_left_lane;
+            break;
+        }
+
+        case LANE_ASSOCIATION_TYPE_CENTER:
+        {
+            return vehicles->vehicles_center_lane;
+            break;
+        }
+
+        case LANE_ASSOCIATION_TYPE_RIGHT:
+        {
+
+            break;
+        }
+
+
+        //both if none ore else set default and break
+        case LANE_ASSOCIATION_TYPE_NONE:
+        default:
+        {
+        return NULL;
+        break;
+        }
+    }
+return NULL;
+}
+
+LaneAssociationType get_lane_change_request(const VehicleType *ego_vehicle,
+                                            const NeighborVehiclesType  *vehicles)
+{
+const VehicleType * same_lane_vehicle = get_vehicle_array(ego_vehicle->lane,vehicles);
+const VehicleType * rear_vehicle = &same_lane_vehicle[1];
+
+const float min_distance = mps_to_kph(ego_vehicle->speed)/2.0f;
+const float rear_distance = (float)fabs(rear_vehicle->distance_to_ego_ID);
+
+if(rear_distance < min_distance)
+{
+    switch(ego_vehicle->lane)
+    {
+       case LANE_ASSOCIATION_TYPE_LEFT:
+       case LANE_ASSOCIATION_TYPE_RIGHT:
+       {
+        const VehicleType * center_lane_vehicles = get_vehicle_array(LANE_ASSOCIATION_TYPE_CENTER,vehicles);
+        const float front_center_distance = (float)fabs(center_lane_vehicles[0].distance_to_ego_ID);
+        const float rear_center_distance = (float)fabs(center_lane_vehicles[1].distance_to_ego_ID);
+
+        if(front_center_distance > min_distance && rear_center_distance > min_distance )
+        {
+            return LANE_ASSOCIATION_TYPE_CENTER;
+        }
+
+        break;
+       }
+
+       case LANE_ASSOCIATION_TYPE_CENTER:
+       {
+        const VehicleType * left_lane_vehicles = get_vehicle_array(LANE_ASSOCIATION_TYPE_LEFT,vehicles);
+        const float front_left_distance = (float)fabs(left_lane_vehicles[0].distance_to_ego_ID);
+        const float rear_left_distance = (float)fabs(left_lane_vehicles[1].distance_to_ego_ID);
+
+        const VehicleType * right_lane_vehicles = get_vehicle_array(LANE_ASSOCIATION_TYPE_RIGHT,vehicles);
+        const float front_right_distance = (float)fabs(right_lane_vehicles[0].distance_to_ego_ID);
+        const float rear_right_distance = (float)fabs(right_lane_vehicles[1].distance_to_ego_ID);
+
+        if(front_right_distance > min_distance && rear_right_distance > min_distance )
+        {
+            return LANE_ASSOCIATION_TYPE_RIGHT;
+        }
+
+        if(front_left_distance > min_distance && rear_left_distance > min_distance )
+        {
+            return LANE_ASSOCIATION_TYPE_LEFT;
+        }
+
+
+
+        break;
+       }
+
+       case LANE_ASSOCIATION_TYPE_NONE:
+       default:
+       {
+        return LANE_ASSOCIATION_TYPE_NONE;
+        break;
+       }
+
+
+    }
+
+}
+
+
+return ego_vehicle->lane;
+}
+
+bool lateral_control(
+                     const LaneAssociationType lane_change_request,
+                     VehicleType *ego_vehicle)
+{
+
+if(lane_change_request == ego_vehicle->lane)
+{
+return false;
+}
+
+ego_vehicle->lane = lane_change_request;
+return true;
+
 }
