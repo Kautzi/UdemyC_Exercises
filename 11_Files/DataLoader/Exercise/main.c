@@ -8,7 +8,7 @@
 
 #include "utils.h"
 
-const char datapath[128] = "D:/Programmieren/UdemyC_Exercises/11_Files/DataLoader/Exercise/data";
+const char datapath[128] = "D:/Programmieren/UdemyC_Exercises/11_Files/DataLoader/Exercise/data/";
 //"C:/Users/Jan/OneDrive/_Coding/UdemyCExt/11_Files/DataLoader/data/";
 
 int main()
@@ -19,6 +19,7 @@ int main()
 
 //### Test Area Alex
 preload_ego_vehicle_data(datapath);
+preload_vehicle_data(datapath);
 
 //### End Test Area
 
