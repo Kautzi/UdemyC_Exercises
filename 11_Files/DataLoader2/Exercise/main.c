@@ -8,8 +8,8 @@
 
 #include "utils.h"
 
-const char datapath[128] =
-    "C:/Users/Jan/OneDrive/_Coding/UdemyCExercises/11_Files/DataLoader2/data/";
+const char datapath[128] ="D:/Programmieren/UdemyC_Exercises/11_Files/DataLoader2/Exercise/data/";
+    //"C:/Users/Jan/OneDrive/_Coding/UdemyCExercises/11_Files/DataLoader2/data/";
 
 int main()
 {
