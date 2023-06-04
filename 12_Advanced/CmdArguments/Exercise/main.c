@@ -9,8 +9,9 @@
 
 #include "utils.h"
 
-char datapath[128] = "C:/Users/Jan/OneDrive/_Coding/UdemyCExt/12_Advanced/CmdArguments/data/";
+char datapath[128] = "D:/Programmieren/UdemyC_Exercises/12_Advanced/CmdArguments/Exercise/data/";
 
+//Strg+Alt+a für übergabe argv
 int main(int argc, char const **argv)
 {
     int use_case_idx = 0;

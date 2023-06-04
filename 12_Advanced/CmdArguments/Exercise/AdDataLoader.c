@@ -12,11 +12,11 @@ static VehicleType VEHICLE_DATA[NUM_VEHICLES][NUM_CYCLES];
 void preload_ego_vehicle_data(const char datapath[128], int use_case_idx)
 {
 
-char ego_file[26];
+char ego_file[17];
 char ego_datapath[128];
 strncpy(ego_datapath,datapath,129);
 
-snprintf(ego_file,strlen("X/ego_data.txt"),"%d/ego_data.txt",use_case_idx);
+sprintf(ego_file,"%d/ego_data.txt",use_case_idx);
 
 /*alt
 switch(use_case_idx)
@@ -48,7 +48,7 @@ switch(use_case_idx)
 }
 */
 
-strncat(ego_datapath,ego_file,27);
+strncat(ego_datapath,ego_file,18);
 
 FILE *fp = fopen(ego_datapath,"r");
 
@@ -72,9 +72,9 @@ fclose(fp);
 
 void preload_vehicle_data(const char datapath[128], int use_case_idx)
 {
-char neighbore_file[32];//19 chars and 0 is at pos 9
+char neighbore_file[23];//19 chars and 0 is at pos 9
 
-snprintf(neighbore_file,strlen("X/vehicle_0_data.txt"),"%d/vehicle_0_data.txt",use_case_idx);
+sprintf(neighbore_file,"%d/vehicle_0_data.txt",use_case_idx);
 
 
 char neighbore_datapath[128]={'\0'};
@@ -82,11 +82,11 @@ char num = '0';
 //START for loop #1
 for(int i= 0; i < NUM_VEHICLES; i++)
 {
-    neighbore_file[8]=(i == 0) ? num : ++num;
+    neighbore_file[10]=(i == 0) ? num : ++num;
 
     strncpy(neighbore_datapath,datapath,80);
 
-    strncat(neighbore_datapath, neighbore_file, 25);
+    strncat(neighbore_datapath, neighbore_file, 24);
 
     FILE *fp = fopen(neighbore_datapath,"r");
 
