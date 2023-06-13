@@ -1,11 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//#define TEST_AREA_ALEX
+
 #include "Matrix.h"
 #include "Vector.h"
 
 int main()
 {
+#ifdef TEST_AREA_ALEX
+
+Matrix *m6 = createMatrix(2, 2, 0.0f);
+    m6->array[0] = 1;
+    m6->array[1] = 2;
+    m6->array[2] = 3;
+    m6->array[3] = 4;
+
+    Vector *min_axis0 = minMatrix(m6, AXIS_1);
+    printf("min axis=0 of m6");
+    printVector(min_axis0);
+
+    Vector *max_axis0 = maxMatrix(m6, AXIS_1);
+    printf("max axis=0 of m6");
+    printVector(max_axis0);
+
+
+#endif //TEST_AREA_ALEX
+
+#ifndef TEST_AREA_ALEX
     Matrix *m1 = createMatrix(3, 3, -1.0f);
     Matrix *m2 = createMatrix(3, 3, +1.0f);
 
@@ -31,10 +53,10 @@ int main()
     printMatrix(m5);
 
     Matrix *m6 = createMatrix(2, 2, 0.0f);
-    m6->data[0] = 1;
-    m6->data[1] = 2;
-    m6->data[2] = 3;
-    m6->data[3] = 4;
+    m6->array[0] = 1;
+    m6->array[1] = 2;
+    m6->array[2] = 3;
+    m6->array[3] = 4;
 
     Vector *min_axis0 = minMatrix(m6, AXIS_0);
     printf("min axis=0 of m6");
@@ -71,6 +93,6 @@ int main()
     freeVector(max_axis0);
     freeVector(mean_axis0);
     freeVector(mean_axis1);
-
+#endif
     return 0;
 }
